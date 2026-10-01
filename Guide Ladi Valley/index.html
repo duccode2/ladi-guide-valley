@@ -1,12 +1,20 @@
-﻿<!DOCTYPE html>
-<html lang="vi">
-<head>
+<!DOCTYPE html>
+<html lang="vi" data-theme="dark"><head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ladi Valley — Private garden villa near West Lake</title>
+<script>
+  document.documentElement.classList.add('js');
+  try{
+    if(localStorage.getItem('ladi-valley-theme') === 'light'){
+      document.documentElement.dataset.theme = 'light';
+    }
+  }catch(error){}
+</script>
+<title>Ladi Valley · Hướng dẫn lưu trú</title>
+<link rel="preload" as="image" href="assets/images/ladi-valley-hero.webp">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap&subset=vietnamese" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600&amp;family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&amp;display=swap&amp;subset=vietnamese" rel="stylesheet">
 <style>
   :root{
     --cream:#ECE4D6;
@@ -15,6 +23,7 @@
     --warm-white:#F6F1E8;
     --beige:#C9A882;
     --caramel:#A0724A;
+    --caramel-ink:#765238;
     --teal:#2D4A47;
     --espresso:#3D2B1F;
     --ink:#241910;
@@ -91,7 +100,7 @@
   .ov-foot{margin-top:30px;font-family:var(--serif);font-style:italic;font-size:19px;color:var(--beige)}
 
   /* ============ HERO ============ */
-  .hero{position:relative;height:100vh;min-height:640px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+  .hero{position:relative;height:auto;min-height:100dvh;display:flex;align-items:center;justify-content:center;overflow:hidden}
   .hero-bg{position:absolute;inset:0;
     background:
       linear-gradient(180deg, rgba(36,25,16,.28) 0%, rgba(36,25,16,.40) 58%, rgba(36,25,16,.62) 100%),
@@ -214,6 +223,8 @@
   .content table{width:100%;border-collapse:collapse;margin:0 0 20px;font-size:15px}
   .content td{border:1px solid var(--line);padding:12px 16px}
   .content td:first-child{width:42%;color:var(--caramel)}
+  .map-button{display:inline-flex;align-items:center;justify-content:center;margin:0 0 16px;padding:11px 16px;border:1px solid rgba(160,114,74,.42);border-radius:6px;background:var(--warm-white);font-family:var(--sans);font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--espresso);text-decoration:none;transition:border-color .22s ease,color .22s ease,transform .22s ease}
+  .map-button:hover{border-color:var(--caramel);color:var(--caramel);transform:translateY(-1px)}
   .ph{background:rgba(160,114,74,.16);border-radius:5px;padding:1px 8px;font-family:var(--sans);font-size:.88em;
     color:var(--caramel);white-space:nowrap;font-weight:400}
 
@@ -264,31 +275,34 @@
   .lang-panel .inside > .guide{padding-left:0;padding-right:0}
   .lang-panel.vietnamese{border-color:rgba(160,114,74,.62)}
   .lang-panel.english{border-color:rgba(160,114,74,.32)}
-
   .section-stack{display:grid;gap:28px}
   .info-section{border-top:1px solid var(--line);padding-top:28px}
   .info-section:first-child{border-top:0;padding-top:0}
   .info-title{font-family:var(--display);font-weight:500;font-size:clamp(25px,3.3vw,38px);line-height:1.12;color:var(--espresso);margin:0 0 14px}
   .info-title .sub{display:block;font-family:var(--sans);font-size:10.5px;letter-spacing:.32em;text-transform:uppercase;color:var(--caramel);margin-top:6px}
   .info-block{border:1px solid var(--line-soft);border-radius:8px;background:rgba(246,241,232,.62);overflow:hidden;margin:10px 0}
-  .info-block > summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:18px;padding:15px 18px;font-family:var(--serif);font-weight:600;font-size:20px;line-height:1.25;color:var(--teal)}
+  .info-block > summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:18px;padding:15px 18px;font-family:var(--serif);font-weight:600;font-size:20px;color:var(--teal)}
   .info-block > summary::-webkit-details-marker{display:none}
   .info-block > summary::after{content:"+";font-family:var(--sans);font-size:18px;color:var(--caramel);line-height:1}
   .info-block[open] > summary::after{content:"-"}
   .info-block .block-body{border-top:1px solid var(--line-soft);padding:18px 22px 20px}
   .block-photo{width:100%;aspect-ratio:16/9;border-radius:6px;margin:0 0 18px;background:var(--cream-deep)}
-  .block-photo img{width:100%;height:100%;object-fit:cover;border-radius:6px}
-  .ac-photo-row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin:0 0 18px}
-  .ac-photo-row .block-photo{margin:0}
-  .map-button{display:inline-flex;align-items:center;justify-content:center;margin:0 0 16px;padding:11px 16px;border:1px solid rgba(160,114,74,.42);border-radius:6px;background:var(--warm-white);font-family:var(--sans);font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--espresso);text-decoration:none;transition:border-color .22s ease,color .22s ease,transform .22s ease}
-  .map-button:hover{border-color:var(--caramel);color:var(--caramel);transform:translateY(-1px)}  .route-layout{display:grid;grid-template-columns:minmax(160px,240px) 1fr;gap:22px;align-items:start;margin-top:18px}
-  .route-video{position:relative;aspect-ratio:9/16;border-radius:8px;overflow:hidden;background:rgba(61,43,31,.10);border:1px solid var(--line-soft)}
-  .route-video video{width:100%;height:100%;object-fit:cover;display:block;background:var(--cream-deep)}
-  .route-video .video-label{position:absolute;left:12px;right:12px;bottom:12px;padding:9px 10px;border-radius:5px;background:rgba(36,25,16,.58);color:var(--warm-white);font-family:var(--sans);font-size:11px;letter-spacing:.08em;text-transform:uppercase;text-align:center}
-  .route-grab-photo{margin:14px 0 0}
+  .block-photo img{width:100%;height:100%;object-fit:cover}
+  .device-photo-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:10px 0 22px}
+  .device-photo-grid .block-photo{margin:0;aspect-ratio:4/3}
+  .balcony-highlight{display:grid;grid-template-columns:minmax(280px,.92fr) minmax(0,1.08fr);gap:24px;align-items:center;margin:0 0 18px}
+  .balcony-highlight .balcony-photo{aspect-ratio:4/3;margin:0;border-radius:8px;background:var(--cream-deep);box-shadow:var(--shadow-soft)}
+  .balcony-highlight .balcony-photo img{width:100%;height:100%;object-fit:cover;object-position:center 45%}
+  .balcony-highlight ul{margin:0;padding-left:22px}
+  .location-layout{display:grid;grid-template-columns:minmax(220px,300px) minmax(0,1fr);gap:14px;align-items:start;padding:12px!important}
+  .location-layout > :not(.location-photo){grid-column:2}
+  .checkin-photo-row{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin:18px 0}
+  .checkin-photo-row .block-photo{aspect-ratio:1/1;margin:0!important;border-radius:5px}
+  .location-photo{grid-column:1;grid-row:1 / span 8;aspect-ratio:3/4;margin:0!important;border-radius:5px}
+
   /* ============ friend / closing ============ */
   .friend{background:var(--cream-deep);position:relative;z-index:2}
-.friend-inner{max-width:1240px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:0;align-items:stretch}
+  .friend-inner{max-width:1240px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:0;align-items:stretch}
   .friend-photo{min-height:560px}
   .friend-txt{padding:88px 80px;display:flex;flex-direction:column;justify-content:center}
   .friend-txt h3{font-family:var(--display);font-weight:500;font-size:clamp(26px,3.4vw,38px);letter-spacing:0;margin-bottom:8px}
@@ -326,9 +340,17 @@
     .guide-side{position:static}
     .guide-side .sphoto{display:none}
     .language-block{padding:12px 24px 12px}
+    .location-layout{grid-template-columns:1fr}
+    .location-layout > :not(.location-photo){grid-column:auto}
+    .balcony-highlight{grid-template-columns:1fr;gap:16px;align-items:start}
+    .balcony-highlight .balcony-photo{aspect-ratio:4/3}
+
+    .checkin-photo-row{grid-template-columns:1fr;gap:10px;margin:18px 0 14px}
+    .checkin-photo-row .block-photo{aspect-ratio:1/1;margin:0!important}
+    .location-photo{grid-column:auto;grid-row:auto;aspect-ratio:3/4;margin:0 0 10px!important}
     .lang-panel .mini-links{grid-template-columns:1fr}
     .friend-inner{grid-template-columns:1fr}
-.friend-photo{min-height:300px}
+    .friend-photo{min-height:300px}
     .friend-txt{padding:54px 28px}
     .brand .mk{font-size:24px}
     .grouphead{gap:14px;padding:0 22px}
@@ -338,7 +360,8 @@
     .menu-btn{font-size:10px;letter-spacing:.22em}
     .brand .tg{letter-spacing:.28em}
     .hero{min-height:560px}
-    .hero-inner .kick{letter-spacing:.28em;line-height:1.7}
+    .hero-inner{width:100%;min-width:0;padding-left:16px;padding-right:16px}
+    .hero-inner .kick{max-width:100%;margin-left:auto;margin-right:auto;font-size:9px;letter-spacing:.18em;line-height:1.7;white-space:normal}
     .hero-inner .style-line{letter-spacing:.12em;line-height:1.5}
     .social-section{bottom:112px}
     .btn{display:block;width:100%;max-width:290px;margin:28px auto 0;padding-left:18px;padding-right:18px}
@@ -346,469 +369,1556 @@
     .grouphead h3{white-space:normal;text-align:center}
     .content table,.content tbody,.content tr,.content td{display:block;width:100%}
     .content td:first-child{width:100%;border-bottom:0}
+    .device-photo-grid{grid-template-columns:1fr}
     .ph{white-space:normal}
     .lang-panel > summary{grid-template-columns:auto 30px 1fr;min-height:50px;padding:10px 14px}
     .flag{font-size:11px}
     .lang-name{font-size:15px}
     .lang-panel .inside{padding:20px 16px}
-    .route-layout{grid-template-columns:1fr}
-    .ac-photo-row{grid-template-columns:1fr;gap:14px}
-    .route-video{max-width:260px;width:100%;margin:0 auto}
     .fcontact .row{display:block}
     .fcontact .row span{display:block}
     .grid{grid-template-columns:1fr 1fr;gap:10px}
   }
+
+  /* ============ PROPOSED GUIDE EXPERIENCE ============ */
+  :focus-visible{outline:3px solid var(--caramel);outline-offset:4px}
+  .skip-link{position:fixed;left:16px;top:12px;z-index:100;background:var(--warm-white);color:var(--espresso);padding:10px 14px;border:1px solid var(--caramel);transform:translateY(-160%);transition:transform .2s ease}
+  .skip-link:focus{transform:translateY(0)}
+  .menu-btn,.book,.ov-close,.language-options button,.quick-action,.fcontact .row{min-height:44px}
+  body.menu-open{overflow:hidden}
+  .hero{height:auto;min-height:100dvh}
+  .social-section{bottom:56px}
+  .scroll-arrow{display:none}
+  .book{display:inline-flex;align-items:center}
+  .guest-tools{position:relative;z-index:3;background:var(--warm-white);padding:0 40px 38px;border-bottom:1px solid var(--line)}
+  .tools-shell{max-width:1180px;margin:0 auto;transform:translateY(-32px)}
+  .tools-heading{display:flex;align-items:end;justify-content:space-between;gap:32px;margin:0 0 20px;padding:0 4px}
+  .tools-heading .eyebrow{margin:0;white-space:nowrap}
+  .tools-heading h2{max-width:620px;font-family:var(--display);font-size:clamp(30px,4.5vw,50px);font-weight:500;line-height:1.02;text-align:right;color:var(--espresso)}
+  .quick-actions{display:grid;grid-template-columns:1.22fr .92fr .92fr 1fr 1.08fr;background:var(--paper);border:1px solid var(--line);box-shadow:0 22px 56px -38px rgba(61,43,31,.5)}
+  .quick-action{display:flex;min-width:0;flex-direction:column;justify-content:center;gap:3px;padding:18px 20px;border-right:1px solid var(--line);transition:background .22s ease,color .22s ease,transform .22s ease}
+  .quick-action:last-child{border-right:0}
+  .quick-action span{font-size:11px;line-height:1.4;color:var(--caramel);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .quick-action strong{font-family:var(--serif);font-size:18px;font-weight:600;line-height:1.2;color:var(--espresso)}
+  .quick-action:hover{background:var(--cream-deep);transform:translateY(-2px)}
+  .quick-action-primary{background:var(--teal)}
+  .quick-action-primary span,.quick-action-primary strong{color:var(--warm-white)}
+  .quick-action-primary:hover{background:var(--espresso)}
+  .language-bar{display:grid;grid-template-columns:minmax(220px,.7fr) minmax(0,1.3fr);gap:34px;align-items:center;margin-top:26px;padding:24px 0 0;border-top:1px solid var(--line-soft)}
+  .language-kicker{font-family:var(--serif);font-size:23px;font-weight:600;line-height:1.2;color:var(--espresso)}
+  .language-help{font-size:13px;color:var(--caramel);margin-top:4px}
+  .language-options{display:flex;justify-content:flex-end;flex-wrap:wrap;gap:8px}
+  .language-options button{appearance:none;border:1px solid var(--line);background:transparent;color:var(--espresso);padding:9px 15px;font:500 13px/1 var(--sans);cursor:pointer;transition:background .2s ease,border-color .2s ease,color .2s ease}
+  .language-options button:hover{border-color:var(--caramel)}
+  .language-options button[aria-pressed="true"]{background:var(--espresso);border-color:var(--espresso);color:var(--warm-white)}
+  .language-block{padding:40px 40px 78px;background:var(--warm-white)}
+  .language-shell{max-width:1040px}
+  .lang-list{display:block}
+  .lang-panel{display:none;border:0;border-radius:0;background:transparent;box-shadow:none;overflow:visible}
+  .lang-panel:hover,.lang-panel[open]{border:0;background:transparent;box-shadow:none}
+  .lang-panel.is-active{display:block}
+  .lang-panel > summary{display:none}
+  .lang-panel .inside{padding:0;border-top:0;background:transparent}
+  .info-section{scroll-margin-top:92px}
+  .info-block{scroll-margin-top:92px;background:var(--paper)}
+  .info-block > summary{min-height:56px}
+  .access-note{margin-top:18px!important}
+  #gioithieu{background:var(--cream);padding-top:92px}
+  #thuvien{background:var(--cream)}
+  .friend{scroll-margin-top:80px}
+  .fcontact a.row:hover span:last-child{color:var(--caramel)}
+  .overlay[aria-hidden="true"]{pointer-events:none}
+  .overlay[aria-hidden="false"]{pointer-events:auto}
+
+  @media(max-width:900px){
+    .guest-tools{padding:0 24px 28px}
+    .tools-shell{transform:translateY(-22px)}
+    .tools-heading{display:block}
+    .tools-heading .eyebrow{margin-bottom:8px}
+    .tools-heading h2{text-align:left;max-width:560px}
+    .quick-actions{grid-template-columns:1fr 1fr}
+    .quick-action{border-bottom:1px solid var(--line)}
+    .quick-action:nth-child(2n){border-right:0}
+    .quick-action:last-child{grid-column:1 / -1;border-bottom:0}
+    .language-bar{grid-template-columns:1fr;gap:14px}
+    .language-options{justify-content:flex-start;flex-wrap:nowrap;overflow-x:auto;padding-bottom:8px;scroll-snap-type:x proximity}
+    .language-options button{flex:0 0 auto;scroll-snap-align:start}
+    .language-block{padding:28px 24px 58px}
+    .info-block[id$="checkin"] .block-body{display:flex;flex-direction:column}
+    .info-block[id$="checkin"] .checkin-photo-row{order:0;display:grid;grid-auto-flow:column;grid-auto-columns:82%;grid-template-columns:none;overflow-x:auto;gap:10px;margin:18px 0 0;padding-bottom:8px;scroll-snap-type:x mandatory}
+    .info-block[id$="checkin"] .checkin-photo-row .block-photo{scroll-snap-align:start}
+  }
+  @media(max-width:520px){
+    nav{grid-template-columns:1fr auto 1fr}
+    .brand .tg{display:none}
+    .guest-tools{padding-left:16px;padding-right:16px}
+    .tools-heading h2{font-size:34px}
+    .quick-action{padding:15px 14px}
+    .quick-action strong{font-size:16px}
+    .quick-action span{font-size:10px}
+    .language-block{padding-left:16px;padding-right:16px}
+    .info-block .block-body{padding:18px 16px 20px}
+    .friend-txt{padding:48px 22px}
+  }
+
+  /* ============ AUDIT IMPLEMENTATION ============ */
+  body{font-weight:400}
+  :focus-visible{outline-color:var(--caramel-ink)}
+  .menu-btn.nav-c{color:var(--warm-white)}
+  nav.solid .menu-btn.nav-c{color:var(--espresso)}
+  .overlay{justify-content:flex-start;overflow-y:auto;overscroll-behavior:contain}
+  .ov-inner{margin:auto;padding:56px 0 20px}
+  .ov-links{gap:8px 24px}
+  .ov-links a{
+    display:inline-flex;align-items:center;justify-content:center;min-height:44px;
+    font-family:var(--sans);font-size:clamp(16px,2.2vw,22px);font-weight:500;line-height:1.35;
+  }
+  .ov-group .gl{font-size:11px;letter-spacing:.16em}
+  .hero{min-height:clamp(480px,62dvh,720px)}
+  .hero-inner h1{font-size:clamp(54px,9vw,108px)}
+  .social-section{bottom:28px}
+
+  .guest-tools{padding:44px 40px 48px}
+  .tools-shell,.language-shell{width:100%;max-width:1040px;margin:0 auto}
+  .tools-shell{transform:none}
+  .tools-heading{display:block;margin:0 0 24px;padding:0}
+  .tools-heading .eyebrow{margin:0 0 8px;color:var(--caramel-ink);letter-spacing:.16em}
+  .tools-heading h2{
+    max-width:720px;text-align:left;font-size:clamp(36px,4.2vw,46px);line-height:1.08;
+  }
+  .language-bar{
+    grid-template-columns:minmax(190px,.65fr) minmax(0,1.35fr);gap:24px;
+    margin:0 0 24px;padding:20px 0 24px;border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft);
+  }
+  .language-kicker{font-size:22px}
+  .language-help{max-width:380px;margin-top:5px;font-size:14px;line-height:1.55;color:var(--caramel-ink)}
+  .language-options{flex-wrap:wrap;gap:8px;overflow:visible;padding:0}
+  .language-options button{
+    display:inline-flex;align-items:center;justify-content:center;gap:8px;
+    min-height:44px;border-radius:8px;padding:10px 15px;font-size:13.5px;line-height:1.2;
+    letter-spacing:0;transition:background .2s ease,border-color .2s ease,color .2s ease,transform .12s ease;
+  }
+  .flag-emoji{
+    display:block;width:20px;height:15px;object-fit:cover;border-radius:2px;
+    box-shadow:0 0 0 1px rgba(61,43,31,.12);transform:translateY(-.5px);
+  }
+  .language-options button:active{transform:scale(.98)}
+
+  .quick-actions{
+    gap:8px;background:transparent;border:0;box-shadow:none;
+  }
+  .quick-action{
+    min-height:80px;gap:6px;padding:16px 18px;border:1px solid var(--line)!important;border-radius:8px;
+    background:var(--paper);transition:background .2s ease,border-color .2s ease,color .2s ease,transform .12s ease;
+  }
+  .quick-action:hover{border-color:rgba(118,82,56,.55)!important;background:var(--cream-deep);transform:none}
+  .quick-action:active{transform:scale(.98)}
+  .quick-action strong{order:1;font-family:var(--sans);font-size:15.5px;font-weight:600;line-height:1.3}
+  .quick-action span{
+    order:2;font-size:13px;line-height:1.45;color:var(--caramel-ink);
+    white-space:normal;overflow:visible;text-overflow:clip;
+  }
+  .quick-action-primary{background:var(--teal);border-color:var(--teal)!important}
+  .quick-action-primary:hover{background:var(--espresso);border-color:var(--espresso)!important}
+  .quick-action-primary span,.quick-action-primary strong{color:var(--warm-white)}
+
+  .language-block{padding:48px 40px 64px;background:var(--warm-white)}
+  .lang-panel{display:block}
+  .lang-panel > summary{display:grid}
+  .js .lang-panel{display:none}
+  .js .lang-panel.is-active{display:block}
+  .js .lang-panel > summary{display:none}
+  .section-stack{gap:48px}
+  .info-section{padding-top:48px}
+  .info-title{font-size:clamp(30px,3.2vw,40px);margin-bottom:18px}
+  .info-title .sub{display:none}
+  .info-block{margin:12px 0;border-radius:8px}
+  .info-block > summary{
+    min-height:56px;padding:16px 18px;font-family:var(--sans);font-size:16px;font-weight:600;line-height:1.45;color:var(--teal);
+  }
+  .info-block.has-section-icon > summary{
+    display:grid;grid-template-columns:32px minmax(0,1fr) auto;gap:12px;text-align:left;
+  }
+  .summary-label{min-width:0}
+  .section-icon{
+    width:32px;height:32px;border:1px solid rgba(118,82,56,.14);border-radius:8px;
+    display:grid;place-items:center;background:rgba(201,168,130,.14);
+    font-family:"Segoe UI Emoji","Apple Color Emoji","Noto Color Emoji",sans-serif;
+    font-size:16px;line-height:1;filter:saturate(.78);user-select:none;
+  }
+  .info-block[open] > summary{background:rgba(45,74,71,.055)}
+  .info-block .block-body{padding:22px 24px 24px}
+  .content p,.content li{max-width:75ch;font-size:16px;font-weight:400;line-height:1.72}
+  .content h5{margin:24px 0 10px;font-size:20px}
+  .content blockquote{border-left-color:var(--caramel-ink);background:rgba(201,168,130,.18)}
+  .content td:first-child,.ph{color:var(--caramel-ink)}
+  .map-button{min-height:44px;border-radius:8px;letter-spacing:.04em}
+
+  .fcontact{display:grid;grid-template-columns:1fr 1fr;gap:8px;border-top:0;padding-top:12px}
+  .fcontact .row{
+    min-height:60px;align-items:center;padding:13px 15px;border:1px solid var(--line);border-radius:8px;background:var(--paper);
+  }
+  .fcontact a.row{font-weight:500;transition:background .2s ease,border-color .2s ease,transform .12s ease}
+  .fcontact a.row:hover{background:var(--warm-white);border-color:rgba(118,82,56,.55)}
+  .fcontact a.row:active{transform:scale(.99)}
+  .fcontact .row:last-child{grid-column:1 / -1}
+  .fcontact .row span:first-child{color:var(--caramel-ink)}
+
+  @media(max-width:900px){
+    .hero{min-height:clamp(440px,55dvh,580px)}
+    .hero-inner h1{font-size:clamp(52px,13vw,82px)}
+    .guest-tools{padding:32px 24px 36px}
+    .tools-shell{transform:none}
+    .tools-heading{margin-bottom:20px}
+    .tools-heading h2{font-size:clamp(31px,6vw,40px)}
+    .language-bar{grid-template-columns:1fr;gap:14px;margin-bottom:20px;padding:18px 0 20px}
+    .language-options{justify-content:flex-start;flex-wrap:wrap;overflow:visible;padding:0}
+    .language-options button{flex:0 1 auto}
+    .quick-actions{grid-template-columns:1fr 1fr;gap:8px}
+    .quick-action{border:1px solid var(--line)!important}
+    .quick-action:nth-child(2n){border-right:1px solid var(--line)}
+    .quick-action:last-child{border-bottom:1px solid var(--teal)}
+    .language-block{padding:36px 24px 56px}
+    .section-stack{gap:40px}
+    .info-section{padding-top:40px}
+    .info-block .block-body{padding:20px}
+    .friend-txt{padding:48px 28px}
+  }
+  @media(max-width:520px){
+    .hero{min-height:clamp(420px,52dvh,520px)}
+    .hero-inner .kick{font-size:10px;letter-spacing:.12em}
+    .hero-inner .style-line{font-size:13px;letter-spacing:.08em}
+    .social-section{bottom:22px}
+    .guest-tools{padding:28px 16px 32px}
+    .tools-heading h2{font-size:30px}
+    .language-kicker{font-size:21px}
+    .language-help{font-size:13px}
+    .language-options{gap:8px}
+    .language-options button{min-height:44px;padding:10px 13px;font-size:13px}
+    .flag-emoji{width:20px;height:15px}
+    .quick-action{min-height:76px;padding:14px}
+    .quick-action strong{font-size:15px}
+    .quick-action span{font-size:12.5px}
+    .language-block{padding:32px 16px 48px}
+    .info-title{font-size:28px}
+    .info-block .block-body{padding:18px 16px 20px}
+    .content p,.content li{font-size:16px}
+    .fcontact{grid-template-columns:1fr}
+    .fcontact .row:last-child{grid-column:auto}
+    .fcontact .row{display:flex}
+  }
+
+  /* ============ PREMIUM DEPTH PASS ============ */
+  :root{
+    --surface:rgba(248,244,237,.84);
+    --surface-strong:rgba(250,247,241,.96);
+    --shadow-soft:0 18px 50px -34px rgba(61,43,31,.42);
+    --shadow-deep:0 34px 90px -54px rgba(61,43,31,.58);
+  }
+  ::selection{background:rgba(160,114,74,.24);color:var(--ink)}
+  body{
+    background:
+      radial-gradient(900px 620px at -8% 12%,rgba(255,255,255,.62),transparent 66%),
+      radial-gradient(720px 560px at 108% 48%,rgba(160,114,74,.12),transparent 68%),
+      linear-gradient(145deg,#e8dfd2 0%,#f2ece3 48%,#e2d6c6 100%);
+    background-attachment:fixed;
+  }
+  nav.solid{
+    background:rgba(239,232,221,.86);
+    -webkit-backdrop-filter:blur(18px) saturate(125%);
+    backdrop-filter:blur(18px) saturate(125%);
+    box-shadow:inset 0 -1px 0 rgba(255,255,255,.42),0 12px 34px -28px rgba(61,43,31,.58);
+  }
+  .hero{
+    box-shadow:0 30px 80px -54px rgba(36,25,16,.82);
+  }
+  .hero::after{
+    content:"";position:absolute;inset:12px;z-index:2;pointer-events:none;
+    border:1px solid rgba(246,241,232,.18);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.08);
+  }
+  .hero-bg{filter:saturate(.86) contrast(1.04)}
+  .hero-inner{text-shadow:0 3px 26px rgba(24,16,10,.42)}
+  .hero-inner::before{
+    content:"";position:absolute;z-index:-1;inset:-70px -110px;
+    background:radial-gradient(ellipse at center,rgba(24,16,10,.26),transparent 66%);
+    filter:blur(8px);pointer-events:none;
+  }
+  .social-link{
+    border-color:rgba(246,241,232,.28);
+    background:rgba(36,25,16,.16);
+    -webkit-backdrop-filter:blur(10px);
+    backdrop-filter:blur(10px);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.12),0 12px 28px -22px rgba(0,0,0,.72);
+  }
+  .guest-tools{
+    background:
+      radial-gradient(520px 240px at 88% 0%,rgba(201,168,130,.17),transparent 72%),
+      linear-gradient(180deg,rgba(250,247,241,.96),rgba(243,236,226,.91));
+    border-bottom-color:rgba(118,82,56,.16);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.8),0 28px 70px -58px rgba(61,43,31,.7);
+  }
+  .language-options button{
+    background:rgba(255,255,255,.32);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.72);
+  }
+  .language-options button:hover{
+    background:rgba(255,255,255,.66);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.9),0 12px 26px -22px rgba(61,43,31,.5);
+  }
+  .language-options button[aria-pressed="true"]{
+    background:linear-gradient(145deg,#4a3528,var(--espresso));
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.14),0 14px 30px -22px rgba(36,25,16,.8);
+  }
+  .quick-action{
+    background:linear-gradient(145deg,rgba(250,247,241,.94),rgba(235,225,210,.88));
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.8),var(--shadow-soft);
+  }
+  .quick-action:hover{
+    background:linear-gradient(145deg,rgba(255,252,247,.98),rgba(231,219,202,.94));
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.9),0 22px 44px -32px rgba(61,43,31,.55);
+  }
+  .quick-action-primary{
+    background:linear-gradient(145deg,#365653,var(--teal));
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.14),0 22px 46px -34px rgba(45,74,71,.85);
+  }
+  .quick-action-primary:hover{background:linear-gradient(145deg,#4a3528,var(--espresso))}
+
+  .language-block{
+    background:
+      radial-gradient(760px 520px at 12% 12%,rgba(255,255,255,.5),transparent 72%),
+      radial-gradient(820px 600px at 94% 74%,rgba(160,114,74,.1),transparent 70%),
+      transparent;
+  }
+  .section-stack{gap:32px}
+  .info-section{
+    position:relative;padding:34px 34px 38px;border:1px solid rgba(118,82,56,.13);
+    border-radius:16px;background:var(--surface);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.82),var(--shadow-deep);
+  }
+  .info-section:first-child{padding-top:34px;border-top:1px solid rgba(118,82,56,.13)}
+  .info-title{
+    padding-bottom:18px;border-bottom:1px solid rgba(118,82,56,.13);
+    text-shadow:0 1px 0 rgba(255,255,255,.7);
+  }
+  .info-block{
+    border-color:rgba(118,82,56,.15);
+    background:linear-gradient(145deg,rgba(250,247,241,.92),rgba(239,231,219,.76));
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.8),0 14px 34px -30px rgba(61,43,31,.5);
+    transition:border-color .2s ease,background .2s ease,box-shadow .2s ease,transform .12s ease;
+  }
+  .info-block:hover{
+    border-color:rgba(118,82,56,.3);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.9),0 20px 42px -32px rgba(61,43,31,.55);
+  }
+  .info-block[open]{
+    border-color:rgba(118,82,56,.32);
+    background:var(--surface-strong);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.92),0 28px 58px -42px rgba(61,43,31,.58);
+  }
+  .info-block[open] > summary{
+    background:linear-gradient(90deg,rgba(45,74,71,.075),rgba(201,168,130,.07));
+  }
+  .section-icon{
+    background:linear-gradient(145deg,rgba(255,255,255,.72),rgba(201,168,130,.2));
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.86),0 9px 20px -16px rgba(61,43,31,.65);
+  }
+  .block-photo,.photo{
+    border-radius:10px;box-shadow:0 20px 44px -34px rgba(61,43,31,.62);
+  }
+  .photo img{transition:transform .55s cubic-bezier(.16,1,.3,1),filter .4s ease}
+  .photo:hover img{transform:scale(1.018);filter:saturate(1.03)}
+  .content blockquote{
+    background:linear-gradient(90deg,rgba(201,168,130,.2),rgba(255,255,255,.28));
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.52);
+  }
+  .map-button{
+    background:linear-gradient(145deg,rgba(255,255,255,.82),rgba(238,229,216,.86));
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.9),0 14px 28px -24px rgba(61,43,31,.55);
+  }
+  #gioithieu{
+    background:
+      radial-gradient(620px 300px at 50% 0%,rgba(255,255,255,.48),transparent 72%),
+      rgba(236,228,214,.72);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.64);
+  }
+  #thuvien{background:rgba(236,228,214,.72)}
+  #thuvien .photo{box-shadow:0 26px 56px -38px rgba(61,43,31,.68)}
+  .friend{
+    padding:64px 40px;
+    background:
+      radial-gradient(620px 400px at 14% 18%,rgba(255,255,255,.42),transparent 70%),
+      linear-gradient(145deg,rgba(226,214,198,.94),rgba(239,231,219,.9));
+  }
+  .friend-inner{
+    overflow:hidden;border:1px solid rgba(118,82,56,.16);border-radius:18px;
+    background:rgba(248,244,237,.76);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.76),0 40px 90px -58px rgba(61,43,31,.72);
+  }
+  .friend-photo{border-radius:0;box-shadow:none}
+  .friend-txt h3{max-width:500px;text-wrap:balance}
+  .fcontact .row{
+    gap:10px;
+    background:linear-gradient(145deg,rgba(255,255,255,.58),rgba(235,225,210,.68));
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.72);
+  }
+  .fcontact .row span:first-child{white-space:nowrap}
+  footer{
+    background:
+      radial-gradient(520px 260px at 50% 0%,rgba(160,114,74,.18),transparent 72%),
+      linear-gradient(180deg,#2d2119,var(--ink));
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.06);
+  }
+  footer .fcta{box-shadow:inset 0 1px 0 rgba(255,255,255,.08)}
+
+  @media(max-width:900px){
+    .hero::after{inset:8px}
+    .info-section{padding:28px 24px 30px}
+    .info-section:first-child{padding-top:28px}
+    .friend{padding:40px 24px}
+  }
+  @media(max-width:520px){
+    body{background-attachment:scroll}
+    .hero::after{inset:6px}
+    .info-section{padding:22px 14px 24px;border-radius:12px}
+    .info-section:first-child{padding-top:22px}
+    .info-title{padding:0 4px 15px}
+    .info-block{border-radius:10px}
+    .friend{padding:30px 16px}
+    .friend-inner{border-radius:12px}
+    .fcontact .row span:first-child{white-space:normal}
+  }
+  @supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
+    nav.solid{background:rgba(239,232,221,.98)}
+    .social-link{background:rgba(36,25,16,.58)}
+  }
+
+  /* ============ DARK THEME ============ */
+  [data-theme="dark"]{
+    color-scheme:dark;
+    --cream:#11100f;
+    --cream-deep:#181512;
+    --paper:#201b17;
+    --warm-white:#f2e9dd;
+    --beige:#d5ad7a;
+    --caramel:#c88c55;
+    --caramel-ink:#e1ad76;
+    --teal:#b7c9c3;
+    --espresso:#eee5da;
+    --ink:#0c0b0a;
+    --line:rgba(242,233,221,.16);
+    --line-soft:rgba(242,233,221,.1);
+    --surface:rgba(31,26,22,.88);
+    --surface-strong:rgba(37,30,25,.97);
+    --shadow-soft:0 20px 54px -34px rgba(8,5,3,.82);
+    --shadow-deep:0 36px 94px -50px rgba(8,5,3,.92);
+  }
+  [data-theme="dark"] body{
+    color:var(--espresso);
+    background:
+      radial-gradient(920px 680px at -8% 10%,rgba(158,92,48,.18),transparent 68%),
+      radial-gradient(820px 620px at 108% 56%,rgba(92,66,47,.2),transparent 70%),
+      linear-gradient(145deg,#0e0d0c 0%,#171310 48%,#100e0c 100%);
+  }
+  [data-theme="dark"] body::before{opacity:.24;mix-blend-mode:soft-light}
+  [data-theme="dark"] body::after{
+    content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
+    background:radial-gradient(520px 360px at 52% 18%,rgba(219,157,98,.045),transparent 72%);
+  }
+  [data-theme="dark"] ::selection{background:rgba(213,173,122,.32);color:#f5ede3}
+  [data-theme="dark"] :focus-visible{outline-color:#dfa665}
+
+  [data-theme="dark"] nav.solid{
+    background:rgba(17,15,13,.86);
+    box-shadow:inset 0 -1px 0 rgba(255,255,255,.08),0 18px 44px -30px rgba(8,5,3,.9);
+  }
+  [data-theme="dark"] nav.solid .nav-c{color:var(--warm-white)}
+  [data-theme="dark"] .overlay{
+    background:
+      radial-gradient(620px 420px at 50% 20%,rgba(160,99,56,.14),transparent 72%),
+      var(--ink);
+  }
+  [data-theme="dark"] .skip-link{background:#24201c;color:var(--warm-white);border-color:var(--caramel)}
+
+  [data-theme="dark"] .guest-tools{
+    background:
+      radial-gradient(620px 300px at 88% 0%,rgba(200,140,85,.13),transparent 74%),
+      linear-gradient(180deg,rgba(29,25,22,.98),rgba(18,16,14,.96));
+    border-bottom-color:rgba(242,233,221,.1);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.07),0 32px 76px -56px rgba(8,5,3,.94);
+  }
+  [data-theme="dark"] .tools-heading h2,
+  [data-theme="dark"] .language-kicker,
+  [data-theme="dark"] .quick-action strong,
+  [data-theme="dark"] .info-title,
+  [data-theme="dark"] h2.big,
+  [data-theme="dark"] .guide-transition h3,
+  [data-theme="dark"] .grouphead h3,
+  [data-theme="dark"] .friend-txt h3{color:var(--espresso)}
+  [data-theme="dark"] .eyebrow,
+  [data-theme="dark"] .language-help,
+  [data-theme="dark"] .quick-action span,
+  [data-theme="dark"] .note-strip,
+  [data-theme="dark"] .content td:first-child,
+  [data-theme="dark"] .fcontact .row span:first-child{color:var(--caramel-ink)}
+  [data-theme="dark"] .language-bar{border-color:var(--line-soft)}
+
+  [data-theme="dark"] .language-options button{
+    color:var(--espresso);border-color:var(--line);
+    background:linear-gradient(145deg,rgba(255,255,255,.06),rgba(255,255,255,.025));
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.09);
+  }
+  [data-theme="dark"] .language-options button:hover{
+    color:var(--warm-white);border-color:rgba(225,173,118,.58);
+    background:rgba(200,140,85,.1);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.1),0 16px 30px -24px rgba(8,5,3,.9);
+  }
+  [data-theme="dark"] .language-options button[aria-pressed="true"]{
+    color:#17110d;border-color:#d3a16c;
+    background:linear-gradient(145deg,#e0b27f,#bd7f49);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.32),0 18px 34px -22px rgba(187,118,63,.68);
+  }
+  [data-theme="dark"] .flag-emoji{box-shadow:0 0 0 1px rgba(255,255,255,.2)}
+
+  [data-theme="dark"] .quick-action{
+    border-color:var(--line)!important;
+    background:linear-gradient(145deg,rgba(38,32,27,.96),rgba(25,21,18,.92));
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.08),var(--shadow-soft);
+  }
+  [data-theme="dark"] .quick-action:hover{
+    border-color:rgba(225,173,118,.48)!important;
+    background:linear-gradient(145deg,rgba(48,39,32,.98),rgba(30,25,21,.96));
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.1),0 24px 48px -34px rgba(8,5,3,.9);
+  }
+  [data-theme="dark"] .quick-action-primary{
+    border-color:#9a633a!important;
+    background:linear-gradient(145deg,#9b653d,#74482c);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.16),0 24px 48px -30px rgba(118,72,44,.8);
+  }
+  [data-theme="dark"] .quick-action-primary span,
+  [data-theme="dark"] .quick-action-primary strong{color:#f7eee3}
+  [data-theme="dark"] .quick-action-primary:hover{
+    border-color:#b87947!important;background:linear-gradient(145deg,#ad7448,#805033)
+  }
+
+  [data-theme="dark"] .language-block{
+    background:
+      radial-gradient(860px 620px at 8% 10%,rgba(176,104,55,.12),transparent 72%),
+      radial-gradient(820px 620px at 96% 74%,rgba(92,66,47,.18),transparent 72%),
+      linear-gradient(180deg,rgba(17,15,13,.92),rgba(14,13,12,.98));
+  }
+  [data-theme="dark"] .info-section{
+    border-color:rgba(242,233,221,.12);
+    background:linear-gradient(145deg,rgba(35,29,25,.9),rgba(24,21,18,.88));
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.07),var(--shadow-deep);
+  }
+  [data-theme="dark"] .info-section:first-child{border-top-color:rgba(242,233,221,.12)}
+  [data-theme="dark"] .info-title{
+    border-bottom-color:var(--line-soft);text-shadow:0 2px 18px rgba(8,5,3,.52)
+  }
+  [data-theme="dark"] .info-block{
+    border-color:rgba(242,233,221,.12);
+    background:linear-gradient(145deg,rgba(42,35,29,.92),rgba(28,24,20,.88));
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.07),0 18px 40px -30px rgba(8,5,3,.9);
+  }
+  [data-theme="dark"] .info-block:hover{
+    border-color:rgba(225,173,118,.32);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.09),0 24px 48px -32px rgba(8,5,3,.94);
+  }
+  [data-theme="dark"] .info-block[open]{
+    border-color:rgba(225,173,118,.38);
+    background:linear-gradient(145deg,rgba(43,35,29,.98),rgba(29,24,20,.97));
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 30px 62px -40px rgba(8,5,3,.96);
+  }
+  [data-theme="dark"] .info-block > summary{color:var(--espresso)}
+  [data-theme="dark"] .info-block > summary::after{color:var(--caramel-ink)}
+  [data-theme="dark"] .info-block[open] > summary{
+    background:linear-gradient(90deg,rgba(200,140,85,.12),rgba(255,255,255,.025));
+  }
+  [data-theme="dark"] .info-block .block-body{border-top-color:var(--line-soft)}
+  [data-theme="dark"] .section-icon{
+    color:var(--warm-white);border-color:rgba(225,173,118,.18);
+    background:linear-gradient(145deg,rgba(225,173,118,.17),rgba(255,255,255,.035));
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.1),0 12px 22px -18px rgba(8,5,3,.95);
+  }
+
+  [data-theme="dark"] .content p,
+  [data-theme="dark"] .content li,
+  [data-theme="dark"] .language-note,
+  [data-theme="dark"] .friend-txt p{color:#dfd5c9}
+  [data-theme="dark"] .content strong{color:#f4ebe0}
+  [data-theme="dark"] .content h5,
+  [data-theme="dark"] .content em,
+  [data-theme="dark"] .lede .en,
+  [data-theme="dark"] .guide-transition p,
+  [data-theme="dark"] .friend-txt .fsub{color:#d5b184}
+  [data-theme="dark"] .content blockquote{
+    border-left-color:var(--caramel);
+    background:linear-gradient(90deg,rgba(200,140,85,.14),rgba(255,255,255,.025));
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.05);
+  }
+  [data-theme="dark"] .content td{border-color:var(--line);color:#dfd5c9}
+  [data-theme="dark"] .ph{
+    color:#f0c28f;background:rgba(200,140,85,.15);
+    box-shadow:inset 0 0 0 1px rgba(225,173,118,.08);
+  }
+  [data-theme="dark"] .map-button{
+    color:var(--espresso);border-color:rgba(225,173,118,.34);
+    background:linear-gradient(145deg,rgba(255,255,255,.065),rgba(200,140,85,.07));
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.09),0 16px 30px -24px rgba(8,5,3,.9);
+  }
+  [data-theme="dark"] .map-button:hover{color:#f4c28b;border-color:#d39b62}
+
+  [data-theme="dark"] #gioithieu{
+    background:
+      radial-gradient(680px 360px at 50% 0%,rgba(200,140,85,.095),transparent 74%),
+      linear-gradient(180deg,#171411,#12100e);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.055);
+  }
+  [data-theme="dark"] #thuvien{background:linear-gradient(180deg,#12100e,#15120f)}
+  [data-theme="dark"] .lede{color:#ddd2c5}
+  [data-theme="dark"] .photo{background:#211b17;box-shadow:0 28px 58px -36px rgba(8,5,3,.95)}
+  [data-theme="dark"] .friend{
+    background:
+      radial-gradient(700px 440px at 12% 18%,rgba(200,140,85,.1),transparent 72%),
+      linear-gradient(145deg,#191511,#0f0e0c);
+  }
+  [data-theme="dark"] .friend-inner{
+    border-color:rgba(242,233,221,.12);
+    background:linear-gradient(145deg,rgba(34,28,23,.96),rgba(20,17,15,.96));
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.065),0 42px 96px -54px rgba(8,5,3,.98);
+  }
+  [data-theme="dark"] .fcontact .row{
+    color:#e3d9cd;border-color:var(--line);
+    background:linear-gradient(145deg,rgba(255,255,255,.055),rgba(255,255,255,.022));
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.065);
+  }
+  [data-theme="dark"] .fcontact a.row:hover{
+    color:var(--warm-white);border-color:rgba(225,173,118,.38);background:rgba(200,140,85,.09)
+  }
+  [data-theme="dark"] footer{
+    background:
+      radial-gradient(560px 300px at 50% 0%,rgba(200,140,85,.13),transparent 74%),
+      linear-gradient(180deg,#100e0c,#0c0b0a);
+  }
+  [data-theme="dark"] footer .fcta{color:var(--warm-white);border-color:rgba(242,233,221,.34)}
+  [data-theme="dark"] footer .fcta:hover{color:#17110d;background:#e2d6c8;border-color:#e2d6c8}
+
+  @supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
+    [data-theme="dark"] nav.solid{background:rgba(17,15,13,.98)}
+  }
+
+  /* ============ HANOI GUIDE BOOK ============ */
+  .city-guide{
+    position:relative;z-index:2;padding:0 40px 72px;scroll-margin-top:92px;
+  }
+  .city-guide-card{
+    position:relative;isolation:isolate;overflow:hidden;
+    width:100%;max-width:1040px;margin:0 auto;padding:38px 40px;
+    display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:42px;
+    border:1px solid rgba(118,82,56,.16);border-radius:16px;
+    background:linear-gradient(135deg,rgba(250,247,241,.96),rgba(231,219,202,.9));
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.82),0 34px 78px -50px rgba(61,43,31,.65);
+  }
+  .city-guide-card::before{
+    content:"";position:absolute;z-index:-1;width:420px;height:260px;right:-100px;top:-130px;
+    border-radius:50%;background:radial-gradient(circle,rgba(160,114,74,.22),transparent 68%);
+  }
+  .city-guide-card::after{
+    content:"";position:absolute;left:0;top:26px;bottom:26px;width:2px;
+    background:linear-gradient(180deg,transparent,var(--caramel),transparent);opacity:.72;
+  }
+  .city-guide-eyebrow{
+    margin:0 0 10px;font-size:10.5px;font-weight:600;line-height:1.4;
+    letter-spacing:.28em;text-transform:uppercase;color:var(--caramel-ink);
+  }
+  .city-guide-title{
+    margin:0;font-family:var(--display);font-size:clamp(32px,4.2vw,48px);font-weight:500;
+    line-height:1.02;color:var(--espresso);text-wrap:balance;
+  }
+  .city-guide-description{
+    max-width:650px;margin:14px 0 0;font-size:15.5px;line-height:1.7;color:var(--teal);
+  }
+  .city-guide-action{min-width:220px;text-align:center}
+  .city-guide-button{
+    width:100%;min-height:48px;padding:13px 22px;border:1px solid var(--espresso);border-radius:8px;
+    display:inline-flex;align-items:center;justify-content:center;gap:10px;
+    font:600 13px/1.35 var(--sans);color:var(--warm-white);background:var(--espresso);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.14),0 18px 34px -24px rgba(36,25,16,.7);
+  }
+  .city-guide-button::after{content:"↗";font-size:16px;font-weight:400}
+  .city-guide-button:disabled{
+    cursor:not-allowed;opacity:.72;border-color:rgba(61,43,31,.28);
+  }
+  .city-guide-status{
+    display:block;margin-top:9px;font-size:11.5px;line-height:1.45;color:var(--caramel-ink);
+  }
+  [data-theme="dark"] .city-guide-card{
+    border-color:rgba(242,233,221,.13);
+    background:linear-gradient(135deg,rgba(42,34,28,.98),rgba(24,20,17,.96));
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.075),0 38px 86px -46px rgba(8,5,3,.96);
+  }
+  [data-theme="dark"] .city-guide-card::before{
+    background:radial-gradient(circle,rgba(200,140,85,.2),transparent 68%);
+  }
+  [data-theme="dark"] .city-guide-title{color:var(--espresso)}
+  [data-theme="dark"] .city-guide-description{color:#d8cdc0}
+  [data-theme="dark"] .city-guide-button{
+    color:#17110d;border-color:#d3a16c;background:linear-gradient(145deg,#e0b27f,#bd7f49);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.3),0 20px 36px -22px rgba(187,118,63,.55);
+  }
+  [data-theme="dark"] .city-guide-button:disabled{border-color:#b17a4e}
+  @media(max-width:720px){
+    .city-guide{padding:0 24px 58px}
+    .city-guide-card{grid-template-columns:1fr;gap:26px;padding:32px 28px}
+    .city-guide-action{width:100%;min-width:0;text-align:left}
+    .city-guide-button{width:auto;min-width:220px}
+  }
+  @media(max-width:520px){
+    .city-guide{padding:0 16px 48px}
+    .city-guide-card{padding:28px 22px;border-radius:14px}
+    .city-guide-title{font-size:32px}
+    .city-guide-description{font-size:15px}
+    .city-guide-button{width:100%;min-width:0}
+    .city-guide-status{text-align:center}
+  }
+
+  /* ============ THEME SWITCH ============ */
+  .nav-actions{
+    justify-self:end;display:flex;align-items:center;justify-content:flex-end;gap:14px;
+  }
+  .theme-toggle{
+    width:44px;min-width:44px;min-height:44px;padding:0;border:0;border-radius:0;
+    display:inline-flex;align-items:center;justify-content:center;cursor:pointer;
+    color:var(--warm-white);background:transparent;
+    -webkit-backdrop-filter:none;backdrop-filter:none;box-shadow:none;
+    transition:color .2s ease,opacity .2s ease,transform .12s ease;
+  }
+  .theme-toggle:hover{color:var(--beige);background:transparent;opacity:.82}
+  .theme-toggle:active{transform:scale(.97)}
+  .theme-toggle-icon{width:22px;font:400 19px/1 Georgia,serif;text-align:center;text-shadow:0 2px 14px rgba(0,0,0,.3)}
+  .theme-toggle-text{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+  nav.solid .theme-toggle{
+    color:var(--espresso);border:0;background:transparent;box-shadow:none;
+  }
+  nav.solid .theme-toggle:hover{color:var(--caramel-ink);background:transparent}
+  [data-theme="dark"] nav.solid .theme-toggle{
+    color:var(--warm-white);border:0;background:transparent;box-shadow:none;
+  }
+  [data-theme="dark"] nav.solid .theme-toggle:hover{
+    color:var(--caramel-ink);background:transparent
+  }
+  ::view-transition-old(root),::view-transition-new(root){
+    animation-duration:.3s;animation-timing-function:cubic-bezier(.16,1,.3,1);
+  }
+  @media(max-width:900px){
+    .nav-actions{gap:10px}
+  }
+  @media(max-width:520px){
+    .nav-actions{gap:8px}
+  }
+  @media(prefers-reduced-motion:reduce){
+    ::view-transition-old(root),::view-transition-new(root){animation-duration:.01ms!important}
+    html{scroll-behavior:auto}
+    *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+    .rv{opacity:1!important;transform:none!important}
+  }
+  /* ============ GUEST TASK REFINEMENTS ============ */
+  .checkin-steps{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:18px 0 22px}
+  .checkin-step{min-width:0;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--paper);box-shadow:var(--shadow-soft)}
+  .checkin-step .block-photo{aspect-ratio:4/3;margin:0;border-radius:0;box-shadow:none}
+  .checkin-step-copy{padding:15px 16px 17px}
+  .checkin-step-copy strong{display:block;margin-bottom:6px;color:var(--caramel-ink);font-size:13px;letter-spacing:.08em;text-transform:uppercase}
+  .checkin-step-copy p{margin:0;max-width:none}
+  .wifi-credentials{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:16px 0 12px}
+  .wifi-credentials > div{padding:14px 15px;border:1px solid var(--line);border-radius:8px;background:rgba(201,168,130,.1)}
+  .wifi-credentials dt{font-size:13px;color:var(--caramel-ink)}
+  .wifi-credentials dd{margin:5px 0 0;font-size:17px;font-weight:600}
+  .wifi-copy-row{display:flex;align-items:center;gap:12px;min-height:44px;margin:0 0 18px}
+  .copy-password{min-height:44px;padding:10px 15px;border:1px solid var(--caramel-ink);border-radius:8px;background:transparent;color:var(--espresso);font:600 13px/1.2 var(--sans);cursor:pointer}
+  .copy-password:hover{background:rgba(201,168,130,.15)}
+  .copy-feedback{font-size:13px;color:var(--teal)}
+  .compact-guide-photo,.info-block[id$="support"] > .block-body > .block-photo,#hotro > .block-body > .block-photo,.info-block[id$="checkout"] > .block-body > .block-photo,#checkout > .block-body > .block-photo{aspect-ratio:21/9;max-height:320px}
+  .device-guide-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:8px 0 0}
+  .device-instruction-group{min-width:0;padding:14px 16px 18px;border:1px solid var(--line);border-radius:10px;background:rgba(201,168,130,.08)}
+  .device-instruction-group > .block-photo{aspect-ratio:4/3}
+  .device-instruction-group h5{margin-top:18px}
+  .emergency-list{margin-top:0}
+  .emergency-list a{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
+  .emergency-numbers{display:flex;flex-wrap:wrap;gap:8px 14px}
+  .city-guide[hidden]{display:none!important}
+  #gioithieu{padding-top:48px}
+  .zoomable-photo{cursor:zoom-in}
+  .image-viewer{width:min(920px,calc(100vw - 32px));max-width:920px;padding:0;border:1px solid var(--line);border-radius:12px;background:var(--paper);color:var(--espresso);box-shadow:var(--shadow-deep)}
+  .image-viewer::backdrop{background:rgba(8,6,5,.84);backdrop-filter:blur(5px)}
+  .image-viewer img{display:block;width:100%;max-height:78vh;object-fit:contain;background:var(--cream-deep)}
+  .image-viewer-close{display:flex;align-items:center;justify-content:center;gap:8px;min-height:44px;margin-left:auto;padding:9px 14px;border:0;background:transparent;color:var(--espresso);font:600 13px/1 var(--sans);cursor:pointer}
+  @media(max-width:720px){
+    .section-stack{gap:30px}
+    .info-section,.info-section:first-child{padding:26px 18px 28px}
+    .checkin-steps{grid-template-columns:1fr;gap:12px}
+    .wifi-credentials{grid-template-columns:1fr}
+    .compact-guide-photo,.info-block[id$="support"] > .block-body > .block-photo,#hotro > .block-body > .block-photo,.info-block[id$="checkout"] > .block-body > .block-photo,#checkout > .block-body > .block-photo{aspect-ratio:16/9}
+    .device-guide-grid{grid-template-columns:1fr}
+    #gioithieu{padding-top:36px;padding-bottom:24px}
+  }
+
 </style>
-</head>
+<style>.hero-bg{background-image:url('assets/images/ladi-valley-hero.webp')} .checkin-step:has(.checkin-step-text):not(:has(img)){grid-template-columns:1fr} .emergency-actions{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px}.emergency-actions a{padding:10px 14px;border:1px solid var(--line);border-radius:8px;min-height:44px}.wifi-credentials dl{margin:0}.wifi-credentials dt{font-size:.8rem;opacity:.7;margin-top:12px}.wifi-credentials dd{margin:4px 0;font-weight:600}.device-instruction-group{align-items:start}.location-layout .location-photo{grid-row:auto} .block-body .photo{margin-top:20px} .checkin-step .photo{margin-top:0} .device-instruction-group .photo{margin-top:0} .device-instruction-group .device-copy{min-width:0} .device-copy>:first-child{margin-top:0}</style><style>.device-instruction-group{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:24px}.checkin-steps{grid-template-columns:repeat(3,minmax(0,1fr))}.checkin-step:first-child{grid-row:span 1}.checkin-step .checkin-step-copy h5{margin-top:0}@media(max-width:700px){.device-instruction-group,.checkin-steps{grid-template-columns:1fr}.device-instruction-group{gap:14px}}</style></head>
 <body>
+<a class="skip-link" href="#main-content" data-copy="skipToContent">Bỏ qua phần đầu trang</a>
 
 <!-- ============ NAV ============ -->
-<nav id="nav">
-  <button class="menu-btn nav-c" onclick="openMenu()">
-    <span class="bars"><span></span><span></span></span> Menu
+<nav id="nav" aria-label="Điều hướng chính">
+  <button class="menu-btn nav-c" id="menuButton" type="button" aria-controls="overlay" aria-expanded="false">
+    <span class="bars" aria-hidden="true"><span></span><span></span></span>
+    <span data-copy="menu">Menu</span>
   </button>
-  <a href="#top" class="brand nav-c">
+  <a href="#top" class="brand nav-c" aria-label="Ladi Valley, về đầu trang">
     <div class="mk">Ladi</div>
     <div class="tg">Homestay</div>
   </a>
-  <a class="book nav-c" href="https://www.airbnb.com/rooms/1451455893156768862" target="_blank" rel="noopener">Book</a>
+  <div class="nav-actions">
+    <button class="theme-toggle nav-c" id="themeToggle" type="button" aria-pressed="true" aria-label="Chuyển sang giao diện sáng">
+      <span class="theme-toggle-icon" aria-hidden="true">☀</span>
+      <span class="theme-toggle-text">Sáng</span>
+    </button>
+    <!-- Airbnb listing link -->
+    <a class="book nav-c" id="airbnbLink" href="https://www.airbnb.com/rooms/1645365491223408618" target="_blank" rel="noopener" data-copy="help" aria-label="AIRBNB: Ladi Valley">AIRBNB</a>
+  </div>
 </nav>
 
 <!-- ============ MENU OVERLAY ============ -->
-<div class="overlay" id="overlay">
-  <button class="ov-close" onclick="closeMenu()">Đóng ✕</button>
+<div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Điều hướng">
+  <button class="ov-close" id="menuClose" type="button"><span data-copy="close">Đóng</span> ×</button>
   <div class="ov-inner">
     <div class="ov-tag">Ladi Homestay · Guest Guide</div>
     <div class="ov-group">
-      <div class="gl">Khám phá</div>
+      <div class="gl" data-copy="stayGuide">Hướng dẫn lưu trú</div>
       <div class="ov-links">
-        <a href="#gioithieu" onclick="closeMenu()">Chào mừng</a>
-        <a href="#thuvien" onclick="closeMenu()">Không gian</a>
-        <a href="#languages" onclick="closeMenu()">Ngôn ngữ</a>
-        <a href="#friend" onclick="closeMenu()">Host Ladi</a>
+        <a href="#language-switcher" data-close-menu="" data-copy="language">Ngôn ngữ</a>
+        <a href="#diachi" data-menu-target="address" data-close-menu="" data-copy="address">Vị trí</a>
+        <a href="#checkin" data-menu-target="checkin" data-close-menu="" data-copy="checkin">Tự check-in</a>
+        <a href="#checkout" data-menu-target="checkout" data-close-menu="" data-copy="checkout">Check-out</a>
+        <a href="#wifi" data-menu-target="wifi" data-close-menu="">WiFi</a>
+        <a href="#khan-cap" data-menu-target="emergency" data-close-menu="" data-copy="emergency">Liên hệ khẩn cấp</a>
+        <a href="#dieuhoa" data-menu-target="water" data-close-menu="" data-copy="water">Điều hòa &amp; nước nóng</a>
       </div>
     </div>
     <div class="ov-group">
-      <div class="gl">Thông tin · Information</div>
+      <div class="gl" data-copy="appliances">Thiết bị</div>
       <div class="ov-links">
-        <a href="#diachi" onclick="closeMenu()">Địa chỉ & Nội quy</a>
-        <a href="#checkin" onclick="closeMenu()">Tự Check-in</a>
-        <a href="#wifi" onclick="closeMenu()">WiFi</a>
-        <a href="#luuy" onclick="closeMenu()">Lưu ý</a>
-      </div>
-    </div>
-    <div class="ov-group">
-      <div class="gl">Thiết bị trong nhà · Appliances</div>
-      <div class="ov-links">
-        <a href="#dieuhoa" onclick="closeMenu()">Điều hoà & Nóng lạnh</a>
-        <a href="#bep" onclick="closeMenu()">Khu bếp</a>
-        <a href="#lo" onclick="closeMenu()">Dụng cụ bếp</a>
-        <a href="#tv" onclick="closeMenu()">Smart TV</a>
-        <a href="#maygiat" onclick="closeMenu()">Khu giặt sấy</a>
+        <a href="#bep" data-menu-target="cooktop" data-close-menu="" data-copy="cooktop">Khu bếp</a>
+        <a href="#lo" data-menu-target="microwave" data-close-menu="" data-copy="microwave">Dụng cụ bếp &amp; bếp lẩu</a>
+        <a href="#tv" data-menu-target="tv" data-close-menu="">Smart TV</a>
+        <a href="#maygiat" data-menu-target="laundry" data-close-menu="" data-copy="laundry">Máy giặt &amp; máy sấy</a><a href="#maysuoi" data-menu-target="garden" data-close-menu="" data-copy="garden">Sân vườn</a><a href="#luuy" data-menu-target="note" data-close-menu="" data-copy="note">Lưu ý khi lưu trú</a><a href="#noiquy" data-menu-target="rules" data-close-menu="" data-copy="rules">Nội quy</a>
+        <a href="#friend" data-close-menu="">Host Ladi</a>
       </div>
     </div>
     <div class="ov-foot">Hanoi in your stay</div>
   </div>
 </div>
-
 <!-- ============ HERO ============ -->
 <header class="hero" id="top">
   <div class="hero-bg"></div>
   <div class="hero-inner">
-    <div class="kick">337/10 Đường Âu Cơ · Tây Hồ · Hà Nội</div>
+    <div class="kick">Số 10 ngõ 343 Đường Âu Cơ · Tây Hồ · Hà Nội</div>
     <h1>LADI<br>VALLEY</h1>
-    <div class="style-line">3-Bedroom Villa · Private Garden · West Lake</div>
-    <div class="stay">A quiet green stay near Hồ Tây</div>
+    <div class="style-line" data-copy="heroLine">Villa 3 phòng ngủ · Sân vườn riêng · Hồ Tây</div>
+    <div class="stay">Hanoi in your stay</div>
   </div>
-  <a href="#gioithieu" class="scroll-arrow" aria-label="Cuộn xuống">
-    <svg viewBox="0 0 24 24"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
-  </a>
+  
   <div class="social-section" aria-label="Ladi Homestay social links">
   <a class="social-link" href="https://www.facebook.com/ladihomestay" target="_blank" rel="noopener" aria-label="Ladi Homestay Facebook">
-    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.2 8.3V6.8c0-.7.5-.9.9-.9h2.3V2.1L14.1 2c-3.7 0-4.5 2.7-4.5 4.5v1.8H6.7v4.2h2.9V22h4.4v-9.5h3.2l.5-4.2h-3.5Z"/></svg>
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.2 8.3V6.8c0-.7.5-.9.9-.9h2.3V2.1L14.1 2c-3.7 0-4.5 2.7-4.5 4.5v1.8H6.7v4.2h2.9V22h4.4v-9.5h3.2l.5-4.2h-3.5Z"></path></svg>
   </a>
   <a class="social-link" href="https://www.instagram.com/ladihomestayhn/" target="_blank" rel="noopener" aria-label="Ladi Homestay Instagram">
-    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.6 2h8.8A5.6 5.6 0 0 1 22 7.6v8.8a5.6 5.6 0 0 1-5.6 5.6H7.6A5.6 5.6 0 0 1 2 16.4V7.6A5.6 5.6 0 0 1 7.6 2Zm0 2A3.6 3.6 0 0 0 4 7.6v8.8A3.6 3.6 0 0 0 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6A3.6 3.6 0 0 0 16.4 4H7.6Zm4.4 3.2A4.8 4.8 0 1 1 7.2 12 4.8 4.8 0 0 1 12 7.2Zm0 2A2.8 2.8 0 1 0 14.8 12 2.8 2.8 0 0 0 12 9.2Zm5-2.45a1.15 1.15 0 1 1-1.15 1.15A1.15 1.15 0 0 1 17 6.75Z"/></svg>
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.6 2h8.8A5.6 5.6 0 0 1 22 7.6v8.8a5.6 5.6 0 0 1-5.6 5.6H7.6A5.6 5.6 0 0 1 2 16.4V7.6A5.6 5.6 0 0 1 7.6 2Zm0 2A3.6 3.6 0 0 0 4 7.6v8.8A3.6 3.6 0 0 0 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6A3.6 3.6 0 0 0 16.4 4H7.6Zm4.4 3.2A4.8 4.8 0 1 1 7.2 12 4.8 4.8 0 0 1 12 7.2Zm0 2A2.8 2.8 0 1 0 14.8 12 2.8 2.8 0 0 0 12 9.2Zm5-2.45a1.15 1.15 0 1 1-1.15 1.15A1.15 1.15 0 0 1 17 6.75Z"></path></svg>
   </a>
   <a class="social-link" href="https://www.tiktok.com/@ladihomestay" target="_blank" rel="noopener" aria-label="Ladi Homestay TikTok">
-    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.7 2c.35 3 2.05 4.8 5.05 5v3.35a8.4 8.4 0 0 1-4.9-1.5v6.55c0 4.25-2.8 6.6-6.25 6.6-3.75 0-6.35-2.75-6.35-6.1 0-3.7 2.9-6.05 6.55-6.05.55 0 1.05.05 1.5.18v3.55a4.2 4.2 0 0 0-1.45-.25c-1.8 0-2.95 1.05-2.95 2.55 0 1.45 1.05 2.55 2.65 2.55 1.65 0 2.65-.95 2.65-3.05V2h3.5Z"/></svg>
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.7 2c.35 3 2.05 4.8 5.05 5v3.35a8.4 8.4 0 0 1-4.9-1.5v6.55c0 4.25-2.8 6.6-6.25 6.6-3.75 0-6.35-2.75-6.35-6.1 0-3.7 2.9-6.05 6.55-6.05.55 0 1.05.05 1.5.18v3.55a4.2 4.2 0 0 0-1.45-.25c-1.8 0-2.95 1.05-2.95 2.55 0 1.45 1.05 2.55 2.65 2.55 1.65 0 2.65-.95 2.65-3.05V2h3.5Z"></path></svg>
   </a>
   </div>
 </header>
+<main id="main-content">
+<!-- ============ QUICK GUIDE ============ -->
+<section class="guest-tools" id="language-switcher" aria-labelledby="guide-heading">
+  <div class="tools-shell">
+    <div class="tools-heading">
+      <p class="eyebrow" data-copy="stayGuide">Hướng dẫn lưu trú</p>
+      <h2 id="guide-heading" data-copy="needFirst">Những thông tin bạn cần trước tiên</h2>
+    </div>
+    <div class="language-bar">
+      <div>
+        <p class="language-kicker" data-copy="chooseLanguage">Chọn ngôn ngữ</p>
+        <p class="language-help" data-copy="languageHelp">Nội dung và liên kết nhanh sẽ đổi theo lựa chọn của bạn.</p>
+      </div>
+      <div class="language-options" role="group" aria-label="Choose language">
+        <button type="button" data-language="vi" aria-label="Tiếng Việt" aria-pressed="true"><img class="flag-emoji" src="https://flagcdn.com/24x18/vn.png" alt="" aria-hidden="true" width="24" height="18" decoding="async"><span>Tiếng Việt</span></button>
+        <button type="button" data-language="en" aria-label="English" aria-pressed="false"><img class="flag-emoji" src="https://flagcdn.com/24x18/gb.png" alt="" aria-hidden="true" width="24" height="18" decoding="async"><span>English</span></button>
+        <button type="button" data-language="ko" aria-label="한국어" aria-pressed="false"><img class="flag-emoji" src="https://flagcdn.com/24x18/kr.png" alt="" aria-hidden="true" width="24" height="18" decoding="async"><span>한국어</span></button>
+        <button type="button" data-language="zh" aria-label="中文" aria-pressed="false"><img class="flag-emoji" src="https://flagcdn.com/24x18/cn.png" alt="" aria-hidden="true" width="24" height="18" decoding="async"><span>中文</span></button>
+        <button type="button" data-language="ja" aria-label="日本語" aria-pressed="false"><img class="flag-emoji" src="https://flagcdn.com/24x18/jp.png" alt="" aria-hidden="true" width="24" height="18" decoding="async"><span>日本語</span></button>
+      </div>
+    </div>
+    <div class="quick-actions" aria-label="Liên kết nhanh">
+      <a class="quick-action" href="https://maps.app.goo.gl/AJGwJwu6iq7QDAKL8" target="_blank" rel="noopener">
+        <strong data-copy="openMap">Mở Google Maps</strong><span>Số 10 ngõ 343 Âu Cơ</span>
+      </a>
+      <a class="quick-action" href="#checkin" data-quick-target="checkin">
+        <strong data-copy="checkin">Tự check-in</strong><span>14:00</span>
+      </a>
+      <a class="quick-action" href="#wifi" data-quick-target="wifi">
+        <strong>WiFi</strong><span>Ladi Valley</span>
+      </a>
+      <a class="quick-action" href="tel:+84935141368">
+        <strong data-copy="callHost">Gọi Host</strong><span>+84 93 514 1368</span>
+      </a>
+      <a class="quick-action quick-action-primary" href="mailto:Ladihomestay@gmail.com">
+        <strong data-copy="messageHost">Gửi email cho Host</strong><span>Email</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+<!-- ============ LANGUAGE ACCORDIONS ============ -->
+<section class="language-block" id="guide-content">
+  <div class="language-shell">
+    <div class="lang-list"><details class="lang-panel vietnamese is-active" data-lang-panel="vi" lang="vi" open="">
+    <summary><span class="flag">VN</span><span class="lang-name">Tiếng Việt</span></summary>
+    <div class="inside"><div class="section-stack">
+      <section class="info-section" id="thongtin-chung"><h3 class="info-title">1. Thông tin chung<span class="sub">General information</span></h3>
+        <details class="info-block" id="diachi" open=""><summary>1.1 Vị trí</summary><div class="block-body content location-layout"><a class="map-button" href="https://maps.app.goo.gl/AJGwJwu6iq7QDAKL8" target="_blank" rel="noopener">google map Ladi Valley</a><p><strong>Địa chỉ:</strong> số 10 ngõ 343 Đường Âu Cơ, Tây Hồ, Hà Nội.<br><strong>Căn của bạn:</strong> Ladi Valley — villa 2 tầng có sân vườn riêng gần Hồ Tây.</p><blockquote><p>Villa nằm trong khu Hồ Tây yên tĩnh, phù hợp cho gia đình, nhóm bạn, staycation cuối tuần hoặc làm việc từ xa.</p></blockquote><h5>Vị trí</h5><ul><li><strong>5 phút</strong> tới khu Xuân Diệu - Hồ Tây với nhiều quán cà phê, nhà hàng và bar đẹp.</li><li><strong>15 phút</strong> di chuyển vào Phố Cổ.</li><li>Gần West Lake Flower Valley, Matcha Vibe, Highland Coffee, Lion Mall, Winmart, Circle K và Annam Gourmet.</li></ul><div class="photo block-photo location-photo"><img src="assets/images/ladi-valley-hero.webp" alt="Ladi Valley" loading="lazy" decoding="async"><span class="ph-lab">Vị trí</span></div></div></details>
+        <details class="info-block" id="thongtinthem"><summary>1.2 Thông tin thêm</summary><div class="block-body content"><p>Ngay khi nhận phòng, toàn bộ villa và các tiện nghi như trong ảnh sẽ có sẵn để bạn sử dụng.</p><h5>Thông tin villa</h5><ul><li><strong>Không gian:</strong> 2 tầng, 3 phòng ngủ, 4 giường, phòng khách rộng, bếp lớn, ban công và sân vườn riêng.</li><li><strong>Phòng vệ sinh:</strong> 4 phòng vệ sinh riêng, thuận tiện cho nhóm đông.</li><li><strong>Tầng 1:</strong> phòng khách, 1 phòng ngủ, bếp + bàn ăn, 2 WC và sân vườn.</li><li><strong>Tầng 2:</strong> 2 phòng ngủ khép kín, mỗi phòng có WC riêng và cửa sổ lớn.</li><li><strong>Phù hợp:</strong> gia đình, nhóm bạn, nghỉ dưỡng ngắn ngày, lưu trú dài ngày hoặc làm việc từ xa.</li></ul><h5>Sân vườn</h5><ul><li>Có ghế ngồi chill và khu vực ăn uống ngoài trời.</li><li>Phù hợp uống cà phê sáng, trà chiều, đọc sách hoặc ăn tối ngoài trời.</li></ul><div class="photo block-photo"><img src="assets/images/ladi-valley-terrace.webp" alt="Ladi Valley" loading="lazy" decoding="async"><span class="ph-lab">Thông tin thêm</span></div></div></details>
+        <details class="info-block" id="noiquy"><summary>1.3 Nội Quy</summary><div class="block-body content"><ul><li><strong>Check-in:</strong> 14:00 | <strong>Check-out:</strong> 11:00.</li><li><strong>Không hút thuốc trong nhà</strong>; có thể hút ở sân vườn.</li><li><strong>Không tổ chức party</strong>, không gây ồn sau <strong>22:00</strong> và không làm ảnh hưởng hàng xóm.</li><li><strong>Duy trì an ninh:</strong> không chia sẻ mã truy cập với người ngoài ngoài số lượng người đã đặt phòng.</li><li><strong>Giữ gìn cơ sở vật chất:</strong> không bỏ đồ vệ sinh cá nhân hoặc khăn ướt vào bồn cầu để tránh tắc nghẽn.</li><li>Vui lòng tắt điện, điều hòa và các thiết bị điện khi ra ngoài.</li></ul><div class="photo block-photo"><img src="assets/images/valley-05-p4.webp" alt="Ladi Valley" loading="lazy" decoding="async"><span class="ph-lab">Nội Quy</span></div></div></details>
+        <details class="info-block" id="khan-cap"><summary>1.4 Liên Hệ Khẩn cấp</summary><div class="block-body content"><div class="emergency-actions"><a href="tel:+84935141368">Host Ladi · +84 93 514 1368</a><a href="mailto:Ladihomestay@gmail.com">Gửi email cho Host</a><a href="tel:115">115</a><a href="tel:113">113</a><a href="tel:114">114</a></div><ul><li>Host Ladi — <span class="ph">+84 93 514 1368</span></li><li>Email — <span class="ph">Ladihomestay@gmail.com</span></li><li>Cấp cứu 115 · Cảnh sát 113 · Cứu hoả 114</li></ul></div></details>
+        <details class="info-block" id="hotro"><summary>1.5 Dịch vụ hỗ trợ thêm</summary><div class="block-body content"><ul><li>Hỗ trợ đặt xe sân bay theo yêu cầu; liên hệ trước ít nhất một ngày.</li><li>Host có thể gửi gợi ý tham quan, ăn uống và thông tin tour Hạ Long, Ninh Bình, City Tour.</li><li>Khách ở dài ngày có thể liên hệ về dọn phòng và giặt giũ.</li></ul></div></details>
+        <details class="info-block" id="luuy"><summary>1.6 Lưu ý khác</summary><div class="block-body content"><ul><li>Sân vườn có thể có muỗi, đặc biệt vào buổi tối. Có đèn bắt muỗi và xịt chống muỗi cá nhân trong mỗi phòng.</li><li>Đóng cửa khi bật đèn buổi tối để hạn chế côn trùng.</li><li>Công trình gần villa có thể gây tiếng ồn từ 7:00–17:30, chủ yếu khi ở ngoài sân.</li></ul></div></details>
+      </section>
+      <section class="info-section" id="checkin-checkout"><h3 class="info-title">2. Checkin &amp; Check Out<span class="sub">Arrival and departure</span></h3>
+        <details class="info-block" id="checkin"><summary>2.1 Check-In</summary><div class="block-body content"><h5>Các bước nhận phòng</h5><div class="checkin-steps"><article class="checkin-step"><div class="photo block-photo"><img loading="lazy" decoding="async" src="assets/images/ladi-valley-entrance.webp" alt="Lối vào Ladi Valley"><span class="ph-lab">Lối vào Ladi Valley</span></div><div class="checkin-step-copy"><strong>1. Đến villa</strong><p>Tới số 10 ngõ 343 Đường Âu Cơ, Tây Hồ theo Google Maps.</p></div></article><article class="checkin-step"><div class="checkin-step-copy"><strong>2. Đọc hướng dẫn của Host</strong><p>Xem hướng dẫn chi tiết và mã truy cập Host gửi trước ngày đến hoặc trong ngày nhận phòng.</p></div></article><article class="checkin-step"><div class="checkin-step-copy"><strong>3. Mở khóa bằng keypad</strong><p>Chạm bàn phím để sáng, nhập mã được cung cấp rồi nhấn # hoặc ✓.</p></div></article></div><p>Nhận phòng từ 14:00. Không chia sẻ mã với người ngoài đặt phòng. Nếu mã lỗi, nhập chậm từng phím; vẫn lỗi thì liên hệ Host Ladi.</p></div></details>
+        <details class="info-block" id="checkout"><summary>2.2 Check-Out</summary><div class="block-body content"><ul><li>Check-out trước <span class="ph">11:00</span>.</li><li>Trước khi rời đi, vui lòng tắt điều hoà, đèn và các thiết bị điện.</li><li>Kiểm tra tư trang cá nhân, đóng cửa cẩn thận.</li><li>Nếu cần hỗ trợ trả phòng muộn, vui lòng nhắn host để kiểm tra tình trạng villa.</li></ul><div class="photo block-photo"><img src="assets/images/ladi-valley-garden-terrace.webp" alt="Ladi Valley" loading="lazy" decoding="async"><span class="ph-lab">Check-Out</span></div></div></details>
+      </section>
+      <section class="info-section" id="huongdan-thietbi"><h3 class="info-title">3. Hướng dẫn sử dụng các thiết bị trong nhà<span class="sub">In-home appliance guide</span></h3>
+        <details class="info-block" id="wifi"><summary>3.1 WiFi</summary><div class="block-body content"><h5>Kết nối WiFi</h5><dl class="wifi-credentials"><div><dt>Tên WiFi</dt><dd>Ladi Valley</dd></div><div><dt>Mật khẩu</dt><dd>Host gửi trước khi nhận phòng</dd></div></dl><p>Tắt/bật WiFi trên điện thoại rồi kết nối lại. Nếu vẫn chậm hoặc mất kết nối, nhắn Host để kiểm tra router.</p></div></details>
+        <details class="info-block" id="dieuhoa"><summary>3.2 Điều Hoà &amp; Bình Nóng Lạnh</summary><div class="block-body content"><article class="device-instruction-group"><div class="photo block-photo"><img src="assets/images/ladi-valley-bedroom-ac.webp" alt="Ladi Valley" loading="lazy" decoding="async"><span class="ph-lab">Điều Hoà &amp; Bình Nóng Lạnh</span></div><div class="device-copy"><h5>Điều hoà</h5><ol><li>Dùng điều khiển bật/tắt.</li><li>Chọn chế độ <strong>Cool</strong>.</li><li>Đặt <strong>25-26°C</strong> là dễ chịu và tiết kiệm.</li><li>Tắt điều hòa khi ra khỏi nhà.</li></ol><h5>Nước nóng</h5><ul><li>Villa có nước nóng 24/7.</li><li>Nếu cần hỗ trợ về bình nóng lạnh hoặc vòi sen, vui lòng nhắn host.</li></ul></div></article></div></details>
+        <details class="info-block" id="bep"><summary>3.3 Khu bếp</summary><div class="block-body content"><article class="device-instruction-group"><div class="photo block-photo"><img src="assets/images/ladi-valley-kitchen-full.webp" alt="Ladi Valley" loading="lazy" decoding="async"><span class="ph-lab">Khu bếp</span></div><div class="device-copy"><blockquote><p>Khu bếp có bếp nấu, tủ lạnh, nồi, chảo, bát đĩa, ấm đun nước và dụng cụ nấu ăn cơ bản.</p></blockquote><ol><li>Dùng đúng loại nồi/chảo phù hợp với bếp.</li><li>Nhấn nguồn, đặt nồi lên vùng nấu và chỉnh nhiệt bằng nút điều khiển.</li><li>Nấu xong tắt bếp và lau khi mặt bếp đã nguội.</li></ol></div></article></div></details>
+        <details class="info-block" id="lo"><summary>3.4 Dụng cụ bếp &amp; bếp lẩu</summary><div class="block-body content"><article class="device-instruction-group"><div class="photo block-photo"><img src="assets/images/ladi-valley-kitchen.webp" alt="Ladi Valley" loading="lazy" decoding="async"><span class="ph-lab">Dụng cụ bếp</span></div><div class="device-copy"><ul><li>Có bếp lẩu rời, phù hợp cho bữa ăn gia đình hoặc nhóm bạn.</li><li>Có ấm đun nước, dụng cụ nấu ăn cơ bản, bát đĩa, nồi và chảo.</li><li>Vui lòng rửa và sắp xếp lại đồ dùng sau khi sử dụng.</li></ul></div></article></div></details>
+        <details class="info-block" id="tv"><summary>3.5 Smart TV</summary><div class="block-body content"><article class="device-instruction-group"><div class="photo block-photo"><img src="assets/images/valley-06-p4.webp" alt="Ladi Valley" loading="lazy" decoding="async"><span class="ph-lab">Smart TV</span></div><div class="device-copy"><p>Phòng khách có <strong>Smart TV</strong> kết nối Internet, có thể xem <strong>Netflix</strong> và <strong>YouTube</strong>. Nếu đăng nhập tài khoản cá nhân, vui lòng đăng xuất trước khi trả phòng.</p></div></article></div></details>
+        <details class="info-block" id="maygiat"><summary>3.6 Máy Giặt sấy</summary><div class="block-body content"><article class="device-instruction-group"><div class="photo block-photo"><img src="assets/images/valley-14-p8.webp" alt="Ladi Valley" loading="lazy" decoding="async"><span class="ph-lab">Máy Giặt sấy</span></div><div class="device-copy"><ul><li>Villa có máy giặt và máy sấy riêng.</li><li>Tiện lợi cho khách ở dài ngày hoặc gia đình có trẻ nhỏ.</li><li>Không giặt quá tải và kiểm tra túi quần áo trước khi giặt.</li><li>Sau khi dùng, để hé cửa máy một lúc cho khô thoáng.</li></ul></div></article></div></details>
+        <details class="info-block" id="maysuoi"><summary>3.7 Sân vườn &amp; không gian ngoài trời</summary><div class="block-body content"><article class="device-instruction-group"><div class="photo block-photo"><img src="assets/images/ladi-valley-garden.webp" alt="Ladi Valley" loading="lazy" decoding="async"><span class="ph-lab">Sân vườn</span></div><div class="device-copy"><ul><li>Sân vườn riêng có ghế ngồi chill và khu vực ăn uống ngoài trời.</li><li>Phù hợp uống cà phê sáng, trà chiều, đọc sách hoặc ăn tối ngoài trời.</li><li>Sau 22:00 vui lòng giữ yên tĩnh để không ảnh hưởng hàng xóm.</li></ul></div></article></div></details>
+        <details class="info-block" id="thietbikhac"><summary>3.8 Các thiết bị khác</summary><div class="block-body content"><article class="device-instruction-group"><div class="photo block-photo"><img src="assets/images/ladi-valley-kitchen-full.webp" alt="Ladi Valley" loading="lazy" decoding="async"><span class="ph-lab">Các thiết bị khác</span></div><div class="device-copy"><ul><li>Máy sấy tóc tại các phòng.</li><li>Đồ dùng cơ bản: khăn tắm, giấy vệ sinh, dầu gội, sữa tắm.</li><li>Có cờ vua và cá ngựa cho thời gian thư giãn.</li><li>Vui lòng tắt tất cả thiết bị điện trước khi ra ngoài.</li></ul></div></article></div></details>
+      </section>
+    </div></div>
+  </details><details class="lang-panel english" data-lang-panel="en" lang="en">
+    <summary><span class="flag">EN</span><span class="lang-name">English</span></summary>
+    <div class="inside"><div class="section-stack">
+      
+<section class="info-section" id="en-general"><h3 class="info-title">1. General Information<span class="sub">Thông tin chung</span></h3>
+<details class="info-block" id="en-address" open=""><summary>1.1 Location</summary><div class="block-body content location-layout"><a class="map-button" href="https://maps.app.goo.gl/AJGwJwu6iq7QDAKL8" target="_blank" rel="noopener">google map Ladi Valley</a><p><strong>Address:</strong> No. 10, Alley 343 Au Co Street, Tay Ho, Hanoi.<br><strong>Your stay:</strong> Ladi Valley — a 2-floor private garden villa near West Lake.</p><ul><li><strong>5 minutes</strong> to Xuân Diệu - West Lake cafés, restaurants and bars.</li><li><strong>15 minutes</strong> to the Old Quarter.</li><li>A quiet stay for families, friend groups, weekend staycations or remote work.</li></ul><div class="photo block-photo location-photo"><img src="assets/images/ladi-valley-hero.webp" alt="Ladi Valley" loading="lazy" decoding="async"><span class="ph-lab">Location</span></div></div></details>
+<details class="info-block" id="en-extra"><summary>1.2 Extra Information</summary><div class="block-body content"><ul><li>2 floors, 3 bedrooms, 4 beds, spacious living room, large kitchen, balcony and private garden.</li><li>4 private bathrooms.</li><li>Ground floor: living room, 1 bedroom, kitchen + dining table, 2 bathrooms and garden.</li><li>Second floor: 2 ensuite bedrooms with private bathrooms and large windows.</li></ul><div class="photo block-photo"><img src="assets/images/ladi-valley-terrace.webp" alt="Ladi Valley" loading="lazy" decoding="async"><span class="ph-lab">Extra Information</span></div></div></details>
+<details class="info-block" id="en-rules"><summary>1.3 House Rules</summary><div class="block-body content"><ul><li>Check-in 14:00 · check-out 11:00.</li><li>No smoking indoors; smoking is allowed in the garden.</li><li>No parties and no loud noise after 22:00.</li><li>Do not share access codes with anyone outside your reservation.</li><li>Turn off electricity and air conditioners when going out.</li></ul><p>Do not flush toiletries or wet wipes down the toilet.</p><div class="photo block-photo"><img src="assets/images/valley-05-p4.webp" alt="Ladi Valley" loading="lazy" decoding="async"><span class="ph-lab">House Rules</span></div></div></details>
+<details class="info-block" id="en-emergency"><summary>1.4 Emergency Contact</summary><div class="block-body content"><div class="emergency-actions"><a href="tel:+84935141368">Host Ladi · +84 93 514 1368</a><a href="mailto:Ladihomestay@gmail.com">Email Host</a><a href="tel:115">115</a><a href="tel:113">113</a><a href="tel:114">114</a></div><ul><li>Host Ladi — <span class="ph">+84 93 514 1368</span></li><li>Email — <span class="ph">Ladihomestay@gmail.com</span></li><li>Ambulance 115 · Police 113 · Fire 114</li></ul></div></details>
+<details class="info-block" id="en-support"><summary>1.5 Extra Support Services</summary><div class="block-body content"><ul><li>Airport transfers can be arranged on request; contact Host at least one day ahead.</li><li>Host can share local sightseeing and food recommendations, plus Ha Long, Ninh Binh and city tour information.</li><li>For longer stays, contact Host about cleaning or laundry support.</li></ul></div></details><details class="info-block" id="en-note"><summary>Stay notes</summary><div class="block-body content"><ul><li>Mosquitoes may appear in the garden, especially in the evening. A mosquito lamp and personal repellent are provided in each room.</li><li>Close doors when lights are on in the evening to help keep insects out.</li><li>Nearby construction may cause noise from 7:00–17:30, mainly outdoors in the garden.</li></ul></div></details>
+</section>
+<section class="info-section" id="en-checkin-checkout"><h3 class="info-title">2. Check-in &amp; Check-out<span class="sub">Arrival and departure</span></h3>
+<details class="info-block" id="en-checkin"><summary>2.1 Check-In</summary><div class="block-body content"><h5>Arrival steps</h5><div class="checkin-steps"><article class="checkin-step"><div class="photo block-photo"><img loading="lazy" decoding="async" src="assets/images/ladi-valley-entrance.webp" alt="Ladi Valley entrance"><span class="ph-lab">Ladi Valley entrance</span></div><div class="checkin-step-copy"><strong>1. Find the villa</strong><p>Follow Google Maps to No. 10, Alley 343 Au Co Street, Tay Ho.</p></div></article><article class="checkin-step"><div class="checkin-step-copy"><strong>2. Read the Host’s guide</strong><p>Read the detailed guide and access code sent before arrival or on check-in day.</p></div></article><article class="checkin-step"><div class="checkin-step-copy"><strong>3. Unlock the keypad</strong><p>Touch the keypad to wake it, enter the supplied code, then press # or ✓.</p></div></article></div><p>Check-in from 14:00. Do not share the code outside your reservation. If it fails, enter it slowly; contact Host Ladi if the problem continues.</p></div></details>
+<details class="info-block" id="en-checkout"><summary>2.2 Check-Out</summary><div class="block-body content"><ul><li>Check-out before 11:00.</li><li>Turn off air conditioners, lights and electrical devices before leaving.</li><li>Check your belongings and close the door carefully.</li></ul><p>For late check-out, contact Host to check villa availability.</p><div class="photo block-photo"><img src="assets/images/ladi-valley-garden-terrace.webp" alt="Ladi Valley" loading="lazy" decoding="async"><span class="ph-lab">Check-Out</span></div></div></details>
+</section>
+<section class="info-section" id="en-appliances"><h3 class="info-title">3. In-home Appliance Guide<span class="sub">Hướng dẫn thiết bị</span></h3>
+<details class="info-block" id="en-wifi"><summary>3.1 WiFi</summary><div class="block-body content"><h5>Connect to WiFi</h5><dl class="wifi-credentials"><div><dt>Network</dt><dd>Ladi Valley</dd></div><div><dt>Password</dt><dd>Sent by Host before check-in</dd></div></dl><p>Turn WiFi off and on on your phone, then reconnect. If the connection is still slow or unavailable, message Host to check the router.</p></div></details>
+<details class="info-block" id="en-ac"><summary>3.2 AC &amp; Hot Water</summary><div class="block-body content"><article class="device-instruction-group"><div class="photo block-photo"><img src="assets/images/ladi-valley-bedroom-ac.webp" alt="Ladi Valley" loading="lazy" decoding="async"><span class="ph-lab">AC &amp; Hot Water</span></div><div class="device-copy"><ul><li>Air conditioning is available in all rooms. Cool mode at 25-26°C is recommended.</li><li>Hot water is available 24/7.</li><li>Turn AC off when going out.</li></ul></div></article></div></details>
+<details class="info-block" id="en-cooktop"><summary>3.3 Kitchen</summary><div class="block-body content"><article class="device-instruction-group"><div class="photo block-photo"><img src="assets/images/ladi-valley-kitchen-full.webp" alt="Ladi Valley" loading="lazy" decoding="async"><span class="ph-lab">Kitchen</span></div><div class="device-copy"><ul><li>Cooktop, refrigerator, kettle, pots, pans, dishes and basic cookware are prepared.</li></ul><ol><li>Use cookware suitable for the cooktop.</li><li>Turn it on, place the pot on a cooking zone and adjust the heat.</li><li>Turn it off after cooking; allow the surface to cool before wiping.</li></ol></div></article></div></details>
+<details class="info-block" id="en-microwave"><summary>3.4 Kitchen Tools &amp; Hotpot</summary><div class="block-body content"><article class="device-instruction-group"><div class="photo block-photo"><img src="assets/images/ladi-valley-kitchen.webp" alt="Ladi Valley" loading="lazy" decoding="async"><span class="ph-lab">Kitchen Tools</span></div><div class="device-copy"><ul><li>A portable hotpot stove is available. Please wash and return all dishes and cookware after use.</li></ul></div></article></div></details>
+<details class="info-block" id="en-tv"><summary>3.5 Smart TV</summary><div class="block-body content"><article class="device-instruction-group"><div class="photo block-photo"><img src="assets/images/valley-06-p4.webp" alt="Ladi Valley" loading="lazy" decoding="async"><span class="ph-lab">Smart TV</span></div><div class="device-copy"><p>The Smart TV has Internet access, Netflix and YouTube. Please log out of personal accounts before check-out.</p></div></article></div></details>
+<details class="info-block" id="en-laundry"><summary>3.6 Washer &amp; Dryer</summary><div class="block-body content"><article class="device-instruction-group"><div class="photo block-photo"><img src="assets/images/valley-14-p8.webp" alt="Ladi Valley" loading="lazy" decoding="async"><span class="ph-lab">Washer &amp; Dryer</span></div><div class="device-copy"><ul><li>Private washer and dryer are available. Do not overload the machine.</li></ul><p>Check clothing pockets, avoid overloading and leave the machine door ajar after use to dry.</p></div></article></div></details>
+<details class="info-block" id="en-heater"><summary>3.7 Private Garden</summary><div class="block-body content"><article class="device-instruction-group"><div class="photo block-photo"><img src="assets/images/ladi-valley-garden.webp" alt="Ladi Valley" loading="lazy" decoding="async"><span class="ph-lab">Garden</span></div><div class="device-copy"><ul><li>Private garden with chill seating and outdoor dining area. Please keep quiet after 22:00.</li></ul></div></article></div></details>
+<details class="info-block" id="en-other"><summary>3.8 Other Amenities</summary><div class="block-body content"><article class="device-instruction-group"><div class="photo block-photo"><img src="assets/images/ladi-valley-kitchen-full.webp" alt="Ladi Valley" loading="lazy" decoding="async"><span class="ph-lab">Other Amenities</span></div><div class="device-copy"><ul><li>Hair dryers, towels, basic bathroom amenities, chess and a board game are prepared.</li></ul></div></article></div></details>
+</section>
+    </div></div>
+  </details><details class="lang-panel korean" data-lang-panel="ko" lang="ko">
+    <summary><span class="flag">KR</span><span class="lang-name cjk">한국어</span></summary>
+    <div class="inside"><div class="section-stack">
+      
+<section class="info-section" id="kr-general"><h3 class="info-title">1. 일반 정보<span class="sub">General information</span></h3>
+<details class="info-block" id="kr-address" open=""><summary>1.1 위치</summary><div class="block-body content location-layout"><a class="map-button" href="https://maps.app.goo.gl/AJGwJwu6iq7QDAKL8" target="_blank" rel="noopener">google map Ladi Valley</a><p><strong>주소:</strong> No. 10, Alley 343 Au Co Street, Tay Ho, Hanoi.<br><strong>숙소:</strong> Ladi Valley — 서호 근처의 2층 프라이빗 가든 빌라입니다.</p><ul><li>Xuân Diệu - West Lake 지역까지 약 <strong>5분</strong>.</li><li>하노이 올드쿼터까지 약 <strong>15분</strong>.</li><li>가족, 친구 그룹, 주말 스테이케이션 또는 원격 근무에 적합합니다.</li></ul><div class="photo block-photo location-photo"><img src="assets/images/ladi-valley-hero.webp" alt="Ladi Valley" loading="lazy" decoding="async"><span class="ph-lab">위치</span></div></div></details>
+<details class="info-block" id="kr-extra"><summary>1.2 추가 정보</summary><div class="block-body content"><ul><li>2층 빌라, 침실 3개, 침대 4개, 넓은 거실, 큰 주방, 발코니와 전용 정원.</li><li>전용 욕실 4개가 있어 단체도 편하게 사용할 수 있습니다.</li><li>1층: 거실, 침실 1개, 주방/식탁, 욕실 2개, 정원.</li><li>2층: 욕실이 딸린 침실 2개와 발코니.</li></ul><div class="photo block-photo"><img src="assets/images/ladi-valley-terrace.webp" alt="Ladi Valley" loading="lazy" decoding="async"><span class="ph-lab">추가 정보</span></div></div></details>
+<details class="info-block" id="kr-rules"><summary>1.3 숙소 규칙</summary><div class="block-body content"><ul><li>체크인 14:00 · 체크아웃 11:00.</li><li>실내 금연, 흡연은 정원에서만 가능합니다.</li><li>파티 금지, 22:00 이후 소음 금지.</li><li>출입 코드를 외부인에게 공유하지 마세요.</li><li>외출 전 전기와 에어컨을 꺼 주세요.</li></ul><p>위생용품이나 물티슈를 변기에 버리지 마세요.</p><div class="photo block-photo"><img src="assets/images/valley-05-p4.webp" alt="Ladi Valley" loading="lazy" decoding="async"><span class="ph-lab">숙소 규칙</span></div></div></details>
+<details class="info-block" id="kr-emergency"><summary>1.4 긴급 연락처</summary><div class="block-body content"><div class="emergency-actions"><a href="tel:+84935141368">Host Ladi · +84 93 514 1368</a><a href="mailto:Ladihomestay@gmail.com">Host에게 이메일</a><a href="tel:115">115</a><a href="tel:113">113</a><a href="tel:114">114</a></div><ul><li>Host Ladi — <span class="ph">+84 93 514 1368</span></li><li>Email — <span class="ph">Ladihomestay@gmail.com</span></li><li>응급 115 · 경찰 113 · 소방 114</li></ul></div></details>
+<details class="info-block" id="kr-support"><summary>1.5 추가 지원</summary><div class="block-body content"><ul><li>공항 이동은 요청 시 도와드립니다. 최소 하루 전에 연락해 주세요.</li><li>주변 관광 및 음식 추천과 하롱, 닌빈, 시티 투어 정보를 안내해 드릴 수 있습니다.</li><li>장기 숙박 시 청소 또는 세탁 지원은 Host에게 문의해 주세요.</li></ul></div></details><details class="info-block" id="kr-note"><summary>숙박 시 참고 사항</summary><div class="block-body content"><ul><li>정원에는 특히 저녁에 모기가 있을 수 있습니다. 각 방에 모기 퇴치등과 개인용 모기 기피제가 준비되어 있습니다.</li><li>저녁에 조명을 켤 때는 문을 닫아 벌레가 들어오지 않도록 해 주세요.</li><li>인근 공사로 7:00–17:30에 소음이 발생할 수 있으며 주로 야외 정원에서 들립니다.</li></ul></div></details>
+</section>
+<section class="info-section" id="kr-checkin-checkout"><h3 class="info-title">2. 체크인 &amp; 체크아웃<span class="sub">Arrival and departure</span></h3>
+<details class="info-block" id="kr-checkin"><summary>2.1 체크인</summary><div class="block-body content"><h5>체크인 순서</h5><div class="checkin-steps"><article class="checkin-step"><div class="photo block-photo"><img loading="lazy" decoding="async" src="assets/images/ladi-valley-entrance.webp" alt="Ladi Valley 입구"><span class="ph-lab">Ladi Valley 입구</span></div><div class="checkin-step-copy"><strong>1. 빌라 찾아가기</strong><p>Google Maps를 따라 No. 10, Alley 343 Au Co Street, Tay Ho로 오세요.</p></div></article><article class="checkin-step"><div class="checkin-step-copy"><strong>2. Host 안내 확인</strong><p>도착 전 또는 체크인 당일에 전송되는 상세 안내와 출입 코드를 확인하세요.</p></div></article><article class="checkin-step"><div class="checkin-step-copy"><strong>3. 키패드로 문 열기</strong><p>키패드를 터치해 켠 후 전달받은 코드를 입력하고 # 또는 ✓를 누르세요.</p></div></article></div><p>체크인은 14:00부터입니다. 예약 인원 외에는 코드를 공유하지 마세요. 오류가 나면 천천히 입력하고, 계속 안 되면 Host Ladi에게 연락하세요.</p></div></details>
+<details class="info-block" id="kr-checkout"><summary>2.2 체크아웃</summary><div class="block-body content"><ul><li>11:00 전 체크아웃.</li><li>퇴실 전 에어컨, 조명, 전기기기를 꺼 주세요.</li><li>개인 물품을 확인하고 문을 잘 닫아 주세요.</li></ul><p>늦은 체크아웃은 Host에게 빌라 이용 가능 여부를 확인해 주세요.</p><div class="photo block-photo"><img src="assets/images/ladi-valley-garden-terrace.webp" alt="Ladi Valley" loading="lazy" decoding="async"><span class="ph-lab">체크아웃</span></div></div></details>
+</section>
+<section class="info-section" id="kr-appliances"><h3 class="info-title">3. 실내 기기 사용 안내<span class="sub">In-home appliance guide</span></h3>
+<details class="info-block" id="kr-wifi"><summary>3.1 WiFi</summary><div class="block-body content"><h5>WiFi 연결</h5><dl class="wifi-credentials"><div><dt>네트워크</dt><dd>Ladi Valley</dd></div><div><dt>비밀번호</dt><dd>체크인 전에 Host가 전송합니다</dd></div></dl><p>휴대전화 WiFi를 껐다 켜고 다시 연결하세요. 계속 느리거나 연결되지 않으면 Host에게 공유기 점검을 요청하세요.</p></div></details>
+<details class="info-block" id="kr-ac"><summary>3.2 에어컨 &amp; 온수</summary><div class="block-body content"><article class="device-instruction-group"><div class="photo block-photo"><img src="assets/images/ladi-valley-bedroom-ac.webp" alt="Ladi Valley" loading="lazy" decoding="async"><span class="ph-lab">에어컨 &amp; 온수</span></div><div class="device-copy"><ul><li>각 방에 에어컨이 있습니다. Cool 모드와 25-26°C를 권장합니다.</li><li>온수는 24시간 사용 가능합니다.</li><li>외출 시 에어컨을 꺼 주세요.</li></ul></div></article></div></details>
+<details class="info-block" id="kr-cooktop"><summary>3.3 주방</summary><div class="block-body content"><article class="device-instruction-group"><div class="photo block-photo"><img src="assets/images/ladi-valley-kitchen-full.webp" alt="Ladi Valley" loading="lazy" decoding="async"><span class="ph-lab">주방</span></div><div class="device-copy"><ul><li>조리대, 냉장고, 전기포트, 냄비, 팬, 식기와 기본 조리도구가 준비되어 있습니다.</li></ul><ol><li>조리기기에 맞는 냄비나 팬을 사용하세요.</li><li>전원을 켜고 조리 구역에 냄비를 놓은 뒤 온도를 조절하세요.</li><li>조리 후 전원을 끄고 표면이 식은 뒤 닦아 주세요.</li></ol></div></article></div></details>
+<details class="info-block" id="kr-microwave"><summary>3.4 주방 도구 &amp; 핫팟</summary><div class="block-body content"><article class="device-instruction-group"><div class="photo block-photo"><img src="assets/images/ladi-valley-kitchen.webp" alt="Ladi Valley" loading="lazy" decoding="async"><span class="ph-lab">주방 도구</span></div><div class="device-copy"><ul><li>이동식 핫팟 스토브가 있습니다. 사용 후 식기와 조리도구를 세척해 주세요.</li></ul></div></article></div></details>
+<details class="info-block" id="kr-tv"><summary>3.5 Smart TV</summary><div class="block-body content"><article class="device-instruction-group"><div class="photo block-photo"><img src="assets/images/valley-06-p4.webp" alt="Ladi Valley" loading="lazy" decoding="async"><span class="ph-lab">Smart TV</span></div><div class="device-copy"><p>Netflix와 YouTube를 이용할 수 있습니다. 개인 계정은 체크아웃 전에 로그아웃해 주세요.</p></div></article></div></details>
+<details class="info-block" id="kr-laundry"><summary>3.6 세탁/건조</summary><div class="block-body content"><article class="device-instruction-group"><div class="photo block-photo"><img src="assets/images/valley-14-p8.webp" alt="Ladi Valley" loading="lazy" decoding="async"><span class="ph-lab">세탁/건조</span></div><div class="device-copy"><ul><li>전용 세탁기와 건조기가 있습니다. 세탁물을 과하게 넣지 마세요.</li></ul><p>옷 주머니를 확인하고 과적하지 마세요. 사용 후에는 문을 조금 열어 건조해 주세요.</p></div></article></div></details>
+<details class="info-block" id="kr-heater"><summary>3.7 정원</summary><div class="block-body content"><article class="device-instruction-group"><div class="photo block-photo"><img src="assets/images/ladi-valley-garden.webp" alt="Ladi Valley" loading="lazy" decoding="async"><span class="ph-lab">정원</span></div><div class="device-copy"><ul><li>전용 정원과 야외 식사 공간이 있습니다. 22:00 이후에는 조용히 이용해 주세요.</li></ul></div></article></div></details>
+<details class="info-block" id="kr-other"><summary>3.8 기타 시설</summary><div class="block-body content"><article class="device-instruction-group"><div class="photo block-photo"><img src="assets/images/ladi-valley-kitchen-full.webp" alt="Ladi Valley" loading="lazy" decoding="async"><span class="ph-lab">기타 시설</span></div><div class="device-copy"><ul><li>헤어드라이어, 수건, 기본 욕실용품, 체스와 보드게임이 준비되어 있습니다.</li></ul></div></article></div></details>
+</section>
+    </div></div>
+  </details><details class="lang-panel chinese" data-lang-panel="zh" lang="zh-Hans">
+    <summary><span class="flag">CN</span><span class="lang-name cjk">中文</span></summary>
+    <div class="inside"><div class="section-stack">
+      <section class="info-section" id="cn-general"><h3 class="info-title">1. 基本信息<span class="sub">General information</span></h3>
+        <details class="info-block" id="cn-address" open=""><summary>1.1 位置</summary><div class="block-body content location-layout"><a class="map-button" href="https://maps.app.goo.gl/AJGwJwu6iq7QDAKL8" target="_blank" rel="noopener">google map Ladi Valley</a><p><strong>地址：</strong>No. 10, Alley 343 Au Co Street, Tay Ho, Hanoi.<br><strong>您的房源：</strong>Ladi Valley — 靠近西湖的两层私人花园别墅。</p><ul><li>约<strong>5分钟</strong>到 Xuân Diệu - West Lake 咖啡馆、餐厅和酒吧区。</li><li>约<strong>15分钟</strong>到河内老城区。</li><li>适合家庭、朋友小组、周末度假或远程办公。</li></ul><div class="photo block-photo location-photo"><img src="assets/images/ladi-valley-hero.webp" alt="Ladi Valley" loading="lazy" decoding="async"><span class="ph-lab">位置</span></div></div></details>
+        <details class="info-block" id="cn-extra"><summary>1.2 更多信息</summary><div class="block-body content"><ul><li><strong>空间：</strong>两层别墅，3间卧室，4张床，宽敞客厅，大厨房，阳台和私人花园。</li><li><strong>卫生间：</strong>4个独立卫生间，适合多人入住。</li><li><strong>一楼：</strong>客厅、1间卧室、厨房和餐桌、2个卫生间、花园。</li><li><strong>二楼：</strong>2间套房卧室，每间都有独立卫生间和大窗户。</li></ul><div class="photo block-photo"><img src="assets/images/ladi-valley-terrace.webp" alt="Ladi Valley" loading="lazy" decoding="async"><span class="ph-lab">更多信息</span></div></div></details>
+        <details class="info-block" id="cn-rules"><summary>1.3 房屋规则</summary><div class="block-body content"><ul><li><strong>入住：</strong>14:00 | <strong>退房：</strong>11:00。</li><li>室内禁止吸烟，可在花园吸烟。</li><li>禁止派对，<strong>22:00后</strong>请保持安静。</li><li>请勿向预订外人员分享门锁密码。</li><li>请勿将卫生用品或湿毛巾放入马桶。</li><li>外出前请关闭电器和空调。</li></ul><p>请勿将卫生用品或湿巾丢入马桶。</p><div class="photo block-photo"><img src="assets/images/valley-05-p4.webp" alt="Ladi Valley" loading="lazy" decoding="async"><span class="ph-lab">房屋规则</span></div></div></details>
+        <details class="info-block" id="cn-emergency"><summary>1.4 紧急联系</summary><div class="block-body content"><div class="emergency-actions"><a href="tel:+84935141368">Host Ladi · +84 93 514 1368</a><a href="mailto:Ladihomestay@gmail.com">发送邮件给 Host</a><a href="tel:115">115</a><a href="tel:113">113</a><a href="tel:114">114</a></div><ul><li>Host Ladi — <span class="ph">+84 93 514 1368</span></li><li>Email — <span class="ph">Ladihomestay@gmail.com</span></li><li>急救115 · 警察113 · 消防114</li></ul></div></details>
+        <details class="info-block" id="cn-support"><summary>1.5 额外服务</summary><div class="block-body content"><ul><li>可按需协助安排机场接送，请至少提前一天联系。</li><li>Host 可提供本地景点、美食推荐，以及下龙、宁平和城市游览信息。</li><li>长住客人可联系 Host 咨询清洁或洗衣协助。</li></ul></div></details>
+        <details class="info-block" id="cn-note"><summary>1.6 其他注意事项</summary><div class="block-body content"><ul><li>花园可能有蚊子，尤其在傍晚。每间房均备有灭蚊灯和个人驱蚊喷雾。</li><li>晚间开灯时请关门，减少昆虫进入。</li><li>附近施工可能在 7:00–17:30 产生噪音，主要在户外花园可以听到。</li></ul></div></details>
+      </section>
+      <section class="info-section" id="cn-checkin-checkout"><h3 class="info-title">2. 入住 &amp; 退房<span class="sub">Arrival and departure</span></h3>
+        <details class="info-block" id="cn-checkin"><summary>2.1 入住</summary><div class="block-body content"><h5>入住步骤</h5><div class="checkin-steps"><article class="checkin-step"><div class="photo block-photo"><img loading="lazy" decoding="async" src="assets/images/ladi-valley-entrance.webp" alt="Ladi Valley 入口"><span class="ph-lab">Ladi Valley 入口</span></div><div class="checkin-step-copy"><strong>1. 找到别墅</strong><p>按照 Google Maps 前往 No. 10, Alley 343 Au Co Street, Tay Ho。</p></div></article><article class="checkin-step"><div class="checkin-step-copy"><strong>2. 阅读 Host 指引</strong><p>查看抵达前或入住当天发送的详细指引和门禁密码。</p></div></article><article class="checkin-step"><div class="checkin-step-copy"><strong>3. 使用密码键盘开门</strong><p>轻触键盘唤醒，输入收到的密码，再按 # 或 ✓。</p></div></article></div><p>14:00 起入住。请勿向预订以外的人分享密码。如输入失败，请缓慢重试；仍有问题请联系 Host Ladi。</p></div></details>
+        <details class="info-block" id="cn-checkout"><summary>2.2 退房</summary><div class="block-body content"><ul><li><strong>退房：</strong>11:00前。</li><li>离开前请关闭空调、灯和电器。</li><li>检查个人物品并关好门。</li></ul><p>如需延迟退房，请联系 Host 确认别墅是否可安排。</p><div class="photo block-photo"><img src="assets/images/ladi-valley-garden-terrace.webp" alt="Ladi Valley" loading="lazy" decoding="async"><span class="ph-lab">退房</span></div></div></details>
+      </section>
+      <section class="info-section" id="cn-appliances"><h3 class="info-title">3. 室内设备使用指南<span class="sub">In-home appliance guide</span></h3>
+        <details class="info-block" id="cn-wifi"><summary>3.1 WiFi</summary><div class="block-body content"><h5>连接 WiFi</h5><dl class="wifi-credentials"><div><dt>网络名称</dt><dd>Ladi Valley</dd></div><div><dt>密码</dt><dd>Host 将在入住前发送</dd></div></dl><p>关闭并重新打开手机 WiFi 后重新连接。如仍缓慢或无法连接，请联系 Host 检查路由器。</p></div></details>
+        <details class="info-block" id="cn-ac"><summary>3.2 空调 &amp; 热水</summary><div class="block-body content"><article class="device-instruction-group"><div class="photo block-photo"><img src="assets/images/ladi-valley-bedroom-ac.webp" alt="Ladi Valley" loading="lazy" decoding="async"><span class="ph-lab">空调 &amp; 热水</span></div><div class="device-copy"><ul><li>所有房间都有空调，建议使用 Cool 模式，25-26°C较舒适。</li><li>热水24小时可用。</li><li>外出前请关闭空调。</li></ul></div></article></div></details>
+        <details class="info-block" id="cn-cooktop"><summary>3.3 厨房</summary><div class="block-body content"><article class="device-instruction-group"><div class="photo block-photo"><img src="assets/images/ladi-valley-kitchen-full.webp" alt="Ladi Valley" loading="lazy" decoding="async"><span class="ph-lab">厨房</span></div><div class="device-copy"><ul><li>配有炉灶、冰箱、电热水壶、锅、平底锅、餐具和基本厨具。</li><li>使用后请清洁并放回原位。</li></ul><ol><li>使用适合炉具的锅具。</li><li>打开电源，将锅放在烹饪区并调整温度。</li><li>烹饪后关闭电源，待表面冷却后再擦拭。</li></ol></div></article></div></details>
+        <details class="info-block" id="cn-microwave"><summary>3.4 厨具 &amp; 火锅炉</summary><div class="block-body content"><article class="device-instruction-group"><div class="photo block-photo"><img src="assets/images/ladi-valley-kitchen.webp" alt="Ladi Valley" loading="lazy" decoding="async"><span class="ph-lab">厨具</span></div><div class="device-copy"><ul><li>有便携式火锅炉，适合家庭或小型聚餐。</li><li>使用后请清洗餐具和厨具。</li></ul></div></article></div></details>
+        <details class="info-block" id="cn-tv"><summary>3.5 Smart TV</summary><div class="block-body content"><article class="device-instruction-group"><div class="photo block-photo"><img src="assets/images/valley-06-p4.webp" alt="Ladi Valley" loading="lazy" decoding="async"><span class="ph-lab">Smart TV</span></div><div class="device-copy"><p>Smart TV 可连接网络，使用 Netflix 和 YouTube。如登录个人账号，请退房前退出。</p></div></article></div></details>
+        <details class="info-block" id="cn-laundry"><summary>3.6 洗衣烘干</summary><div class="block-body content"><article class="device-instruction-group"><div class="photo block-photo"><img src="assets/images/valley-14-p8.webp" alt="Ladi Valley" loading="lazy" decoding="async"><span class="ph-lab">洗衣烘干</span></div><div class="device-copy"><ul><li>别墅配有私人洗衣机和烘干机。</li><li>适合长住客人或带儿童的家庭。</li><li>请勿一次放入过多衣物。</li></ul><p>洗衣前检查口袋，请勿超量放入衣物；使用后将机门微开通风。</p></div></article></div></details>
+        <details class="info-block" id="cn-heater"><summary>3.7 私人花园</summary><div class="block-body content"><article class="device-instruction-group"><div class="photo block-photo"><img src="assets/images/ladi-valley-garden.webp" alt="Ladi Valley" loading="lazy" decoding="async"><span class="ph-lab">私人花园</span></div><div class="device-copy"><ul><li>私人花园有休闲座位和户外用餐区。</li><li>22:00后请保持安静。</li></ul></div></article></div></details>
+        <details class="info-block" id="cn-other"><summary>3.8 其他设备</summary><div class="block-body content"><article class="device-instruction-group"><div class="photo block-photo"><img src="assets/images/ladi-valley-kitchen-full.webp" alt="Ladi Valley" loading="lazy" decoding="async"><span class="ph-lab">其他设备</span></div><div class="device-copy"><ul><li>房间内准备了吹风机、毛巾和基本浴室用品。</li><li>有国际象棋和越南桌游。</li><li>外出前请关闭所有电器。</li></ul></div></article></div></details>
+      </section>
+    </div></div>
+  </details><details class="lang-panel japanese" data-lang-panel="ja" lang="ja">
+    <summary><span class="flag">JP</span><span class="lang-name cjk">日本語</span></summary>
+    <div class="inside"><div class="section-stack">
+      <section class="info-section" id="jp-general"><h3 class="info-title">1. 基本情報<span class="sub">General information</span></h3>
+        <details class="info-block" id="jp-address" open=""><summary>1.1 場所</summary><div class="block-body content location-layout"><a class="map-button" href="https://maps.app.goo.gl/AJGwJwu6iq7QDAKL8" target="_blank" rel="noopener">google map Ladi Valley</a><p><strong>住所:</strong> No. 10, Alley 343 Au Co Street, Tay Ho, Hanoi.<br><strong>お部屋:</strong> Ladi Valley — 西湖近くの2階建てプライベートガーデン付きヴィラです。</p><ul><li>Xuân Diệu - West Lake エリアまで約<strong>5分</strong>。</li><li>旧市街まで約<strong>15分</strong>。</li><li>家族、友人グループ、週末滞在、リモートワークに適しています。</li></ul><div class="photo block-photo location-photo"><img src="assets/images/ladi-valley-hero.webp" alt="Ladi Valley" loading="lazy" decoding="async"><span class="ph-lab">場所</span></div></div></details>
+        <details class="info-block" id="jp-extra"><summary>1.2 追加情報</summary><div class="block-body content"><ul><li><strong>空間:</strong> 2階建て、寝室3室、ベッド4台、広いリビング、大きなキッチン、バルコニー、専用庭。</li><li><strong>バスルーム:</strong> 専用バスルーム4室。</li><li><strong>1階:</strong> リビング、寝室1室、キッチンとダイニング、バスルーム2室、庭。</li><li><strong>2階:</strong> 専用バスルーム付き寝室2室とバルコニー。</li></ul><div class="photo block-photo"><img src="assets/images/ladi-valley-terrace.webp" alt="Ladi Valley" loading="lazy" decoding="async"><span class="ph-lab">追加情報</span></div></div></details>
+        <details class="info-block" id="jp-rules"><summary>1.3 ハウスルール</summary><div class="block-body content"><ul><li><strong>チェックイン:</strong> 14:00 | <strong>チェックアウト:</strong> 11:00。</li><li>室内は禁煙です。喫煙は庭でお願いします。</li><li>パーティーは禁止、<strong>22:00以降</strong>は静かにお過ごしください。</li><li>予約者以外にアクセスコードを共有しないでください。</li><li>衛生用品や濡れたタオルをトイレに流さないでください。</li><li>外出前に電気とエアコンを消してください。</li></ul><p>衛生用品やウェットティッシュをトイレに流さないでください。</p><div class="photo block-photo"><img src="assets/images/valley-05-p4.webp" alt="Ladi Valley" loading="lazy" decoding="async"><span class="ph-lab">ハウスルール</span></div></div></details>
+        <details class="info-block" id="jp-emergency"><summary>1.4 緊急連絡先</summary><div class="block-body content"><div class="emergency-actions"><a href="tel:+84935141368">Host Ladi · +84 93 514 1368</a><a href="mailto:Ladihomestay@gmail.com">Hostへメール</a><a href="tel:115">115</a><a href="tel:113">113</a><a href="tel:114">114</a></div><ul><li>Host Ladi — <span class="ph">+84 93 514 1368</span></li><li>Email — <span class="ph">Ladihomestay@gmail.com</span></li><li>救急 115 · 警察 113 · 消防 114</li></ul></div></details>
+        <details class="info-block" id="jp-support"><summary>1.5 追加サポート</summary><div class="block-body content"><ul><li>空港送迎はご希望に応じて手配をお手伝いします。少なくとも1日前にご連絡ください。</li><li>周辺の観光・食事のおすすめや、ハロン、ニンビン、シティツアーの情報をご案内できます。</li><li>長期滞在中の清掃や洗濯のご相談はHostへご連絡ください。</li></ul></div></details>
+        <details class="info-block" id="jp-note"><summary>1.6 その他の注意</summary><div class="block-body content"><ul><li>庭には、特に夕方に蚊が出ることがあります。各部屋に捕虫灯と個人用の虫よけスプレーをご用意しています。</li><li>夜に照明をつける際はドアを閉め、虫の侵入を防いでください。</li><li>近隣工事により7:00–17:30に騒音が生じる場合があり、主に屋外の庭で聞こえます。</li></ul></div></details>
+      </section>
+      <section class="info-section" id="jp-checkin-checkout"><h3 class="info-title">2. チェックイン &amp; チェックアウト<span class="sub">Arrival and departure</span></h3>
+        <details class="info-block" id="jp-checkin"><summary>2.1 チェックイン</summary><div class="block-body content"><h5>チェックインの手順</h5><div class="checkin-steps"><article class="checkin-step"><div class="photo block-photo"><img loading="lazy" decoding="async" src="assets/images/ladi-valley-entrance.webp" alt="Ladi Valleyの入口"><span class="ph-lab">Ladi Valleyの入口</span></div><div class="checkin-step-copy"><strong>1. ヴィラへ向かう</strong><p>Google Mapsに従い、No. 10, Alley 343 Au Co Street, Tay Hoへお越しください。</p></div></article><article class="checkin-step"><div class="checkin-step-copy"><strong>2. Hostの案内を確認</strong><p>到着前またはチェックイン当日に届く詳細案内とアクセスコードをご確認ください。</p></div></article><article class="checkin-step"><div class="checkin-step-copy"><strong>3. キーパッドで解錠</strong><p>キーパッドに触れて点灯させ、届いたコードを入力して # または ✓ を押してください。</p></div></article></div><p>チェックインは14:00からです。予約者以外にコードを共有しないでください。エラーの場合はゆっくり入力し直し、解決しない場合はHost Ladiへご連絡ください。</p></div></details>
+        <details class="info-block" id="jp-checkout"><summary>2.2 チェックアウト</summary><div class="block-body content"><ul><li><strong>チェックアウト:</strong> 11:00まで。</li><li>出発前にエアコン、照明、電気機器を消してください。</li><li>忘れ物を確認し、ドアをしっかり閉めてください。</li></ul><p>レイトチェックアウトをご希望の場合は、Hostへヴィラの空き状況をご確認ください。</p><div class="photo block-photo"><img src="assets/images/ladi-valley-garden-terrace.webp" alt="Ladi Valley" loading="lazy" decoding="async"><span class="ph-lab">チェックアウト</span></div></div></details>
+      </section>
+      <section class="info-section" id="jp-appliances"><h3 class="info-title">3. 室内設備の使い方<span class="sub">In-home appliance guide</span></h3>
+        <details class="info-block" id="jp-wifi"><summary>3.1 WiFi</summary><div class="block-body content"><h5>WiFiに接続</h5><dl class="wifi-credentials"><div><dt>ネットワーク名</dt><dd>Ladi Valley</dd></div><div><dt>パスワード</dt><dd>チェックイン前にHostからお送りします</dd></div></dl><p>スマートフォンのWiFiを一度オフにしてから再接続してください。遅い、または接続できない場合はHostへルーターの確認をご依頼ください。</p></div></details>
+        <details class="info-block" id="jp-ac"><summary>3.2 エアコン &amp; お湯</summary><div class="block-body content"><article class="device-instruction-group"><div class="photo block-photo"><img src="assets/images/ladi-valley-bedroom-ac.webp" alt="Ladi Valley" loading="lazy" decoding="async"><span class="ph-lab">エアコン &amp; お湯</span></div><div class="device-copy"><ul><li>全室にエアコンがあります。Cool モード、25-26°Cがおすすめです。</li><li>お湯は24時間利用できます。</li><li>外出時はエアコンを消してください。</li></ul></div></article></div></details>
+        <details class="info-block" id="jp-cooktop"><summary>3.3 キッチン</summary><div class="block-body content"><article class="device-instruction-group"><div class="photo block-photo"><img src="assets/images/ladi-valley-kitchen-full.webp" alt="Ladi Valley" loading="lazy" decoding="async"><span class="ph-lab">キッチン</span></div><div class="device-copy"><ul><li>コンロ、冷蔵庫、ケトル、鍋、フライパン、食器、基本的な調理器具があります。</li><li>使用後は清掃して元の場所へ戻してください。</li></ul><ol><li>コンロに適した鍋やフライパンを使用してください。</li><li>電源を入れ、加熱部に鍋を置いて温度を調整してください。</li><li>調理後は電源を切り、表面が冷めてから拭いてください。</li></ol></div></article></div></details>
+        <details class="info-block" id="jp-microwave"><summary>3.4 調理器具 &amp; 鍋用コンロ</summary><div class="block-body content"><article class="device-instruction-group"><div class="photo block-photo"><img src="assets/images/ladi-valley-kitchen.webp" alt="Ladi Valley" loading="lazy" decoding="async"><span class="ph-lab">調理器具</span></div><div class="device-copy"><ul><li>家族や小さな集まりに使えるポータブル鍋用コンロがあります。</li><li>使用後は食器と調理器具を洗ってください。</li></ul></div></article></div></details>
+        <details class="info-block" id="jp-tv"><summary>3.5 Smart TV</summary><div class="block-body content"><article class="device-instruction-group"><div class="photo block-photo"><img src="assets/images/valley-06-p4.webp" alt="Ladi Valley" loading="lazy" decoding="async"><span class="ph-lab">Smart TV</span></div><div class="device-copy"><p>Smart TV で Netflix と YouTube を利用できます。個人アカウントでログインした場合は、退出前にログアウトしてください。</p></div></article></div></details>
+        <details class="info-block" id="jp-laundry"><summary>3.6 洗濯乾燥</summary><div class="block-body content"><article class="device-instruction-group"><div class="photo block-photo"><img src="assets/images/valley-14-p8.webp" alt="Ladi Valley" loading="lazy" decoding="async"><span class="ph-lab">洗濯乾燥</span></div><div class="device-copy"><ul><li>専用の洗濯機と乾燥機があります。</li><li>長期滞在やお子様連れのご家族に便利です。</li><li>洗濯物を入れすぎないでください。</li></ul><p>衣類のポケットを確認し、詰め込みすぎないでください。使用後はドアを少し開けて乾燥させてください。</p></div></article></div></details>
+        <details class="info-block" id="jp-heater"><summary>3.7 プライベートガーデン</summary><div class="block-body content"><article class="device-instruction-group"><div class="photo block-photo"><img src="assets/images/ladi-valley-garden.webp" alt="Ladi Valley" loading="lazy" decoding="async"><span class="ph-lab">ガーデン</span></div><div class="device-copy"><ul><li>専用庭にはリラックスできる椅子と屋外ダイニングスペースがあります。</li><li>22:00以降は静かにご利用ください。</li></ul></div></article></div></details>
+        <details class="info-block" id="jp-other"><summary>3.8 その他の設備</summary><div class="block-body content"><article class="device-instruction-group"><div class="photo block-photo"><img src="assets/images/ladi-valley-kitchen-full.webp" alt="Ladi Valley" loading="lazy" decoding="async"><span class="ph-lab">その他の設備</span></div><div class="device-copy"><ul><li>ヘアドライヤー、タオル、基本的なバス用品があります。</li><li>チェスとボードゲームがあります。</li><li>外出前にすべての電気機器を消してください。</li></ul></div></article></div></details>
+      </section>
+    </div></div>
+  </details></div>
+  </div>
+</section>
+
+<!-- ============ HANOI GUIDE BOOK ============ -->
+<section class="city-guide" id="hanoi-guide-book" hidden="" aria-labelledby="city-guide-title">
+  <div class="city-guide-card rv">
+    <div class="city-guide-copy">
+      <p class="city-guide-eyebrow" data-copy="cityGuideEyebrow">Ladi City Notes</p>
+      <h2 class="city-guide-title" id="city-guide-title" data-copy="cityGuideTitle">Khám phá Hà Nội cùng Ladi</h2>
+      <p class="city-guide-description" data-copy="cityGuideDescription">Những quán cà phê, món ăn, địa điểm văn hóa và góc phố được Ladi chọn lọc cho hành trình của bạn.</p>
+    </div>
+    <div class="city-guide-action">
+      <!-- Replace this button with an anchor when the Hanoi Guide Book URL is available. -->
+      <button class="city-guide-button" type="button" disabled="" data-copy="cityGuideCta">Mở Hanoi Guide Book</button>
+      <span class="city-guide-status" data-copy="cityGuidePending">Liên kết đang được cập nhật</span>
+    </div>
+  </div>
+</section>
 
 <!-- ============ INTRO ============ -->
 <section class="section" id="gioithieu">
   <div class="center rv">
-    <div class="eyebrow">Chào mừng về Ladi Valley</div>
-    <h2 class="big">VILLA SÂN VƯỜN<br>GIỮA KHU HỒ TÂY</h2>
+    <div class="eyebrow" data-copy="aboutEyebrow">Về kỳ nghỉ</div>
+    <h2 class="big">LADI VALLEY<br><span data-copy="aboutTitle">Một khoảng sân xanh gần Hồ Tây</span></h2>
     <p class="lede">
-      Tận hưởng kỳ nghỉ yên bình tại villa 2 tầng, 3 phòng ngủ, 4 phòng vệ sinh riêng, phòng khách rộng, bếp lớn và sân vườn xanh mát. Phù hợp cho gia đình, nhóm bạn, staycation cuối tuần hoặc làm việc từ xa.
-      <span class="en">A spacious 3-bedroom villa near West Lake, with a cozy living room, full kitchen, private garden and easy access to Xuân Diệu, cafés and restaurants.</span>
+      <span data-copy="aboutStory">Ladi Valley là villa hai tầng với sân vườn riêng, phòng khách rộng và bếp lớn. Ghế ngồi cùng bàn ăn ngoài trời dành chỗ cho cà phê sáng, bữa tối và những khoảng nghỉ cùng gia đình hoặc bạn bè.</span>
+      <span class="en" data-copy="aboutFacts">2 tầng · 3 phòng ngủ · 4 giường · 4 WC riêng · Ban công · Sân vườn</span>
     </p>
   </div>
 </section>
 
 <!-- ============ PHOTO GRID ============ -->
 <section class="section" id="thuvien" style="padding-top:0">
-  <div class="grid rv">
-    <div class="photo"><img src="assets/images/ladi-valley-living-room.webp" alt="Phòng khách Ladi Valley"><span class="ph-lab">Phòng khách</span></div>
-    <div class="photo"><img src="assets/images/ladi-valley-bedroom.webp" alt="Phòng ngủ Ladi Valley"><span class="ph-lab">Phòng ngủ</span></div>
-    <div class="photo"><img src="assets/images/ladi-valley-kitchen.webp" alt="Khu bếp Ladi Valley"><span class="ph-lab">Khu bếp</span></div>
-    <div class="photo"><img src="assets/images/ladi-valley-garden.webp" alt="Sân vườn Ladi Valley"><span class="ph-lab">Sân vườn</span></div>
-  </div>
-</section>
-
-<div class="guide-transition rv">
-  <div class="rule"><span class="mark">Guest Guide</span></div>
-  <h3>Choose your language</h3>
-  <p>Thông tin cần thiết cho kỳ lưu trú tại Ladi Valley</p>
-</div>
-
-<!-- ============ LANGUAGE ACCORDIONS ============ -->
-<section class="language-block" id="languages">
-  <div class="language-shell">
-    <div class="language-note rv">
-      <ul>
-        <li>
-          <p>Hello, this is <strong>Ladi Homestay</strong>.</p>
-          <p>Click the triangle to the left of the language to get instructions.</p>
-        </li>
-        <li>
-          <p>こんにちは、<strong>Ladi Homestay</strong> です。</p>
-          <p>言語の左側の三角をクリックすると、案内事項が表示されます。</p>
-        </li>
-        <li>
-          <p>您好，这里是 <strong>Ladi Homestay</strong>。</p>
-          <p>点击语言左侧三角形就会出现提示事项。</p>
-        </li>
-      </ul>
-    </div>
-
-    <div class="lang-list">
-
-  <details class="lang-panel vietnamese">
-    <summary><span class="flag">VN</span><span class="lang-name">Bấm vào đây để xem thêm thông tin</span></summary>
-    <div class="inside"><div class="section-stack">
-      <section class="info-section" id="thongtin-chung"><h3 class="info-title">1. Thông tin chung<span class="sub">General information</span></h3>
-        <details class="info-block" id="diachi" open><summary>1.1 Vị trí</summary><div class="block-body content location-layout"><div class="photo block-photo location-photo"><img src="assets/images/ladi-valley-hero.webp" alt="Ladi Valley"><span class="ph-lab">Vị trí</span></div><a class="map-button" href="https://maps.app.goo.gl/AJGwJwu6iq7QDAKL8" target="_blank" rel="noopener">google map Ladi Valley</a><p><strong>Địa chỉ:</strong> 337/10 Đường Âu Cơ, Tây Hồ, Hà Nội.<br><strong>Căn của bạn:</strong> Ladi Valley — villa 2 tầng có sân vườn riêng gần Hồ Tây.</p><blockquote><p>Villa nằm trong khu Hồ Tây yên tĩnh, phù hợp cho gia đình, nhóm bạn, staycation cuối tuần hoặc làm việc từ xa.</p></blockquote><h5>Vị trí</h5><ul><li><strong>5 phút</strong> tới khu Xuân Diệu - Hồ Tây với nhiều quán cà phê, nhà hàng và bar đẹp.</li><li><strong>15 phút</strong> di chuyển vào Phố Cổ.</li><li>Gần West Lake Flower Valley, Matcha Vibe, Highland Coffee, Lion Mall, Winmart, Circle K và Annam Gourmet.</li></ul></div></details>
-        <details class="info-block" id="thongtinthem"><summary>1.2 Thông tin thêm</summary><div class="block-body content"><div class="photo block-photo"><img src="assets/images/ladi-valley-terrace.webp" alt="Ladi Valley"><span class="ph-lab">Thông tin thêm</span></div><p>Ngay khi nhận phòng, toàn bộ villa và các tiện nghi như trong ảnh sẽ có sẵn để bạn sử dụng.</p><h5>Thông tin villa</h5><ul><li><strong>Không gian:</strong> 2 tầng, 3 phòng ngủ, 4 giường, phòng khách rộng, bếp lớn, ban công và sân vườn riêng.</li><li><strong>Phòng vệ sinh:</strong> 4 phòng vệ sinh riêng, thuận tiện cho nhóm đông.</li><li><strong>Tầng 1:</strong> phòng khách, 1 phòng ngủ, bếp + bàn ăn, 2 WC và sân vườn.</li><li><strong>Tầng 2:</strong> 2 phòng ngủ khép kín, mỗi phòng có WC riêng và cửa sổ lớn.</li><li><strong>Phù hợp:</strong> gia đình, nhóm bạn, nghỉ dưỡng ngắn ngày, lưu trú dài ngày hoặc làm việc từ xa.</li></ul><h5>Sân vườn</h5><ul><li>Có ghế ngồi chill và khu vực ăn uống ngoài trời.</li><li>Phù hợp uống cà phê sáng, trà chiều, đọc sách hoặc ăn tối ngoài trời.</li></ul></div></details>
-        <details class="info-block" id="noiquy"><summary>1.3 Nội Quy</summary><div class="block-body content"><div class="photo block-photo"><img src="assets/images/valley-05-p4.webp" alt="Ladi Valley"><span class="ph-lab">Nội Quy</span></div><ul><li><strong>Check-in:</strong> 14:00 | <strong>Check-out:</strong> 11:00.</li><li><strong>Không hút thuốc trong nhà</strong>; có thể hút ở sân vườn.</li><li><strong>Không tổ chức party</strong>, không gây ồn sau <strong>22:00</strong> và không làm ảnh hưởng hàng xóm.</li><li><strong>Duy trì an ninh:</strong> không chia sẻ mã truy cập với người ngoài ngoài số lượng người đã đặt phòng.</li><li><strong>Giữ gìn cơ sở vật chất:</strong> không bỏ đồ vệ sinh cá nhân hoặc khăn ướt vào bồn cầu để tránh tắc nghẽn.</li><li>Vui lòng tắt điện, điều hòa và các thiết bị điện khi ra ngoài.</li></ul></div></details>
-        <details class="info-block" id="khan-cap"><summary>1.4 Liên Hệ Khẩn cấp</summary><div class="block-body content"><div class="photo block-photo"><img src="assets/images/ladi-valley-master-bedroom.webp" alt="Ladi Valley"><span class="ph-lab">Liên Hệ Khẩn cấp</span></div><ul><li>Host Ladi — <span class="ph">+84 93 514 1368</span></li><li>Email — <span class="ph">Ladihomestay@gmail.com</span></li><li>Cấp cứu 115 · Cảnh sát 113 · Cứu hoả 114</li></ul></div></details>
-        <details class="info-block" id="hotro"><summary>1.5 Dịch vụ hỗ trợ thêm</summary><div class="block-body content"><div class="photo block-photo"><img src="assets/images/ladi-valley-laundry.webp" alt="Ladi Valley"><span class="ph-lab">Dịch vụ hỗ trợ thêm</span></div><ul><li>Hỗ trợ đặt xe đưa đón sân bay theo yêu cầu. Vui lòng liên hệ host trước ít nhất 1 ngày.</li><li>Host có thể gửi thêm gợi ý địa điểm tham quan, món ăn và đồ uống nên thử tại Hà Nội.</li><li>Hỗ trợ thông tin tour Hạ Long, Ninh Bình và City Tour nếu bạn cần.</li><li>Khách lưu trú dài ngày có thể nhắn host để được hỗ trợ thêm về dọn phòng hoặc giặt giũ.</li></ul></div></details>
-        <details class="info-block" id="luuy"><summary>1.6 Lưu ý khác</summary><div class="block-body content"><div class="photo block-photo"><img src="assets/images/ladi-valley-garden.webp" alt="Ladi Valley"><span class="ph-lab">Lưu ý</span></div><ul><li>Villa có sân vườn xanh mát nên đôi khi có thể xuất hiện muỗi, đặc biệt vào buổi tối.</li><li>Chúng tôi đã chuẩn bị đèn bắt muỗi và xịt chống muỗi cá nhân trong mỗi phòng.</li><li>Nên đóng cửa khi bật đèn buổi tối để hạn chế côn trùng.</li><li>Gần villa có nhà đang xây dựng nên có thể có tiếng ồn từ <strong>7:00-17:30</strong>, chủ yếu nghe thấy khi ở ngoài sân.</li></ul></div></details>
-      </section>
-      <section class="info-section" id="checkin-checkout"><h3 class="info-title">2. Checkin &amp; Check Out<span class="sub">Arrival and departure</span></h3>
-        <details class="info-block" id="checkin"><summary>2.1 Check-In</summary><div class="block-body content"><div class="photo block-photo"><img src="assets/images/ladi-valley-entrance.webp" alt="Ladi Valley"><span class="ph-lab">Check-In</span></div><p>Villa sử dụng <strong>tự động check-in</strong> bằng keypad. Hướng dẫn chi tiết và mã truy cập sẽ được gửi trước ngày bạn đến hoặc trong ngày nhận phòng.</p><h5>Các bước</h5><ol><li>Tới địa chỉ theo Google Maps: <strong>337/10 Đường Âu Cơ, Tây Hồ</strong>.</li><li>Đi theo hướng dẫn check-in host gửi trước khi đến.</li><li>Chạm bàn phím khoá để sáng, nhập mã được cung cấp rồi nhấn <strong>#</strong> hoặc <strong>✓</strong>.</li><li>Vui lòng không chia sẻ mã truy cập cho người ngoài.</li></ol><h5>Lưu ý</h5><ul><li>Xem kỹ hướng dẫn nhận phòng trước khi tới.</li><li>Nếu mã lỗi, nhập chậm từng phím; vẫn lỗi thì nhắn Host Ladi.</li><li>Check-in sau <span class="ph">14:00</span>.</li></ul></div></details>
-        <details class="info-block" id="checkout"><summary>2.2 Check-Out</summary><div class="block-body content"><div class="photo block-photo"><img src="assets/images/ladi-valley-garden-terrace.webp" alt="Ladi Valley"><span class="ph-lab">Check-Out</span></div><ul><li>Check-out trước <span class="ph">11:00</span>.</li><li>Trước khi rời đi, vui lòng tắt điều hoà, đèn và các thiết bị điện.</li><li>Kiểm tra tư trang cá nhân, đóng cửa cẩn thận.</li><li>Nếu cần hỗ trợ trả phòng muộn, vui lòng nhắn host để kiểm tra tình trạng villa.</li></ul></div></details>
-      </section>
-      <section class="info-section" id="huongdan-thietbi"><h3 class="info-title">3. Hướng dẫn sử dụng các thiết bị trong nhà<span class="sub">In-home appliance guide</span></h3>
-        <details class="info-block" id="wifi"><summary>3.1 WiFi</summary><div class="block-body content"><div class="photo block-photo"><img src="assets/images/ladi-valley-bedroom.webp" alt="Ladi Valley"><span class="ph-lab">WiFi</span></div><p>WiFi tốc độ cao, phù hợp họp online và làm việc từ xa.</p><table><tr><td>Tên WiFi (SSID)</td><td><span class="ph">Ladi Valley</span></td></tr><tr><td>Mật khẩu</td><td><span class="ph">Host sẽ gửi trước khi nhận phòng</span></td></tr></table><h5>Nếu mạng chậm hoặc rớt</h5><ol><li>Tắt/bật WiFi trên điện thoại rồi kết nối lại.</li><li>Vẫn chậm? Nhắn host để được hỗ trợ kiểm tra router.</li></ol></div></details>
-        <details class="info-block" id="dieuhoa"><summary>3.2 Điều Hoà &amp; Bình Nóng Lạnh</summary><div class="block-body content"><div class="photo block-photo"><img src="assets/images/ladi-valley-bedroom-ac.webp" alt="Ladi Valley"><span class="ph-lab">Điều Hoà & Bình Nóng Lạnh</span></div><h5>Điều hoà</h5><ol><li>Dùng điều khiển bật/tắt.</li><li>Chọn chế độ <strong>Cool</strong>.</li><li>Đặt <strong>25-26°C</strong> là dễ chịu và tiết kiệm.</li><li>Tắt điều hòa khi ra khỏi nhà.</li></ol><h5>Nước nóng</h5><ul><li>Villa có nước nóng 24/7.</li><li>Nếu cần hỗ trợ về bình nóng lạnh hoặc vòi sen, vui lòng nhắn host.</li></ul></div></details>
-        <details class="info-block" id="bep"><summary>3.3 Khu bếp</summary><div class="block-body content"><div class="photo block-photo"><img src="assets/images/ladi-valley-kitchen-full.webp" alt="Ladi Valley"><span class="ph-lab">Khu bếp</span></div><blockquote><p>Khu bếp có bếp nấu, tủ lạnh, nồi, chảo, bát đĩa, ấm đun nước và dụng cụ nấu ăn cơ bản.</p></blockquote><ol><li>Dùng đúng loại nồi/chảo phù hợp với bếp.</li><li>Nhấn nguồn, đặt nồi lên vùng nấu và chỉnh nhiệt bằng nút điều khiển.</li><li>Nấu xong tắt bếp và lau khi mặt bếp đã nguội.</li></ol></div></details>
-        <details class="info-block" id="lo"><summary>3.4 Dụng cụ bếp &amp; bếp lẩu</summary><div class="block-body content"><div class="photo block-photo"><img src="assets/images/ladi-valley-kitchen.webp" alt="Ladi Valley"><span class="ph-lab">Dụng cụ bếp</span></div><ul><li>Có bếp lẩu rời, phù hợp cho bữa ăn gia đình hoặc nhóm bạn.</li><li>Có ấm đun nước, dụng cụ nấu ăn cơ bản, bát đĩa, nồi và chảo.</li><li>Vui lòng rửa và sắp xếp lại đồ dùng sau khi sử dụng.</li></ul></div></details>
-        <details class="info-block" id="tv"><summary>3.5 Smart TV</summary><div class="block-body content"><div class="photo block-photo"><img src="assets/images/valley-06-p4.webp" alt="Ladi Valley"><span class="ph-lab">Smart TV</span></div><p>Phòng khách có <strong>Smart TV</strong> kết nối Internet, có thể xem <strong>Netflix</strong> và <strong>YouTube</strong>. Nếu đăng nhập tài khoản cá nhân, vui lòng đăng xuất trước khi trả phòng.</p></div></details>
-        <details class="info-block" id="maygiat"><summary>3.6 Máy Giặt sấy</summary><div class="block-body content"><div class="photo block-photo"><img src="assets/images/valley-14-p8.webp" alt="Ladi Valley"><span class="ph-lab">Máy Giặt sấy</span></div><ul><li>Villa có máy giặt và máy sấy riêng.</li><li>Tiện lợi cho khách ở dài ngày hoặc gia đình có trẻ nhỏ.</li><li>Không giặt quá tải và kiểm tra túi quần áo trước khi giặt.</li><li>Sau khi dùng, để hé cửa máy một lúc cho khô thoáng.</li></ul></div></details>
-        <details class="info-block" id="maysuoi"><summary>3.7 Sân vườn &amp; không gian ngoài trời</summary><div class="block-body content"><div class="photo block-photo"><img src="assets/images/ladi-valley-garden.webp" alt="Ladi Valley"><span class="ph-lab">Sân vườn</span></div><ul><li>Sân vườn riêng có ghế ngồi chill và khu vực ăn uống ngoài trời.</li><li>Phù hợp uống cà phê sáng, trà chiều, đọc sách hoặc ăn tối ngoài trời.</li><li>Sau 22:00 vui lòng giữ yên tĩnh để không ảnh hưởng hàng xóm.</li></ul></div></details>
-        <details class="info-block" id="thietbikhac"><summary>3.8 Các thiết bị khác</summary><div class="block-body content"><div class="photo block-photo"><img src="assets/images/ladi-valley-kitchen-full.webp" alt="Ladi Valley"><span class="ph-lab">Các thiết bị khác</span></div><ul><li>Máy sấy tóc tại các phòng.</li><li>Đồ dùng cơ bản: khăn tắm, giấy vệ sinh, dầu gội, sữa tắm.</li><li>Có cờ vua và cá ngựa cho thời gian thư giãn.</li><li>Vui lòng tắt tất cả thiết bị điện trước khi ra ngoài.</li></ul></div></details>
-      </section>
-    </div></div>
-  </details>
-
-  <details class="lang-panel korean">
-    <summary><span class="flag">KR</span><span class="lang-name cjk">자세한 정보를 보려면 여기를 클릭하세요</span></summary>
-    <div class="inside"><div class="section-stack">
-      
-<section class="info-section" id="kr-general"><h3 class="info-title">1. 일반 정보<span class="sub">General information</span></h3>
-<details class="info-block" id="kr-address" open><summary>1.1 위치</summary><div class="block-body content location-layout"><div class="photo block-photo location-photo"><img src="assets/images/ladi-valley-hero.webp" alt="Ladi Valley"><span class="ph-lab">위치</span></div><a class="map-button" href="https://maps.app.goo.gl/AJGwJwu6iq7QDAKL8" target="_blank" rel="noopener">google map Ladi Valley</a><p><strong>주소:</strong> 337/10 Au Co Street, Tay Ho, Hanoi.<br><strong>숙소:</strong> Ladi Valley — 서호 근처의 2층 프라이빗 가든 빌라입니다.</p><ul><li>Xuân Diệu - West Lake 지역까지 약 <strong>5분</strong>.</li><li>하노이 올드쿼터까지 약 <strong>15분</strong>.</li><li>가족, 친구 그룹, 주말 스테이케이션 또는 원격 근무에 적합합니다.</li></ul></div></details>
-<details class="info-block" id="kr-extra"><summary>1.2 추가 정보</summary><div class="block-body content"><div class="photo block-photo"><img src="assets/images/ladi-valley-terrace.webp" alt="Ladi Valley"><span class="ph-lab">추가 정보</span></div><ul><li>2층 빌라, 침실 3개, 침대 4개, 넓은 거실, 큰 주방, 발코니와 전용 정원.</li><li>전용 욕실 4개가 있어 단체도 편하게 사용할 수 있습니다.</li><li>1층: 거실, 침실 1개, 주방/식탁, 욕실 2개, 정원.</li><li>2층: 욕실이 딸린 침실 2개와 발코니.</li></ul></div></details>
-<details class="info-block" id="kr-rules"><summary>1.3 숙소 규칙</summary><div class="block-body content"><div class="photo block-photo"><img src="assets/images/valley-05-p4.webp" alt="Ladi Valley"><span class="ph-lab">숙소 규칙</span></div><ul><li>체크인 14:00 · 체크아웃 11:00.</li><li>실내 금연, 흡연은 정원에서만 가능합니다.</li><li>파티 금지, 22:00 이후 소음 금지.</li><li>출입 코드를 외부인에게 공유하지 마세요.</li><li>외출 전 전기와 에어컨을 꺼 주세요.</li></ul></div></details>
-<details class="info-block" id="kr-emergency"><summary>1.4 긴급 연락처</summary><div class="block-body content"><div class="photo block-photo"><img src="assets/images/ladi-valley-master-bedroom.webp" alt="Ladi Valley"><span class="ph-lab">긴급 연락처</span></div><ul><li>Host Ladi — <span class="ph">+84 93 514 1368</span></li><li>Email — <span class="ph">Ladihomestay@gmail.com</span></li><li>응급 115 · 경찰 113 · 소방 114</li></ul></div></details>
-<details class="info-block" id="kr-support"><summary>1.5 추가 지원</summary><div class="block-body content"><div class="photo block-photo"><img src="assets/images/ladi-valley-laundry.webp" alt="Ladi Valley"><span class="ph-lab">추가 지원</span></div><ul><li>공항 픽업, 하노이 추천 장소, 투어 정보를 도와드릴 수 있습니다.</li><li>정원이 있어 저녁에는 모기가 있을 수 있으며, 각 방에 모기 퇴치용품이 준비되어 있습니다.</li><li>근처 공사로 7:00-17:30 사이 외부 정원에서 소음이 들릴 수 있습니다.</li></ul></div></details>
-</section>
-<section class="info-section" id="kr-checkin-checkout"><h3 class="info-title">2. 체크인 &amp; 체크아웃<span class="sub">Arrival and departure</span></h3>
-<details class="info-block" id="kr-checkin"><summary>2.1 체크인</summary><div class="block-body content"><div class="photo block-photo"><img src="assets/images/ladi-valley-entrance.webp" alt="Ladi Valley"><span class="ph-lab">체크인</span></div><p>키패드 셀프 체크인입니다. 자세한 안내와 출입 코드는 도착 전에 보내드립니다.</p><ol><li>Google Maps 주소로 이동하세요.</li><li>Host가 보낸 안내를 따라 주세요.</li><li>키패드를 터치하고 코드를 입력한 뒤 # 또는 ✓를 누르세요.</li></ol></div></details>
-<details class="info-block" id="kr-checkout"><summary>2.2 체크아웃</summary><div class="block-body content"><div class="photo block-photo"><img src="assets/images/ladi-valley-garden-terrace.webp" alt="Ladi Valley"><span class="ph-lab">체크아웃</span></div><ul><li>11:00 전 체크아웃.</li><li>퇴실 전 에어컨, 조명, 전기기기를 꺼 주세요.</li><li>개인 물품을 확인하고 문을 잘 닫아 주세요.</li></ul></div></details>
-</section>
-<section class="info-section" id="kr-appliances"><h3 class="info-title">3. 실내 기기 사용 안내<span class="sub">In-home appliance guide</span></h3>
-<details class="info-block" id="kr-wifi"><summary>3.1 WiFi</summary><div class="block-body content"><div class="photo block-photo"><img src="assets/images/ladi-valley-bedroom.webp" alt="Ladi Valley"><span class="ph-lab">WiFi</span></div><p>고속 WiFi가 제공되어 온라인 회의와 원격 근무에 적합합니다.</p><table><tr><td>Network</td><td><span class="ph">Ladi Valley</span></td></tr><tr><td>Password</td><td><span class="ph">Sent by host before check-in</span></td></tr></table></div></details>
-<details class="info-block" id="kr-ac"><summary>3.2 에어컨 &amp; 온수</summary><div class="block-body content"><div class="photo block-photo"><img src="assets/images/ladi-valley-bedroom-ac.webp" alt="Ladi Valley"><span class="ph-lab">에어컨 & 온수</span></div><ul><li>각 방에 에어컨이 있습니다. Cool 모드와 25-26°C를 권장합니다.</li><li>온수는 24시간 사용 가능합니다.</li><li>외출 시 에어컨을 꺼 주세요.</li></ul></div></details>
-<details class="info-block" id="kr-cooktop"><summary>3.3 주방</summary><div class="block-body content"><div class="photo block-photo"><img src="assets/images/ladi-valley-kitchen-full.webp" alt="Ladi Valley"><span class="ph-lab">주방</span></div><ul><li>조리대, 냉장고, 전기포트, 냄비, 팬, 식기와 기본 조리도구가 준비되어 있습니다.</li></ul></div></details>
-<details class="info-block" id="kr-microwave"><summary>3.4 주방 도구 &amp; 핫팟</summary><div class="block-body content"><div class="photo block-photo"><img src="assets/images/ladi-valley-kitchen.webp" alt="Ladi Valley"><span class="ph-lab">주방 도구</span></div><ul><li>이동식 핫팟 스토브가 있습니다. 사용 후 식기와 조리도구를 세척해 주세요.</li></ul></div></details>
-<details class="info-block" id="kr-tv"><summary>3.5 Smart TV</summary><div class="block-body content"><div class="photo block-photo"><img src="assets/images/valley-06-p4.webp" alt="Ladi Valley"><span class="ph-lab">Smart TV</span></div><p>Netflix와 YouTube를 이용할 수 있습니다. 개인 계정은 체크아웃 전에 로그아웃해 주세요.</p></div></details>
-<details class="info-block" id="kr-laundry"><summary>3.6 세탁/건조</summary><div class="block-body content"><div class="photo block-photo"><img src="assets/images/valley-14-p8.webp" alt="Ladi Valley"><span class="ph-lab">세탁/건조</span></div><ul><li>전용 세탁기와 건조기가 있습니다. 세탁물을 과하게 넣지 마세요.</li></ul></div></details>
-<details class="info-block" id="kr-heater"><summary>3.7 정원</summary><div class="block-body content"><div class="photo block-photo"><img src="assets/images/ladi-valley-garden.webp" alt="Ladi Valley"><span class="ph-lab">정원</span></div><ul><li>전용 정원과 야외 식사 공간이 있습니다. 22:00 이후에는 조용히 이용해 주세요.</li></ul></div></details>
-<details class="info-block" id="kr-other"><summary>3.8 기타 시설</summary><div class="block-body content"><div class="photo block-photo"><img src="assets/images/ladi-valley-kitchen-full.webp" alt="Ladi Valley"><span class="ph-lab">기타 시설</span></div><ul><li>헤어드라이어, 수건, 기본 욕실용품, 체스와 보드게임이 준비되어 있습니다.</li></ul></div></details>
-</section>
-    </div></div>
-  </details>
-
-  <details class="lang-panel english">
-    <summary><span class="flag">EN</span><span class="lang-name">Click here for more information</span></summary>
-    <div class="inside"><div class="section-stack">
-      
-<section class="info-section" id="en-general"><h3 class="info-title">1. General Information<span class="sub">Thông tin chung</span></h3>
-<details class="info-block" id="en-address" open><summary>1.1 Location</summary><div class="block-body content location-layout"><div class="photo block-photo location-photo"><img src="assets/images/ladi-valley-hero.webp" alt="Ladi Valley"><span class="ph-lab">Location</span></div><a class="map-button" href="https://maps.app.goo.gl/AJGwJwu6iq7QDAKL8" target="_blank" rel="noopener">google map Ladi Valley</a><p><strong>Address:</strong> 337/10 Au Co Street, Tay Ho, Hanoi.<br><strong>Your stay:</strong> Ladi Valley — a 2-floor private garden villa near West Lake.</p><ul><li><strong>5 minutes</strong> to Xuân Diệu - West Lake cafés, restaurants and bars.</li><li><strong>15 minutes</strong> to the Old Quarter.</li><li>A quiet stay for families, friend groups, weekend staycations or remote work.</li></ul></div></details>
-<details class="info-block" id="en-extra"><summary>1.2 Extra Information</summary><div class="block-body content"><div class="photo block-photo"><img src="assets/images/ladi-valley-terrace.webp" alt="Ladi Valley"><span class="ph-lab">Extra Information</span></div><ul><li>2 floors, 3 bedrooms, 4 beds, spacious living room, large kitchen, balcony and private garden.</li><li>4 private bathrooms.</li><li>Ground floor: living room, 1 bedroom, kitchen + dining table, 2 bathrooms and garden.</li><li>Second floor: 2 ensuite bedrooms with private bathrooms and large windows.</li></ul></div></details>
-<details class="info-block" id="en-rules"><summary>1.3 House Rules</summary><div class="block-body content"><div class="photo block-photo"><img src="assets/images/valley-05-p4.webp" alt="Ladi Valley"><span class="ph-lab">House Rules</span></div><ul><li>Check-in 14:00 · check-out 11:00.</li><li>No smoking indoors; smoking is allowed in the garden.</li><li>No parties and no loud noise after 22:00.</li><li>Do not share access codes with anyone outside your reservation.</li><li>Turn off electricity and air conditioners when going out.</li></ul></div></details>
-<details class="info-block" id="en-emergency"><summary>1.4 Emergency Contact</summary><div class="block-body content"><div class="photo block-photo"><img src="assets/images/ladi-valley-master-bedroom.webp" alt="Ladi Valley"><span class="ph-lab">Emergency Contact</span></div><ul><li>Host Ladi — <span class="ph">+84 93 514 1368</span></li><li>Email — <span class="ph">Ladihomestay@gmail.com</span></li><li>Ambulance 115 · Police 113 · Fire 114</li></ul></div></details>
-<details class="info-block" id="en-support"><summary>1.5 Extra Support Services</summary><div class="block-body content"><div class="photo block-photo"><img src="assets/images/ladi-valley-laundry.webp" alt="Ladi Valley"><span class="ph-lab">Extra Support</span></div><ul><li>Airport transfer can be arranged on request.</li><li>We can share local recommendations and tour information.</li><li>Mosquito repellent is prepared; nearby construction noise may occur from 7:00-17:30, mainly outside in the garden.</li></ul></div></details>
-</section>
-<section class="info-section" id="en-checkin-checkout"><h3 class="info-title">2. Check-in &amp; Check-out<span class="sub">Arrival and departure</span></h3>
-<details class="info-block" id="en-checkin"><summary>2.1 Check-In</summary><div class="block-body content"><div class="photo block-photo"><img src="assets/images/ladi-valley-entrance.webp" alt="Ladi Valley"><span class="ph-lab">Check-In</span></div><p>The villa uses keypad self check-in. Detailed instructions and access codes will be sent before arrival.</p><ol><li>Go to the Google Maps address.</li><li>Follow the check-in guide sent by the host.</li><li>Touch the keypad, enter the code and press # or ✓.</li></ol></div></details>
-<details class="info-block" id="en-checkout"><summary>2.2 Check-Out</summary><div class="block-body content"><div class="photo block-photo"><img src="assets/images/ladi-valley-garden-terrace.webp" alt="Ladi Valley"><span class="ph-lab">Check-Out</span></div><ul><li>Check-out before 11:00.</li><li>Turn off air conditioners, lights and electrical devices before leaving.</li><li>Check your belongings and close the door carefully.</li></ul></div></details>
-</section>
-<section class="info-section" id="en-appliances"><h3 class="info-title">3. In-home Appliance Guide<span class="sub">Hướng dẫn thiết bị</span></h3>
-<details class="info-block" id="en-wifi"><summary>3.1 WiFi</summary><div class="block-body content"><div class="photo block-photo"><img src="assets/images/ladi-valley-bedroom.webp" alt="Ladi Valley"><span class="ph-lab">WiFi</span></div><p>High-speed WiFi is suitable for online meetings and remote work.</p><table><tr><td>Network</td><td><span class="ph">Ladi Valley</span></td></tr><tr><td>Password</td><td><span class="ph">Sent by host before check-in</span></td></tr></table></div></details>
-<details class="info-block" id="en-ac"><summary>3.2 AC &amp; Hot Water</summary><div class="block-body content"><div class="photo block-photo"><img src="assets/images/ladi-valley-bedroom-ac.webp" alt="Ladi Valley"><span class="ph-lab">AC & Hot Water</span></div><ul><li>Air conditioning is available in all rooms. Cool mode at 25-26°C is recommended.</li><li>Hot water is available 24/7.</li><li>Turn AC off when going out.</li></ul></div></details>
-<details class="info-block" id="en-cooktop"><summary>3.3 Kitchen</summary><div class="block-body content"><div class="photo block-photo"><img src="assets/images/ladi-valley-kitchen-full.webp" alt="Ladi Valley"><span class="ph-lab">Kitchen</span></div><ul><li>Cooktop, refrigerator, kettle, pots, pans, dishes and basic cookware are prepared.</li></ul></div></details>
-<details class="info-block" id="en-microwave"><summary>3.4 Kitchen Tools &amp; Hotpot</summary><div class="block-body content"><div class="photo block-photo"><img src="assets/images/ladi-valley-kitchen.webp" alt="Ladi Valley"><span class="ph-lab">Kitchen Tools</span></div><ul><li>A portable hotpot stove is available. Please wash and return all dishes and cookware after use.</li></ul></div></details>
-<details class="info-block" id="en-tv"><summary>3.5 Smart TV</summary><div class="block-body content"><div class="photo block-photo"><img src="assets/images/valley-06-p4.webp" alt="Ladi Valley"><span class="ph-lab">Smart TV</span></div><p>The Smart TV has Internet access, Netflix and YouTube. Please log out of personal accounts before check-out.</p></div></details>
-<details class="info-block" id="en-laundry"><summary>3.6 Washer &amp; Dryer</summary><div class="block-body content"><div class="photo block-photo"><img src="assets/images/valley-14-p8.webp" alt="Ladi Valley"><span class="ph-lab">Washer & Dryer</span></div><ul><li>Private washer and dryer are available. Do not overload the machine.</li></ul></div></details>
-<details class="info-block" id="en-heater"><summary>3.7 Private Garden</summary><div class="block-body content"><div class="photo block-photo"><img src="assets/images/ladi-valley-garden.webp" alt="Ladi Valley"><span class="ph-lab">Garden</span></div><ul><li>Private garden with chill seating and outdoor dining area. Please keep quiet after 22:00.</li></ul></div></details>
-<details class="info-block" id="en-other"><summary>3.8 Other Amenities</summary><div class="block-body content"><div class="photo block-photo"><img src="assets/images/ladi-valley-kitchen-full.webp" alt="Ladi Valley"><span class="ph-lab">Other Amenities</span></div><ul><li>Hair dryers, towels, basic bathroom amenities, chess and a board game are prepared.</li></ul></div></details>
-</section>
-    </div></div>
-  </details>
-
-  <details class="lang-panel chinese">
-    <summary><span class="flag">CN</span><span class="lang-name cjk">点击这里查看更多信息</span></summary>
-    <div class="inside"><div class="section-stack">
-      <section class="info-section" id="cn-general"><h3 class="info-title">1. 基本信息<span class="sub">General information</span></h3>
-        <details class="info-block" id="cn-address" open><summary>1.1 位置</summary><div class="block-body content location-layout"><div class="photo block-photo location-photo"><img src="assets/images/ladi-valley-hero.webp" alt="Ladi Valley"><span class="ph-lab">位置</span></div><a class="map-button" href="https://maps.app.goo.gl/AJGwJwu6iq7QDAKL8" target="_blank" rel="noopener">google map Ladi Valley</a><p><strong>地址：</strong>337/10 Au Co Street, Tay Ho, Hanoi.<br><strong>您的房源：</strong>Ladi Valley — 靠近西湖的两层私人花园别墅。</p><ul><li>约<strong>5分钟</strong>到 Xuân Diệu - West Lake 咖啡馆、餐厅和酒吧区。</li><li>约<strong>15分钟</strong>到河内老城区。</li><li>适合家庭、朋友小组、周末度假或远程办公。</li></ul></div></details>
-        <details class="info-block" id="cn-extra"><summary>1.2 更多信息</summary><div class="block-body content"><div class="photo block-photo"><img src="assets/images/ladi-valley-terrace.webp" alt="Ladi Valley"><span class="ph-lab">更多信息</span></div><ul><li><strong>空间：</strong>两层别墅，3间卧室，4张床，宽敞客厅，大厨房，阳台和私人花园。</li><li><strong>卫生间：</strong>4个独立卫生间，适合多人入住。</li><li><strong>一楼：</strong>客厅、1间卧室、厨房和餐桌、2个卫生间、花园。</li><li><strong>二楼：</strong>2间套房卧室，每间都有独立卫生间和大窗户。</li></ul></div></details>
-        <details class="info-block" id="cn-rules"><summary>1.3 房屋规则</summary><div class="block-body content"><div class="photo block-photo"><img src="assets/images/valley-05-p4.webp" alt="Ladi Valley"><span class="ph-lab">房屋规则</span></div><ul><li><strong>入住：</strong>14:00 | <strong>退房：</strong>11:00。</li><li>室内禁止吸烟，可在花园吸烟。</li><li>禁止派对，<strong>22:00后</strong>请保持安静。</li><li>请勿向预订外人员分享门锁密码。</li><li>请勿将卫生用品或湿毛巾放入马桶。</li><li>外出前请关闭电器和空调。</li></ul></div></details>
-        <details class="info-block" id="cn-emergency"><summary>1.4 紧急联系</summary><div class="block-body content"><div class="photo block-photo"><img src="assets/images/ladi-valley-master-bedroom.webp" alt="Ladi Valley"><span class="ph-lab">紧急联系</span></div><ul><li>Host Ladi — <span class="ph">+84 93 514 1368</span></li><li>Email — <span class="ph">Ladihomestay@gmail.com</span></li><li>急救115 · 警察113 · 消防114</li></ul></div></details>
-        <details class="info-block" id="cn-support"><summary>1.5 额外服务</summary><div class="block-body content"><div class="photo block-photo"><img src="assets/images/ladi-valley-laundry.webp" alt="Ladi Valley"><span class="ph-lab">额外服务</span></div><ul><li>可协助安排机场接送，请至少提前1天联系。</li><li>可分享河内景点、美食、咖啡和饮品推荐。</li><li>如需下龙湾、宁平或河内城市游信息，可联系 host。</li></ul></div></details>
-        <details class="info-block" id="cn-note"><summary>1.6 其他注意事项</summary><div class="block-body content"><div class="photo block-photo"><img src="assets/images/ladi-valley-garden.webp" alt="Ladi Valley"><span class="ph-lab">注意事项</span></div><ul><li>别墅有绿色花园，晚上可能会有蚊子。</li><li>每个房间准备了灭蚊灯和个人防蚊喷雾。</li><li>附近有房屋施工，7:00-17:30可能有噪音，主要在花园区域能听到。</li></ul></div></details>
-      </section>
-      <section class="info-section" id="cn-checkin-checkout"><h3 class="info-title">2. 入住 &amp; 退房<span class="sub">Arrival and departure</span></h3>
-        <details class="info-block" id="cn-checkin"><summary>2.1 入住</summary><div class="block-body content"><div class="photo block-photo"><img src="assets/images/ladi-valley-entrance.webp" alt="Ladi Valley"><span class="ph-lab">入住</span></div><p>别墅使用键盘密码自助入住。详细指南和门锁密码会在到达前发送。</p><ol><li>前往 Google Maps 地址。</li><li>按照 host 发送的入住指南操作。</li><li>触摸键盘，输入密码，然后按 <strong>#</strong> 或 <strong>✓</strong>。</li><li>请勿向外人分享门锁密码。</li></ol></div></details>
-        <details class="info-block" id="cn-checkout"><summary>2.2 退房</summary><div class="block-body content"><div class="photo block-photo"><img src="assets/images/ladi-valley-garden-terrace.webp" alt="Ladi Valley"><span class="ph-lab">退房</span></div><ul><li><strong>退房：</strong>11:00前。</li><li>离开前请关闭空调、灯和电器。</li><li>检查个人物品并关好门。</li></ul></div></details>
-      </section>
-      <section class="info-section" id="cn-appliances"><h3 class="info-title">3. 室内设备使用指南<span class="sub">In-home appliance guide</span></h3>
-        <details class="info-block" id="cn-wifi"><summary>3.1 WiFi</summary><div class="block-body content"><div class="photo block-photo"><img src="assets/images/ladi-valley-bedroom.webp" alt="Ladi Valley"><span class="ph-lab">WiFi</span></div><p>高速 WiFi 适合线上会议和远程办公。</p><table><tr><td>网络名</td><td><span class="ph">Ladi Valley</span></td></tr><tr><td>密码</td><td><span class="ph">入住前由 host 发送</span></td></tr></table></div></details>
-        <details class="info-block" id="cn-ac"><summary>3.2 空调 &amp; 热水</summary><div class="block-body content"><div class="photo block-photo"><img src="assets/images/ladi-valley-bedroom-ac.webp" alt="Ladi Valley"><span class="ph-lab">空调 & 热水</span></div><ul><li>所有房间都有空调，建议使用 Cool 模式，25-26°C较舒适。</li><li>热水24小时可用。</li><li>外出前请关闭空调。</li></ul></div></details>
-        <details class="info-block" id="cn-cooktop"><summary>3.3 厨房</summary><div class="block-body content"><div class="photo block-photo"><img src="assets/images/ladi-valley-kitchen-full.webp" alt="Ladi Valley"><span class="ph-lab">厨房</span></div><ul><li>配有炉灶、冰箱、电热水壶、锅、平底锅、餐具和基本厨具。</li><li>使用后请清洁并放回原位。</li></ul></div></details>
-        <details class="info-block" id="cn-microwave"><summary>3.4 厨具 &amp; 火锅炉</summary><div class="block-body content"><div class="photo block-photo"><img src="assets/images/ladi-valley-kitchen.webp" alt="Ladi Valley"><span class="ph-lab">厨具</span></div><ul><li>有便携式火锅炉，适合家庭或小型聚餐。</li><li>使用后请清洗餐具和厨具。</li></ul></div></details>
-        <details class="info-block" id="cn-tv"><summary>3.5 Smart TV</summary><div class="block-body content"><div class="photo block-photo"><img src="assets/images/valley-06-p4.webp" alt="Ladi Valley"><span class="ph-lab">Smart TV</span></div><p>Smart TV 可连接网络，使用 Netflix 和 YouTube。如登录个人账号，请退房前退出。</p></div></details>
-        <details class="info-block" id="cn-laundry"><summary>3.6 洗衣烘干</summary><div class="block-body content"><div class="photo block-photo"><img src="assets/images/valley-14-p8.webp" alt="Ladi Valley"><span class="ph-lab">洗衣烘干</span></div><ul><li>别墅配有私人洗衣机和烘干机。</li><li>适合长住客人或带儿童的家庭。</li><li>请勿一次放入过多衣物。</li></ul></div></details>
-        <details class="info-block" id="cn-heater"><summary>3.7 私人花园</summary><div class="block-body content"><div class="photo block-photo"><img src="assets/images/ladi-valley-garden.webp" alt="Ladi Valley"><span class="ph-lab">私人花园</span></div><ul><li>私人花园有休闲座位和户外用餐区。</li><li>22:00后请保持安静。</li></ul></div></details>
-        <details class="info-block" id="cn-other"><summary>3.8 其他设备</summary><div class="block-body content"><div class="photo block-photo"><img src="assets/images/ladi-valley-kitchen-full.webp" alt="Ladi Valley"><span class="ph-lab">其他设备</span></div><ul><li>房间内准备了吹风机、毛巾和基本浴室用品。</li><li>有国际象棋和越南桌游。</li><li>外出前请关闭所有电器。</li></ul></div></details>
-      </section>
-    </div></div>
-  </details>
-
-  <details class="lang-panel japanese">
-    <summary><span class="flag">JP</span><span class="lang-name cjk">詳しい情報を見るにはここをクリックしてください</span></summary>
-    <div class="inside"><div class="section-stack">
-      <section class="info-section" id="jp-general"><h3 class="info-title">1. 基本情報<span class="sub">General information</span></h3>
-        <details class="info-block" id="jp-address" open><summary>1.1 場所</summary><div class="block-body content location-layout"><div class="photo block-photo location-photo"><img src="assets/images/ladi-valley-hero.webp" alt="Ladi Valley"><span class="ph-lab">場所</span></div><a class="map-button" href="https://maps.app.goo.gl/AJGwJwu6iq7QDAKL8" target="_blank" rel="noopener">google map Ladi Valley</a><p><strong>住所:</strong> 337/10 Au Co Street, Tay Ho, Hanoi.<br><strong>お部屋:</strong> Ladi Valley — 西湖近くの2階建てプライベートガーデン付きヴィラです。</p><ul><li>Xuân Diệu - West Lake エリアまで約<strong>5分</strong>。</li><li>旧市街まで約<strong>15分</strong>。</li><li>家族、友人グループ、週末滞在、リモートワークに適しています。</li></ul></div></details>
-        <details class="info-block" id="jp-extra"><summary>1.2 追加情報</summary><div class="block-body content"><div class="photo block-photo"><img src="assets/images/ladi-valley-terrace.webp" alt="Ladi Valley"><span class="ph-lab">追加情報</span></div><ul><li><strong>空間:</strong> 2階建て、寝室3室、ベッド4台、広いリビング、大きなキッチン、バルコニー、専用庭。</li><li><strong>バスルーム:</strong> 専用バスルーム4室。</li><li><strong>1階:</strong> リビング、寝室1室、キッチンとダイニング、バスルーム2室、庭。</li><li><strong>2階:</strong> 専用バスルーム付き寝室2室とバルコニー。</li></ul></div></details>
-        <details class="info-block" id="jp-rules"><summary>1.3 ハウスルール</summary><div class="block-body content"><div class="photo block-photo"><img src="assets/images/valley-05-p4.webp" alt="Ladi Valley"><span class="ph-lab">ハウスルール</span></div><ul><li><strong>チェックイン:</strong> 14:00 | <strong>チェックアウト:</strong> 11:00。</li><li>室内は禁煙です。喫煙は庭でお願いします。</li><li>パーティーは禁止、<strong>22:00以降</strong>は静かにお過ごしください。</li><li>予約者以外にアクセスコードを共有しないでください。</li><li>衛生用品や濡れたタオルをトイレに流さないでください。</li><li>外出前に電気とエアコンを消してください。</li></ul></div></details>
-        <details class="info-block" id="jp-emergency"><summary>1.4 緊急連絡先</summary><div class="block-body content"><div class="photo block-photo"><img src="assets/images/ladi-valley-master-bedroom.webp" alt="Ladi Valley"><span class="ph-lab">緊急連絡先</span></div><ul><li>Host Ladi — <span class="ph">+84 93 514 1368</span></li><li>Email — <span class="ph">Ladihomestay@gmail.com</span></li><li>救急 115 · 警察 113 · 消防 114</li></ul></div></details>
-        <details class="info-block" id="jp-support"><summary>1.5 追加サポート</summary><div class="block-body content"><div class="photo block-photo"><img src="assets/images/ladi-valley-laundry.webp" alt="Ladi Valley"><span class="ph-lab">追加サポート</span></div><ul><li>空港送迎の手配をお手伝いできます。少なくとも1日前にご連絡ください。</li><li>ハノイの観光、食事、カフェ、ドリンクのおすすめをご案内できます。</li><li>ハロン湾、ニンビン、ハノイ市内ツアーの情報もご相談ください。</li></ul></div></details>
-        <details class="info-block" id="jp-note"><summary>1.6 その他の注意</summary><div class="block-body content"><div class="photo block-photo"><img src="assets/images/ladi-valley-garden.webp" alt="Ladi Valley"><span class="ph-lab">注意</span></div><ul><li>庭があるため、特に夜は蚊が出ることがあります。</li><li>各部屋に蚊取りランプと虫除けスプレーを用意しています。</li><li>近隣で工事があり、7:00-17:30の間に庭側で音が聞こえる場合があります。</li></ul></div></details>
-      </section>
-      <section class="info-section" id="jp-checkin-checkout"><h3 class="info-title">2. チェックイン &amp; チェックアウト<span class="sub">Arrival and departure</span></h3>
-        <details class="info-block" id="jp-checkin"><summary>2.1 チェックイン</summary><div class="block-body content"><div class="photo block-photo"><img src="assets/images/ladi-valley-entrance.webp" alt="Ladi Valley"><span class="ph-lab">チェックイン</span></div><p>ヴィラはキーパッドによるセルフチェックインです。詳しい案内とアクセスコードは到着前に送られます。</p><ol><li>Google Maps の住所へお越しください。</li><li>Host から送られるチェックイン案内に従ってください。</li><li>キーパッドをタッチし、コードを入力して <strong>#</strong> または <strong>✓</strong> を押します。</li><li>アクセスコードを外部の方に共有しないでください。</li></ol></div></details>
-        <details class="info-block" id="jp-checkout"><summary>2.2 チェックアウト</summary><div class="block-body content"><div class="photo block-photo"><img src="assets/images/ladi-valley-garden-terrace.webp" alt="Ladi Valley"><span class="ph-lab">チェックアウト</span></div><ul><li><strong>チェックアウト:</strong> 11:00まで。</li><li>出発前にエアコン、照明、電気機器を消してください。</li><li>忘れ物を確認し、ドアをしっかり閉めてください。</li></ul></div></details>
-      </section>
-      <section class="info-section" id="jp-appliances"><h3 class="info-title">3. 室内設備の使い方<span class="sub">In-home appliance guide</span></h3>
-        <details class="info-block" id="jp-wifi"><summary>3.1 WiFi</summary><div class="block-body content"><div class="photo block-photo"><img src="assets/images/ladi-valley-bedroom.webp" alt="Ladi Valley"><span class="ph-lab">WiFi</span></div><p>高速 WiFi があり、オンライン会議やリモートワークにも適しています。</p><table><tr><td>ネットワーク名</td><td><span class="ph">Ladi Valley</span></td></tr><tr><td>パスワード</td><td><span class="ph">チェックイン前にHostから送信</span></td></tr></table></div></details>
-        <details class="info-block" id="jp-ac"><summary>3.2 エアコン &amp; お湯</summary><div class="block-body content"><div class="photo block-photo"><img src="assets/images/ladi-valley-bedroom-ac.webp" alt="Ladi Valley"><span class="ph-lab">エアコン & お湯</span></div><ul><li>全室にエアコンがあります。Cool モード、25-26°Cがおすすめです。</li><li>お湯は24時間利用できます。</li><li>外出時はエアコンを消してください。</li></ul></div></details>
-        <details class="info-block" id="jp-cooktop"><summary>3.3 キッチン</summary><div class="block-body content"><div class="photo block-photo"><img src="assets/images/ladi-valley-kitchen-full.webp" alt="Ladi Valley"><span class="ph-lab">キッチン</span></div><ul><li>コンロ、冷蔵庫、ケトル、鍋、フライパン、食器、基本的な調理器具があります。</li><li>使用後は清掃して元の場所へ戻してください。</li></ul></div></details>
-        <details class="info-block" id="jp-microwave"><summary>3.4 調理器具 &amp; 鍋用コンロ</summary><div class="block-body content"><div class="photo block-photo"><img src="assets/images/ladi-valley-kitchen.webp" alt="Ladi Valley"><span class="ph-lab">調理器具</span></div><ul><li>家族や小さな集まりに使えるポータブル鍋用コンロがあります。</li><li>使用後は食器と調理器具を洗ってください。</li></ul></div></details>
-        <details class="info-block" id="jp-tv"><summary>3.5 Smart TV</summary><div class="block-body content"><div class="photo block-photo"><img src="assets/images/valley-06-p4.webp" alt="Ladi Valley"><span class="ph-lab">Smart TV</span></div><p>Smart TV で Netflix と YouTube を利用できます。個人アカウントでログインした場合は、退出前にログアウトしてください。</p></div></details>
-        <details class="info-block" id="jp-laundry"><summary>3.6 洗濯乾燥</summary><div class="block-body content"><div class="photo block-photo"><img src="assets/images/valley-14-p8.webp" alt="Ladi Valley"><span class="ph-lab">洗濯乾燥</span></div><ul><li>専用の洗濯機と乾燥機があります。</li><li>長期滞在やお子様連れのご家族に便利です。</li><li>洗濯物を入れすぎないでください。</li></ul></div></details>
-        <details class="info-block" id="jp-heater"><summary>3.7 プライベートガーデン</summary><div class="block-body content"><div class="photo block-photo"><img src="assets/images/ladi-valley-garden.webp" alt="Ladi Valley"><span class="ph-lab">ガーデン</span></div><ul><li>専用庭にはリラックスできる椅子と屋外ダイニングスペースがあります。</li><li>22:00以降は静かにご利用ください。</li></ul></div></details>
-        <details class="info-block" id="jp-other"><summary>3.8 その他の設備</summary><div class="block-body content"><div class="photo block-photo"><img src="assets/images/ladi-valley-kitchen-full.webp" alt="Ladi Valley"><span class="ph-lab">その他の設備</span></div><ul><li>ヘアドライヤー、タオル、基本的なバス用品があります。</li><li>チェスとボードゲームがあります。</li><li>外出前にすべての電気機器を消してください。</li></ul></div></details>
-      </section>
-    </div></div>
-  </details>
-</div>
-  </div>
+  <div class="grid rv"><div class="photo"><img loading="lazy" decoding="async" src="assets/images/ladi-valley-living-room.webp" alt="Phòng khách · Ladi Valley" data-alt-copy="valleyAlt0"><span class="ph-lab" data-copy="valleyGallery0">Phòng khách</span></div><div class="photo"><img loading="lazy" decoding="async" src="assets/images/ladi-valley-bedroom.webp" alt="Phòng ngủ · Ladi Valley" data-alt-copy="valleyAlt1"><span class="ph-lab" data-copy="valleyGallery1">Phòng ngủ</span></div><div class="photo"><img loading="lazy" decoding="async" src="assets/images/ladi-valley-kitchen.webp" alt="Khu bếp · Ladi Valley" data-alt-copy="valleyAlt2"><span class="ph-lab" data-copy="valleyGallery2">Khu bếp</span></div><div class="photo"><img loading="lazy" decoding="async" src="assets/images/ladi-valley-garden.webp" alt="Sân vườn · Ladi Valley" data-alt-copy="valleyAlt3"><span class="ph-lab" data-copy="valleyGallery3">Sân vườn</span></div></div>
 </section>
 
 <!-- ============ FRIEND / HOST ============ -->
 <section class="friend" id="friend">
-  <div class="friend-inner"><div class="photo friend-photo rv"><img src="assets/images/ladi-valley-reading-nook.webp" alt="Host Ladi welcome card"><span class="ph-lab">Host Ladi</span></div><div class="friend-txt rv"><h3>Chào mừng bạn đến với Ladi Valley</h3><div class="fsub">Host Ladi — hospitality tại Hà Nội</div><p>Ladi Valley là căn villa xanh mát tại 10/343 Âu Cơ, Tây Hồ, mang lại cảm giác nghỉ dưỡng riêng tư nhưng vẫn đủ gần trung tâm để khám phá Hà Nội. Không gian phù hợp cho gia đình, nhóm bạn, staycation cuối tuần hoặc những ngày làm việc từ xa cần sự yên tĩnh.</p><p>Theo catalogue sản phẩm, Ladi Homestay có hơn 6 năm kinh nghiệm vận hành lưu trú tại Hà Nội, kết hợp sự thoải mái, nét địa phương và dịch vụ cá nhân hóa cho từng khách.</p><div class="fcontact"><div class="row"><span>Host Ladi</span><span class="ph">+84 93 514 1368</span></div><div class="row"><span>Email</span><span>Ladihomestay@gmail.com</span></div><div class="row"><span>Địa chỉ</span><span>337/10 Đường Âu Cơ, Tây Hồ, Hà Nội</span></div></div><a href="https://www.airbnb.com/rooms/1451455893156768862" target="_blank" rel="noopener" class="btn">Đặt phòng trên Airbnb</a></div></div>
-</section>
+  <div class="friend-inner">
+    <div class="photo friend-photo rv"><img loading="lazy" decoding="async" src="assets/images/ladi-valley-reading-nook.webp" alt="Ladi Valley" data-alt-copy="altHost"><span class="ph-lab" data-copy="galleryRoom">Ladi Valley</span></div>
+    <div class="friend-txt rv">
+      <h3 data-copy="hostTitle">Host Ladi luôn ở đây khi bạn cần</h3>
+      <div class="fsub" data-copy="hostSubtitle">Hỗ trợ trong suốt kỳ lưu trú</div>
+      <p data-copy="hostDescription">Cần đặt xe sân bay, gợi ý tham quan, thông tin tour hoặc hỗ trợ dọn phòng, giặt giũ cho kỳ nghỉ dài ngày? Hãy liên hệ Host Ladi. Vui lòng báo trước ít nhất một ngày nếu cần xe sân bay.</p>
+      <div class="fcontact">
+        <a class="row" href="tel:+84935141368"><span data-copy="hostCall">Gọi Host Ladi</span><span class="ph">+84 93 514 1368</span></a>
+        <a class="row" href="mailto:Ladihomestay@gmail.com"><span>Email</span><span data-copy="hostMessage">Gửi email cho Host</span></a>
+        <div class="row"><span data-copy="hostEmergency">Khẩn cấp</span><span data-copy="hostEmergencyNumbers">Cấp cứu 115 · Cảnh sát 113 · Cứu hỏa 114</span></div>
+      </div>
+    </div>
+  </div>
+</section></main>
+<dialog class="image-viewer" id="imageViewer" aria-label="Xem ảnh hướng dẫn"><button class="image-viewer-close" type="button" data-copy="close">Đóng ×</button><img id="imageViewerImage" alt=""></dialog>
 
 <!-- ============ FOOTER ============ -->
 <footer>
   <div class="fmk">Ladi</div>
   <div class="ftag">Hanoi in your stay</div>
-  <div class="fline">337/10 Đường Âu Cơ, Tây Hồ, Hà Nội · Ladi Homestay - Valley</div>
-  <a href="#top" class="fcta">Về đầu trang</a>
+  <div class="fline">Số 10 ngõ 343 Đường Âu Cơ, Tây Hồ, Hà Nội · Ladi Valley</div>
+  <a href="#top" class="fcta" data-copy="footerBackTop">Về đầu trang</a>
 </footer>
 
 <script>
-  // nav background on scroll
   const nav = document.getElementById('nav');
-  const onScroll = () => nav.classList.toggle('solid', window.scrollY > window.innerHeight * 0.7);
-  window.addEventListener('scroll', onScroll, {passive:true});
-  onScroll();
+  const hero = document.querySelector('.hero');
+  const navObserver = new IntersectionObserver(([entry]) => {
+    nav.classList.toggle('solid', !entry.isIntersecting || entry.intersectionRatio < 0.35);
+  }, {threshold:[0, 0.35]});
+  if(hero) navObserver.observe(hero);
 
-  // menu overlay
-  const ov = document.getElementById('overlay');
-  function openMenu(){ ov.classList.add('open'); document.body.style.overflow='hidden'; }
-  function closeMenu(){ ov.classList.remove('open'); document.body.style.overflow=''; }
-  document.addEventListener('keydown', e => { if(e.key==='Escape') closeMenu(); });
-
-  // reveal on scroll
-  const io = new IntersectionObserver((entries)=>{
-    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
-  }, {threshold:0.12, rootMargin:'0px 0px -8% 0px'});
-  document.querySelectorAll('.rv').forEach(el=>io.observe(el));
-
-
-  // Convert old guide sections into the same 3-main-section accordion layout used by product pages.
-  function upgradeLanguageAccordions(){
-    const labels = {
-      vietnamese: {
-        general:['1. Thông tin chung','Information'],
-        check:['2. Check-in & Check-out','Arrival and departure'],
-        devices:['3. Hướng dẫn sử dụng các thiết bị trong nhà','In-home appliance guide']
-      },
-      english: {
-        general:['1. General Information','Information'],
-        check:['2. Check-in & Check-out','Arrival and departure'],
-        devices:['3. In-home Appliance Guide','Devices and amenities']
-      },
-      korean: {
-        general:['1. 기본 정보','Information'],
-        check:['2. 체크인 & 체크아웃','Arrival and departure'],
-        devices:['3. 실내 기기 사용 안내','Devices and amenities']
-      },
-      chinese: {
-        general:['1. 基本信息','Information'],
-        check:['2. 入住 & 退房','Arrival and departure'],
-        devices:['3. 室内设备使用指南','Devices and amenities']
-      },
-      japanese: {
-        general:['1. 基本情報','Information'],
-        check:['2. チェックイン & チェックアウト','Arrival and departure'],
-        devices:['3. 室内設備の使い方','Devices and amenities']
-      }
-    };
-    const classKey = panel => ['vietnamese','english','korean','chinese','japanese'].find(k => panel.classList.contains(k)) || 'english';
-    const sectionFor = id => {
-      const clean = (id || '').replace(/^(en|kr|cn|jp)-/, '');
-      if(clean.includes('checkin') || clean.includes('checkout')) return 'check';
-      if(clean.includes('diachi') || clean.includes('address') || clean.includes('rule') || clean.includes('contact') || clean.includes('support') || clean.includes('extra')) return 'general';
-      return 'devices';
-    };
-    document.querySelectorAll('.lang-panel').forEach(panel => {
-      const inside = panel.querySelector(':scope > .inside');
-      if(!inside || inside.querySelector(':scope > .section-stack')) return;
-      const guides = Array.from(inside.querySelectorAll(':scope > section.guide'));
-      if(!guides.length) return;
-      const key = classKey(panel);
-      const stack = document.createElement('div');
-      stack.className = 'section-stack';
-      const buckets = {};
-      ['general','check','devices'].forEach(name => {
-        const section = document.createElement('section');
-        section.className = 'info-section';
-        section.id = `${key}-${name}`;
-        const title = document.createElement('h3');
-        title.className = 'info-title';
-        title.innerHTML = `${labels[key][name][0]}<span class="sub">${labels[key][name][1]}</span>`;
-        section.appendChild(title);
-        buckets[name] = section;
-        stack.appendChild(section);
-      });
-      guides.forEach((guide, index) => {
-        const title = guide.querySelector('.guide-side h4')?.textContent.trim() || guide.querySelector('.gsub')?.textContent.trim() || `Section ${index + 1}`;
-        const details = document.createElement('details');
-        details.className = 'info-block';
-        if(guide.id) details.id = guide.id;
-        if(index === 0) details.open = true;
-        const summary = document.createElement('summary');
-        summary.textContent = title;
-        const body = document.createElement('div');
-        body.className = 'block-body content';
-        guide.querySelectorAll('.guide-side .photo').forEach(photo => {
-          photo.classList.remove('sphoto');
-          photo.classList.add('block-photo');
-          body.appendChild(photo);
-        });
-        const oldContent = guide.querySelector('.content');
-        if(oldContent){
-          while(oldContent.firstChild) body.appendChild(oldContent.firstChild);
-        }
-        details.append(summary, body);
-        buckets[sectionFor(guide.id)].appendChild(details);
-      });
-      inside.innerHTML = '';
-      inside.appendChild(stack);
-    });
+  const overlay = document.getElementById('overlay');
+  const menuButton = document.getElementById('menuButton');
+  const menuClose = document.getElementById('menuClose');
+  let lastFocused = null;
+  function openMenu(){
+    lastFocused = document.activeElement;
+    overlay.classList.add('open');
+    overlay.setAttribute('aria-hidden','false');
+    menuButton.setAttribute('aria-expanded','true');
+    document.body.classList.add('menu-open');
+    window.setTimeout(() => menuClose.focus(), 80);
   }
-  upgradeLanguageAccordions();
+  function closeMenu(){
+    if(!overlay.classList.contains('open')) return;
+    overlay.classList.remove('open');
+    overlay.setAttribute('aria-hidden','true');
+    menuButton.setAttribute('aria-expanded','false');
+    document.body.classList.remove('menu-open');
+    if(lastFocused) lastFocused.focus();
+  }
+  menuButton.addEventListener('click', openMenu);
+  menuClose.addEventListener('click', closeMenu);
+  document.querySelectorAll('[data-close-menu]').forEach(link => link.addEventListener('click', closeMenu));
+  document.addEventListener('keydown', event => {
+    if(event.key === 'Escape') closeMenu();
+    if(event.key !== 'Tab' || !overlay.classList.contains('open')) return;
+    const focusable = [...overlay.querySelectorAll('button,a[href]')].filter(el => !el.hidden);
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    if(event.shiftKey && document.activeElement === first){ event.preventDefault(); last.focus(); }
+    if(!event.shiftKey && document.activeElement === last){ event.preventDefault(); first.focus(); }
+  });
 
-  function openInfoBlockForHash(){
-    if(!location.hash) return;
-    const target = document.querySelector(location.hash);
-    if(target && target.matches('details.info-block')){
-      const panel = target.closest('details.lang-panel');
-      if(panel) panel.open = true;
-      target.open = true;
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(!reducedMotion){
+    const revealObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){ entry.target.classList.add('in'); revealObserver.unobserve(entry.target); }
+      });
+    }, {threshold:0.12, rootMargin:'0px 0px -8% 0px'});
+    document.querySelectorAll('.rv').forEach(el => revealObserver.observe(el));
+  }
+
+  const copy = {
+    vi:{menu:'Menu',help:'AIRBNB',close:'Đóng',stayGuide:'Hướng dẫn lưu trú',language:'Ngôn ngữ',address:'Vị trí',checkin:'Tự check-in',checkout:'Check-out',water:'Điều hòa & nước nóng',appliances:'Thiết bị',cooktop:'Bếp từ',microwave:'Lò vi sóng',rules:'Nội quy',emergency:'Liên hệ khẩn cấp',skipToContent:'Bỏ qua phần đầu trang',needFirst:'Những thông tin bạn cần trước tiên',openMap:'Mở Google Maps',callHost:'Gọi Host',messageHost:'Nhắn Host',chooseLanguage:'Chọn ngôn ngữ',languageHelp:'Nội dung và liên kết nhanh sẽ đổi theo lựa chọn của bạn.',cityGuideEyebrow:'Ladi City Notes',cityGuideTitle:'Khám phá Hà Nội cùng Ladi',cityGuideDescription:'Những quán cà phê, món ăn, địa điểm văn hóa và góc phố được Ladi chọn lọc cho hành trình của bạn.',cityGuideCta:'Mở Hanoi Guide Book',cityGuidePending:'Liên kết đang được cập nhật'},
+    en:{menu:'Menu',help:'AIRBNB',close:'Close',stayGuide:'Stay guide',language:'Language',address:'Location',checkin:'Self check-in',checkout:'Check-out',water:'AC & hot water',appliances:'Appliances',cooktop:'Cooktop',microwave:'Microwave',rules:'House rules',emergency:'Emergency',skipToContent:'Skip to the guide',needFirst:'What you may need first',openMap:'Open Google Maps',callHost:'Call Host',messageHost:'Message Host',chooseLanguage:'Choose language',languageHelp:'The guide and quick links will follow your selection.',cityGuideEyebrow:'Ladi City Notes',cityGuideTitle:'Explore Hanoi with Ladi',cityGuideDescription:'A curated collection of cafés, local food, cultural landmarks and Hanoi streets for your stay.',cityGuideCta:'Open Hanoi Guide Book',cityGuidePending:'Link coming soon'},
+    ko:{menu:'메뉴',help:'AIRBNB',close:'닫기',stayGuide:'숙박 안내',language:'언어',address:'위치',checkin:'셀프 체크인',checkout:'체크아웃',water:'에어컨 & 온수',appliances:'가전 안내',cooktop:'인덕션',microwave:'전자레인지',rules:'숙소 규칙',emergency:'긴급 연락',skipToContent:'안내로 바로가기',needFirst:'먼저 필요한 정보',openMap:'Google Maps 열기',callHost:'Host에게 전화',messageHost:'Host에게 메시지',chooseLanguage:'언어 선택',languageHelp:'선택한 언어에 맞춰 안내와 바로가기가 바뀝니다.',cityGuideEyebrow:'Ladi City Notes',cityGuideTitle:'Ladi와 함께 하노이 둘러보기',cityGuideDescription:'Ladi가 엄선한 카페, 현지 음식, 문화 명소와 하노이의 골목을 만나보세요.',cityGuideCta:'하노이 가이드북 열기',cityGuidePending:'링크를 준비 중입니다'},
+    zh:{menu:'菜单',help:'AIRBNB',close:'关闭',stayGuide:'住宿指南',language:'语言',address:'位置',checkin:'自助入住',checkout:'退房',water:'空调与热水',appliances:'室内设备',cooktop:'电磁炉',microwave:'微波炉',rules:'住宿规则',emergency:'紧急联系',skipToContent:'跳至住宿指南',needFirst:'您可能最先需要的信息',openMap:'打开 Google Maps',callHost:'致电 Host',messageHost:'联系 Host',chooseLanguage:'选择语言',languageHelp:'指南内容和快捷链接将按您的选择切换。',cityGuideEyebrow:'Ladi City Notes',cityGuideTitle:'与 Ladi 一起探索河内',cityGuideDescription:'由 Ladi 精选的咖啡馆、本地美食、文化地标和河内街巷。',cityGuideCta:'打开河内指南',cityGuidePending:'链接即将更新'},
+    ja:{menu:'メニュー',help:'AIRBNB',close:'閉じる',stayGuide:'滞在ガイド',language:'言語',address:'場所',checkin:'セルフチェックイン',checkout:'チェックアウト',water:'エアコン & 温水',appliances:'室内設備',cooktop:'IHコンロ',microwave:'電子レンジ',rules:'ハウスルール',emergency:'緊急連絡先',skipToContent:'ガイドへ移動',needFirst:'最初に必要な情報',openMap:'Google Mapsを開く',callHost:'Hostへ電話',messageHost:'Hostへメッセージ',chooseLanguage:'言語を選択',languageHelp:'ガイドとクイックリンクが選択した言語に切り替わります。',cityGuideEyebrow:'Ladi City Notes',cityGuideTitle:'Ladiと一緒にハノイを巡る',cityGuideDescription:'Ladiが選んだカフェ、ローカルフード、文化スポット、ハノイの街角をご紹介します。',cityGuideCta:'ハノイガイドブックを開く',cityGuidePending:'リンクを準備中です'}
+  };
+  const sharedCopy = {
+  "vi": {
+    "aboutEyebrow": "Về kỳ nghỉ",
+    "aboutTitle": "Một khoảng sân xanh gần Hồ Tây",
+    "aboutStory": "Ladi Valley là villa hai tầng với sân vườn riêng, phòng khách rộng và bếp lớn. Ghế ngồi cùng bàn ăn ngoài trời dành chỗ cho cà phê sáng, bữa tối và những khoảng nghỉ cùng gia đình hoặc bạn bè.",
+    "aboutFacts": "2 tầng · 3 phòng ngủ · 4 giường · 4 WC riêng · Ban công · Sân vườn",
+    "galleryRoom": "Ladi Valley",
+    "altHost": "Ladi Valley",
+    "hostTitle": "Host Ladi luôn ở đây khi bạn cần",
+    "hostSubtitle": "Hỗ trợ trong suốt kỳ lưu trú",
+    "hostDescription": "Cần đặt xe sân bay, gợi ý tham quan, thông tin tour hoặc hỗ trợ dọn phòng, giặt giũ cho kỳ nghỉ dài ngày? Hãy liên hệ Host Ladi. Vui lòng báo trước ít nhất một ngày nếu cần xe sân bay.",
+    "hostCall": "Gọi Host Ladi",
+    "hostMessage": "Gửi email cho Host",
+    "hostEmergency": "Khẩn cấp",
+    "hostEmergencyNumbers": "Cấp cứu 115 · Cảnh sát 113 · Cứu hỏa 114",
+    "footerBackTop": "Về đầu trang",
+    "heroLine": "Villa 3 phòng ngủ · Sân vườn riêng · Hồ Tây",
+    "cooktop": "Khu bếp",
+    "microwave": "Dụng cụ bếp & bếp lẩu",
+    "laundry": "Máy giặt & máy sấy",
+    "garden": "Sân vườn",
+    "note": "Lưu ý khi lưu trú",
+    "messageHost": "Gửi email cho Host",
+    "valleyGallery0": "Phòng khách",
+    "valleyAlt0": "Phòng khách · Ladi Valley",
+    "valleyGallery1": "Phòng ngủ",
+    "valleyAlt1": "Phòng ngủ · Ladi Valley",
+    "valleyGallery2": "Khu bếp",
+    "valleyAlt2": "Khu bếp · Ladi Valley",
+    "valleyGallery3": "Sân vườn",
+    "valleyAlt3": "Sân vườn · Ladi Valley"
+  },
+  "en": {
+    "aboutEyebrow": "About the stay",
+    "aboutTitle": "A green courtyard near West Lake",
+    "aboutStory": "Ladi Valley is a two-floor villa with a private garden, spacious living room and large kitchen. Outdoor seating and a dining area leave room for morning coffee, shared dinners and time with family or friends.",
+    "aboutFacts": "2 floors · 3 bedrooms · 4 beds · 4 private bathrooms · Balcony · Private garden",
+    "galleryRoom": "Ladi Valley",
+    "altHost": "Ladi Valley",
+    "hostTitle": "Host Ladi is here whenever you need us",
+    "hostSubtitle": "Support throughout your stay",
+    "hostDescription": "For airport transfers, local recommendations, tour information or cleaning and laundry support during longer stays, contact Host Ladi. Please request an airport transfer at least one day ahead.",
+    "hostCall": "Call Host Ladi",
+    "hostMessage": "Email Host",
+    "hostEmergency": "Emergency",
+    "hostEmergencyNumbers": "Ambulance 115 · Police 113 · Fire 114",
+    "footerBackTop": "Back to top",
+    "heroLine": "3-bedroom villa · Private garden · West Lake",
+    "cooktop": "Kitchen",
+    "microwave": "Kitchen tools & hotpot stove",
+    "laundry": "Washer & dryer",
+    "garden": "Garden",
+    "note": "Stay notes",
+    "messageHost": "Email Host",
+    "valleyGallery0": "Living room",
+    "valleyAlt0": "Living room · Ladi Valley",
+    "valleyGallery1": "Bedroom",
+    "valleyAlt1": "Bedroom · Ladi Valley",
+    "valleyGallery2": "Kitchen",
+    "valleyAlt2": "Kitchen · Ladi Valley",
+    "valleyGallery3": "Garden",
+    "valleyAlt3": "Garden · Ladi Valley"
+  },
+  "ko": {
+    "aboutEyebrow": "숙소 소개",
+    "aboutTitle": "서호 근처의 작은 초록 마당",
+    "aboutStory": "Ladi Valley는 전용 정원, 넓은 거실과 큰 주방을 갖춘 2층 빌라입니다. 야외 좌석과 식사 공간에서 모닝 커피, 저녁 식사, 가족이나 친구와의 휴식을 즐겨 보세요.",
+    "aboutFacts": "2층 · 침실 3개 · 침대 4개 · 전용 욕실 4개 · 발코니 · 전용 정원",
+    "galleryRoom": "Ladi Valley",
+    "altHost": "Ladi Valley",
+    "hostTitle": "필요할 때 언제든 Host Ladi가 도와드립니다",
+    "hostSubtitle": "숙박 중 지원 서비스",
+    "hostDescription": "공항 이동, 주변 추천 장소, 투어 정보 또는 장기 숙박 중 청소와 세탁 지원은 Host Ladi에게 문의해 주세요. 공항 이동은 최소 하루 전에 요청해 주세요.",
+    "hostCall": "Host Ladi에게 전화",
+    "hostMessage": "Host에게 이메일",
+    "hostEmergency": "긴급 연락",
+    "hostEmergencyNumbers": "응급 115 · 경찰 113 · 소방 114",
+    "footerBackTop": "맨 위로",
+    "heroLine": "침실 3개 빌라 · 전용 정원 · 서호",
+    "cooktop": "주방",
+    "microwave": "주방 도구 & 핫팟 기기",
+    "laundry": "세탁기 & 건조기",
+    "garden": "정원",
+    "note": "숙박 시 참고 사항",
+    "messageHost": "Host에게 이메일",
+    "valleyGallery0": "거실",
+    "valleyAlt0": "거실 · Ladi Valley",
+    "valleyGallery1": "침실",
+    "valleyAlt1": "침실 · Ladi Valley",
+    "valleyGallery2": "주방",
+    "valleyAlt2": "주방 · Ladi Valley",
+    "valleyGallery3": "정원",
+    "valleyAlt3": "정원 · Ladi Valley"
+  },
+  "zh": {
+    "aboutEyebrow": "关于住宿",
+    "aboutTitle": "西湖附近的一方绿意庭院",
+    "aboutStory": "Ladi Valley 是一栋两层别墅，设有私人花园、宽敞客厅和大厨房。户外座椅与用餐区适合晨间咖啡、共进晚餐，以及与家人或朋友休息相聚。",
+    "aboutFacts": "2层 · 3间卧室 · 4张床 · 4间独立卫浴 · 阳台 · 私人花园",
+    "galleryRoom": "Ladi Valley",
+    "altHost": "Ladi Valley",
+    "hostTitle": "需要帮助时，Host Ladi 随时为您服务",
+    "hostSubtitle": "入住期间的支持",
+    "hostDescription": "如需机场接送、周边推荐、旅游信息，或长住期间的清洁和洗衣协助，请联系 Host Ladi。机场接送请至少提前一天提出。",
+    "hostCall": "致电 Host Ladi",
+    "hostMessage": "发送邮件给 Host",
+    "hostEmergency": "紧急联系",
+    "hostEmergencyNumbers": "急救 115 · 警察 113 · 消防 114",
+    "footerBackTop": "返回顶部",
+    "heroLine": "三卧室别墅 · 私人花园 · 西湖",
+    "cooktop": "厨房",
+    "microwave": "厨房用具与火锅炉",
+    "laundry": "洗衣机与烘干机",
+    "garden": "花园",
+    "note": "入住须知",
+    "messageHost": "发送邮件给 Host",
+    "valleyGallery0": "客厅",
+    "valleyAlt0": "客厅 · Ladi Valley",
+    "valleyGallery1": "卧室",
+    "valleyAlt1": "卧室 · Ladi Valley",
+    "valleyGallery2": "厨房",
+    "valleyAlt2": "厨房 · Ladi Valley",
+    "valleyGallery3": "花园",
+    "valleyAlt3": "花园 · Ladi Valley"
+  },
+  "ja": {
+    "aboutEyebrow": "滞在について",
+    "aboutTitle": "西湖の近く、緑に囲まれた中庭",
+    "aboutStory": "Ladi Valleyは、専用の庭、広いリビング、大きなキッチンを備えた2階建てのヴィラです。屋外の座席とダイニングで、朝のコーヒーや夕食、家族や友人との時間をお楽しみください。",
+    "aboutFacts": "2階建て · 寝室3室 · ベッド4台 · 専用バスルーム4室 · バルコニー · 専用庭",
+    "galleryRoom": "Ladi Valley",
+    "altHost": "Ladi Valley",
+    "hostTitle": "お困りの際は Host Ladi がサポートします",
+    "hostSubtitle": "ご滞在中のサポート",
+    "hostDescription": "空港送迎、周辺のおすすめ、ツアー情報、長期滞在中の清掃や洗濯のご相談はHost Ladiへご連絡ください。空港送迎は少なくとも1日前までにご依頼ください。",
+    "hostCall": "Host Ladiへ電話",
+    "hostMessage": "Hostへメール",
+    "hostEmergency": "緊急連絡",
+    "hostEmergencyNumbers": "救急 115 · 警察 113 · 消防 114",
+    "footerBackTop": "ページ上部へ",
+    "heroLine": "寝室3室のヴィラ · 専用庭 · 西湖",
+    "cooktop": "キッチン",
+    "microwave": "調理器具 & 卓上鍋用コンロ",
+    "laundry": "洗濯機 & 乾燥機",
+    "garden": "庭",
+    "note": "滞在中のご注意",
+    "messageHost": "Hostへメール",
+    "valleyGallery0": "リビング",
+    "valleyAlt0": "リビング · Ladi Valley",
+    "valleyGallery1": "寝室",
+    "valleyAlt1": "寝室 · Ladi Valley",
+    "valleyGallery2": "キッチン",
+    "valleyAlt2": "キッチン · Ladi Valley",
+    "valleyGallery3": "庭",
+    "valleyAlt3": "庭 · Ladi Valley"
+  }
+};
+ const themeCopy = {
+    vi:{light:'Sáng',dark:'Tối',toLight:'Chuyển sang giao diện sáng',toDark:'Chuyển sang giao diện tối'},
+    en:{light:'Light',dark:'Dark',toLight:'Switch to light theme',toDark:'Switch to dark theme'},
+    ko:{light:'밝게',dark:'어둡게',toLight:'밝은 화면으로 전환',toDark:'어두운 화면으로 전환'},
+    zh:{light:'浅色',dark:'深色',toLight:'切换到浅色模式',toDark:'切换到深色模式'},
+    ja:{light:'ライト',dark:'ダーク',toLight:'ライト表示に切り替える',toDark:'ダーク表示に切り替える'}
+  };
+  const root = document.documentElement;
+  const themeToggle = document.getElementById('themeToggle');
+  const themeToggleIcon = themeToggle.querySelector('.theme-toggle-icon');
+  const themeToggleText = themeToggle.querySelector('.theme-toggle-text');
+  function updateThemeToggle(){
+    const lang = document.body.dataset.language || 'vi';
+    const labels = themeCopy[lang] || themeCopy.vi;
+    const darkActive = root.dataset.theme === 'dark';
+    themeToggleIcon.textContent = darkActive ? '☀' : '☾';
+    themeToggleText.textContent = darkActive ? labels.light : labels.dark;
+    const actionLabel = darkActive ? labels.toLight : labels.toDark;
+    themeToggle.setAttribute('aria-label', actionLabel);
+    themeToggle.setAttribute('title', actionLabel);
+    themeToggle.setAttribute('aria-pressed', String(darkActive));
+  }
+  function applyTheme(theme, save = true){
+    root.dataset.theme = theme === 'light' ? 'light' : 'dark';
+    updateThemeToggle();
+    if(save){
+      try{ localStorage.setItem('ladi-valley-theme', root.dataset.theme); }catch(error){}
     }
   }
-  // open language accordions when a nested anchor is requested
-  const vietnamesePanel = document.querySelector('.lang-panel.vietnamese');
-  const englishPanel = document.querySelector('.lang-panel.english');
-  const koreanPanel = document.querySelector('.lang-panel.korean');
-  const chinesePanel = document.querySelector('.lang-panel.chinese');
-  const japanesePanel = document.querySelector('.lang-panel.japanese');
-  const viHashes = new Set(['#diachi', '#thongtinthem', '#noiquy', '#khan-cap', '#hotro', '#checkin', '#checkout', '#wifi', '#dieuhoa', '#bep', '#lo', '#tv', '#maygiat', '#maysuoi', '#thietbikhac']);
-  function openVietnamesePanelForHash(){
-    if(!vietnamesePanel || !viHashes.has(location.hash)) return;
-    vietnamesePanel.open = true;
+  themeToggle.addEventListener('click', () => {
+    const nextTheme = root.dataset.theme === 'dark' ? 'light' : 'dark';
+    const changeTheme = () => applyTheme(nextTheme);
+    if(!reducedMotion && document.startViewTransition){
+      document.startViewTransition(changeTheme);
+    }else{
+      changeTheme();
+    }
+  });
+  const targets = {"vi":{"address":"diachi","checkin":"checkin","checkout":"checkout","wifi":"wifi","water":"dieuhoa","cooktop":"bep","microwave":"lo","tv":"tv","rules":"noiquy","emergency":"khan-cap","laundry":"maygiat","garden":"maysuoi","note":"luuy","extra":"thongtinthem","support":"hotro","other":"thietbikhac"},"en":{"address":"en-address","checkin":"en-checkin","checkout":"en-checkout","wifi":"en-wifi","water":"en-ac","cooktop":"en-cooktop","microwave":"en-microwave","tv":"en-tv","rules":"en-rules","emergency":"en-emergency","laundry":"en-laundry","garden":"en-heater","note":"en-note","extra":"en-extra","support":"en-support","other":"en-other"},"ko":{"address":"kr-address","checkin":"kr-checkin","checkout":"kr-checkout","wifi":"kr-wifi","water":"kr-ac","cooktop":"kr-cooktop","microwave":"kr-microwave","tv":"kr-tv","rules":"kr-rules","emergency":"kr-emergency","laundry":"kr-laundry","garden":"kr-heater","note":"kr-note","extra":"kr-extra","support":"kr-support","other":"kr-other"},"zh":{"address":"cn-address","checkin":"cn-checkin","checkout":"cn-checkout","wifi":"cn-wifi","water":"cn-ac","cooktop":"cn-cooktop","microwave":"cn-microwave","tv":"cn-tv","rules":"cn-rules","emergency":"cn-emergency","laundry":"cn-laundry","garden":"cn-heater","note":"cn-note","extra":"cn-extra","support":"cn-support","other":"cn-other"},"ja":{"address":"jp-address","checkin":"jp-checkin","checkout":"jp-checkout","wifi":"jp-wifi","water":"jp-ac","cooktop":"jp-cooktop","microwave":"jp-microwave","tv":"jp-tv","rules":"jp-rules","emergency":"jp-emergency","laundry":"jp-laundry","garden":"jp-heater","note":"jp-note","extra":"jp-extra","support":"jp-support","other":"jp-other"}};
+  const languagePanels = [...document.querySelectorAll('[data-lang-panel]')];
+  const languageButtons = [...document.querySelectorAll('[data-language]')];
+  const viIds = new Set(['diachi','thongtinthem','noiquy','khan-cap','hotro','checkin','checkout','wifi','dieuhoa','bep','lo','tv','thietbikhac','luuy','maygiat','maysuoi']);
+
+  const generalSectionIcons = new Map([
+    ['diachi','📍'], ['kr-address','📍'], ['en-address','📍'], ['cn-address','📍'], ['jp-address','📍'],
+    ['thongtinthem','✨'], ['kr-extra','✨'], ['en-extra','✨'], ['cn-extra','✨'], ['jp-extra','✨'],
+    ['noiquy','📋'], ['kr-rules','📋'], ['en-rules','📋'], ['cn-rules','📋'], ['jp-rules','📋'],
+    ['khan-cap','🆘'], ['kr-emergency','🆘'], ['en-emergency','🆘'], ['cn-emergency','🆘'], ['jp-emergency','🆘'],
+    ['hotro','🤝'], ['kr-support','🤝'], ['en-support','🤝'], ['cn-support','🤝'], ['jp-support','🤝']
+  ]);
+  document.querySelectorAll('.info-block > summary').forEach(summary => {
+    const labelText = summary.textContent.replace(/^\d+\.\d+\s*/, '');
+    const label = document.createElement('span');
+    label.className = 'summary-label';
+    label.textContent = labelText;
+    const iconValue = generalSectionIcons.get(summary.parentElement.id);
+    if(iconValue){
+      const icon = document.createElement('span');
+      icon.className = 'section-icon';
+      icon.setAttribute('aria-hidden','true');
+      icon.textContent = iconValue;
+      summary.parentElement.classList.add('has-section-icon');
+      summary.replaceChildren(icon,label);
+    }else{
+      summary.replaceChildren(label);
+    }
+  });
+  document.querySelectorAll('.info-title').forEach(title => {
+    const headingText = [...title.childNodes].find(node => node.nodeType === Node.TEXT_NODE);
+    if(headingText) headingText.textContent = headingText.textContent.replace(/^\d+\.\s*/, '');
+  });
+
+  function languageForHash(hash){
+    const id = hash.replace(/^#/,'');
+    if(id.startsWith('en-')) return 'en';
+    if(id.startsWith('kr-')) return 'ko';
+    if(id.startsWith('cn-')) return 'zh';
+    if(id.startsWith('jp-')) return 'ja';
+    if(viIds.has(id)) return 'vi';
+    return null;
   }
-  function openEnglishPanelForHash(){
-    if(!englishPanel || !location.hash.startsWith('#en-')) return;
-    englishPanel.open = true;
+  function updateLinks(lang){
+    document.querySelectorAll('[data-menu-target]').forEach(link => {
+      link.href = '#' + targets[lang][link.dataset.menuTarget];
+    });
+    document.querySelectorAll('[data-quick-target]').forEach(link => {
+      link.href = '#' + targets[lang][link.dataset.quickTarget];
+    });
   }
-  function openTranslatedPanelForHash(){
-    if(koreanPanel && location.hash.startsWith('#kr-')) koreanPanel.open = true;
-    if(chinesePanel && location.hash.startsWith('#cn-')) chinesePanel.open = true;
-    if(japanesePanel && location.hash.startsWith('#jp-')) japanesePanel.open = true;
+  function applyCopy(lang){
+    const dictionary = {...(copy[lang] || copy.vi), ...(sharedCopy[lang] || sharedCopy.vi)};
+    document.querySelectorAll('[data-copy]').forEach(element => {
+      const value = dictionary[element.dataset.copy];
+      if(value) element.textContent = value;
+    });
+    document.querySelectorAll('[data-alt-copy]').forEach(element => {
+      const value = dictionary[element.dataset.altCopy];
+      if(value) element.setAttribute('alt', value);
+    });
   }
-  document.querySelectorAll('a[href="#diachi"],a[href="#thongtinthem"],a[href="#noiquy"],a[href="#khan-cap"],a[href="#hotro"],a[href="#checkin"],a[href="#checkout"],a[href="#wifi"],a[href="#dieuhoa"],a[href="#bep"],a[href="#lo"],a[href="#tv"],a[href="#maygiat"],a[href="#maysuoi"],a[href="#thietbikhac"]').forEach(a=>{
-    a.addEventListener('click', () => {
-      if(vietnamesePanel) vietnamesePanel.open = true;
+  function selectLanguage(lang, save = true){
+    if(!copy[lang]) lang = 'vi';
+    languagePanels.forEach(panel => {
+      const active = panel.dataset.langPanel === lang;
+      panel.classList.toggle('is-active', active);
+      panel.hidden = !active;
+      panel.open = active;
+    });
+    languageButtons.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.language === lang)));
+    document.documentElement.lang = lang === 'zh' ? 'zh-Hans' : lang;
+    document.body.dataset.language = lang;
+    updateLinks(lang);
+    applyCopy(lang);
+    document.getElementById('nav').setAttribute('aria-label',copy[lang].stayGuide);
+    overlay.setAttribute('aria-label',copy[lang].menu);
+    document.querySelector('.brand').setAttribute('aria-label','Ladi Valley · '+sharedCopy[lang].footerBackTop);
+    document.getElementById('airbnbLink').setAttribute('aria-label','Airbnb · Ladi Valley');
+    document.querySelector('.language-options').setAttribute('aria-label',copy[lang].chooseLanguage);
+    document.querySelector('.quick-actions').setAttribute('aria-label',copy[lang].needFirst);
+    document.getElementById('imageViewer').setAttribute('aria-label',copy[lang].stayGuide);
+    updateThemeToggle();
+    if(save){ try{ localStorage.setItem('ladi-valley-language', lang); }catch(error){} }
+  }
+  function openHashTarget(shouldScroll = false){
+    if(!location.hash) return;
+    let target = null;
+    try{ target = document.querySelector(location.hash); }catch(error){ return; }
+    if(!target) return;
+    if(target.matches('details.info-block')) target.open = true;
+    if(shouldScroll){
+      window.setTimeout(() => target.scrollIntoView({behavior:reducedMotion ? 'auto' : 'smooth', block:'start'}), 40);
+    }
+  }
+  function targetKeyForHash(hash){
+    const id = hash.replace(/^#/,'');
+    for(const map of Object.values(targets)){
+      for(const [key, targetId] of Object.entries(map)){
+        if(targetId === id) return key;
+      }
+    }
+    return null;
+  }
+  languageButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const targetKey = targetKeyForHash(location.hash);
+      const nextLanguage = button.dataset.language;
+      selectLanguage(nextLanguage);
+      if(targetKey && targets[nextLanguage][targetKey]){
+        history.replaceState(null, '', '#' + targets[nextLanguage][targetKey]);
+        openHashTarget(true);
+      }
     });
   });
-  document.querySelectorAll('a[href^="#en-"]').forEach(a=>{
-    a.addEventListener('click', () => {
-      if(englishPanel) englishPanel.open = true;
-    });
-  });
-  document.querySelectorAll('a[href^="#kr-"]').forEach(a=>{
-    a.addEventListener('click', () => {
-      if(koreanPanel) koreanPanel.open = true;
-    });
-  });
-  document.querySelectorAll('a[href^="#cn-"]').forEach(a=>{
-    a.addEventListener('click', () => {
-      if(chinesePanel) chinesePanel.open = true;
-    });
-  });
-  document.querySelectorAll('a[href^="#jp-"]').forEach(a=>{
-    a.addEventListener('click', () => {
-      if(japanesePanel) japanesePanel.open = true;
-    });
+  document.querySelectorAll('a[href^="#"]').forEach(link => {
+    link.addEventListener('click', () => window.setTimeout(() => {
+      const hashLang = languageForHash(location.hash);
+      if(hashLang) selectLanguage(hashLang);
+      openHashTarget(false);
+    }, 0));
   });
   window.addEventListener('hashchange', () => {
-    openVietnamesePanelForHash();
-    openEnglishPanelForHash();
-    openTranslatedPanelForHash();
+    const hashLang = languageForHash(location.hash);
+    if(hashLang) selectLanguage(hashLang);
+    openHashTarget(true);
   });
-  openVietnamesePanelForHash();
-  openEnglishPanelForHash();
-  openTranslatedPanelForHash();
-  openInfoBlockForHash();
+
+  let savedLanguage = 'vi';
+  try{ savedLanguage = localStorage.getItem('ladi-valley-language') || 'vi'; }catch(error){}
+  const initialLanguage = languageForHash(location.hash) || savedLanguage;
+  selectLanguage(initialLanguage, false);
+  openHashTarget(Boolean(location.hash));
 </script>
-</body>
-</html>
+<script>
+  document.querySelectorAll('.checkin-step img').forEach(image => { image.loading = 'eager'; });
+  const imageViewer = document.getElementById('imageViewer');
+  const imageViewerImage = document.getElementById('imageViewerImage');
+  const imageViewerClose = imageViewer.querySelector('.image-viewer-close');
+  document.querySelectorAll('.checkin-step .photo,.device-instruction-group .photo').forEach(photo => {
+    photo.classList.add('zoomable-photo');
+    photo.tabIndex = 0;
+    photo.setAttribute('role','button');
+    const sourceImage = photo.querySelector('img');
+    photo.setAttribute('aria-label', sourceImage.alt);
+    const openImage = () => {
+      imageViewerImage.src = sourceImage.currentSrc || sourceImage.src;
+      imageViewerImage.alt = sourceImage.alt;
+      imageViewer.showModal();
+    };
+    photo.addEventListener('click', openImage);
+    photo.addEventListener('keydown', event => {
+      if(event.key === 'Enter' || event.key === ' '){ event.preventDefault(); openImage(); }
+    });
+  });
+  imageViewerClose.addEventListener('click', () => imageViewer.close());
+  imageViewer.addEventListener('click', event => { if(event.target === imageViewer) imageViewer.close(); });
+  document.querySelectorAll('[data-copy-password]').forEach(button => {
+    button.addEventListener('click', async () => {
+      const value = button.dataset.copyValue;
+      const feedback = button.parentElement.querySelector('.copy-feedback');
+      try{
+        if(navigator.clipboard && window.isSecureContext){
+          await navigator.clipboard.writeText(value);
+        }else{
+          const field = document.createElement('textarea');
+          field.value = value; field.setAttribute('readonly',''); field.style.position = 'fixed'; field.style.opacity = '0';
+          document.body.appendChild(field); field.select(); document.execCommand('copy'); field.remove();
+        }
+        button.textContent = button.dataset.copiedLabel;
+        feedback.textContent = button.dataset.copiedLabel;
+        window.setTimeout(() => { button.textContent = button.dataset.copyLabel; feedback.textContent = ''; }, 1800);
+      }catch(error){
+        feedback.textContent = value;
+      }
+    });
+  });
+
+</script>
+
+
+
+
+
+
+
+
+</body></html>
