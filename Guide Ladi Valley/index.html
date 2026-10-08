@@ -299,6 +299,15 @@
   .checkin-photo-row{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin:18px 0}
   .checkin-photo-row .block-photo{aspect-ratio:1/1;margin:0!important;border-radius:5px}
   .location-photo{grid-column:1;grid-row:1 / span 8;aspect-ratio:3/4;margin:0!important;border-radius:5px}
+  .location-layout .location-video{width:100%;max-width:300px;aspect-ratio:auto;margin:0!important;overflow:hidden;border-radius:5px;background:var(--cream-deep)}
+  .location-layout figure.location-video{grid-column:1;grid-row:1 / span 8}
+  .location-video video{display:block;width:100%;aspect-ratio:9/16;object-fit:contain;background:#111}
+  .location-video video[hidden],.location-video button[hidden]{display:none!important}
+  .location-video-play{position:relative;display:block;width:100%;aspect-ratio:9/16;padding:0;border:0;background:#111;cursor:pointer}
+  .location-video-play img{display:block;width:100%;height:100%;object-fit:cover}
+  .location-video-play span{position:absolute;top:50%;left:50%;display:grid;place-items:center;width:62px;height:62px;border-radius:50%;background:rgba(0,0,0,.78);color:#fff;font:28px/1 var(--sans);transform:translate(-50%,-50%)}
+  .location-video-play:focus-visible{outline:3px solid var(--teal);outline-offset:-3px}
+  .location-video figcaption{padding:10px 12px;font:600 13px/1.4 var(--sans);color:var(--espresso)}
 
   /* ============ friend / closing ============ */
   .friend{background:var(--cream-deep);position:relative;z-index:2}
@@ -348,6 +357,8 @@
     .checkin-photo-row{grid-template-columns:1fr;gap:10px;margin:18px 0 14px}
     .checkin-photo-row .block-photo{aspect-ratio:1/1;margin:0!important}
     .location-photo{grid-column:auto;grid-row:auto;aspect-ratio:3/4;margin:0 0 10px!important}
+    .location-layout .location-video{max-width:280px;margin:0 auto 14px!important}
+    .location-layout figure.location-video{grid-column:auto;grid-row:auto}
     .lang-panel .mini-links{grid-template-columns:1fr}
     .friend-inner{grid-template-columns:1fr}
     .friend-photo{min-height:300px}
@@ -1128,7 +1139,7 @@
   .checkin-step{min-width:0;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--paper);box-shadow:var(--shadow-soft)}
   .checkin-step .block-photo{aspect-ratio:4/3;margin:0;border-radius:0;box-shadow:none}
   .checkin-step-copy{padding:15px 16px 17px}
-  .checkin-step-copy strong{display:block;margin-bottom:6px;color:var(--caramel-ink);font-size:13px;letter-spacing:.08em;text-transform:uppercase}
+  .checkin-step-copy > strong{display:block;margin-bottom:6px;color:var(--caramel-ink);font-size:13px;letter-spacing:.08em;text-transform:uppercase}
   .checkin-step-copy p{margin:0;max-width:none}
   .wifi-credentials{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:16px 0 12px}
   .wifi-credentials > div{padding:14px 15px;border:1px solid var(--line);border-radius:8px;background:rgba(201,168,130,.1)}
@@ -1163,6 +1174,7 @@
     #gioithieu{padding-top:36px;padding-bottom:24px}
   }
 
+ .missing-photo{display:grid;place-items:center;min-height:170px;border:1px dashed var(--line);background:var(--cream-deep);text-align:center}.missing-photo::after{display:none}.missing-mark{padding:22px;font:600 13px/1.5 var(--sans);letter-spacing:.04em;color:var(--espresso)}
 </style>
 <style>.hero-bg{background-image:url('assets/images/ladi-valley-hero.webp')} .checkin-step:has(.checkin-step-text):not(:has(img)){grid-template-columns:1fr} .emergency-actions{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px}.emergency-actions a{padding:10px 14px;border:1px solid var(--line);border-radius:8px;min-height:44px}.wifi-credentials dl{margin:0}.wifi-credentials dt{font-size:.8rem;opacity:.7;margin-top:12px}.wifi-credentials dd{margin:4px 0;font-weight:600}.device-instruction-group{align-items:start}.location-layout .location-photo{grid-row:auto} .block-body .photo{margin-top:20px} .checkin-step .photo{margin-top:0} .device-instruction-group .photo{margin-top:0} .device-instruction-group .device-copy{min-width:0} .device-copy>:first-child{margin-top:0}</style><style>.device-instruction-group{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:24px}.checkin-steps{grid-template-columns:repeat(3,minmax(0,1fr))}.checkin-step:first-child{grid-row:span 1}.checkin-step .checkin-step-copy h5{margin-top:0}@media(max-width:700px){.device-instruction-group,.checkin-steps{grid-template-columns:1fr}.device-instruction-group{gap:14px}}</style></head>
 <body>
@@ -1215,17 +1227,17 @@
         <a href="#friend" data-close-menu="">Host Ladi</a>
       </div>
     </div>
-    <div class="ov-foot">Hanoi in your stay</div>
+    <div class="ov-foot">Hanoi In Your Stay</div>
   </div>
 </div>
 <!-- ============ HERO ============ -->
 <header class="hero" id="top">
   <div class="hero-bg"></div>
   <div class="hero-inner">
-    <div class="kick">Số 10 ngõ 343 Đường Âu Cơ · Tây Hồ · Hà Nội</div>
+    <div class="kick">10/343 Âu Cơ · Nhật Tân · Hà Nội</div>
     <h1>LADI<br>VALLEY</h1>
-    <div class="style-line" data-copy="heroLine">Villa 3 phòng ngủ · Sân vườn riêng · Hồ Tây</div>
-    <div class="stay">Hanoi in your stay</div>
+    <div class="style-line" data-copy="heroLine">A warm apartment in the heart of Hanoi</div>
+    <div class="stay">Hanoi In Your Stay</div>
   </div>
   
   <div class="social-section" aria-label="Ladi Homestay social links">
@@ -1251,7 +1263,6 @@
     <div class="language-bar">
       <div>
         <p class="language-kicker" data-copy="chooseLanguage">Chọn ngôn ngữ</p>
-        <p class="language-help" data-copy="languageHelp">Nội dung và liên kết nhanh sẽ đổi theo lựa chọn của bạn.</p>
       </div>
       <div class="language-options" role="group" aria-label="Choose language">
         <button type="button" data-language="vi" aria-label="Tiếng Việt" aria-pressed="true"><img class="flag-emoji" src="https://flagcdn.com/24x18/vn.png" alt="" aria-hidden="true" width="24" height="18" decoding="async"><span>Tiếng Việt</span></button>
@@ -1269,7 +1280,7 @@
         <strong data-copy="checkin">Tự check-in</strong><span>14:00</span>
       </a>
       <a class="quick-action" href="#wifi" data-quick-target="wifi">
-        <strong>WiFi</strong><span>Ladi Valley</span>
+        <strong>WiFi</strong><span>LadiHomestay</span>
       </a>
       <a class="quick-action" href="tel:+84935141368">
         <strong data-copy="callHost">Gọi Host</strong><span>+84 93 514 1368</span>
@@ -1292,26 +1303,26 @@
     <summary><span class="flag">VN</span><span class="lang-name">Tiếng Việt</span></summary>
     <div class="inside"><div class="section-stack">
       <section class="info-section" id="thongtin-chung"><h3 class="info-title">1. Thông tin chung<span class="sub">General information</span></h3>
-        <details class="info-block" id="diachi" open=""><summary>1.1 Vị trí</summary><div class="block-body content location-layout"><a class="map-button" href="https://maps.app.goo.gl/AJGwJwu6iq7QDAKL8" target="_blank" rel="noopener">google map Ladi Valley</a><p><strong>Địa chỉ:</strong> số 10 ngõ 343 Đường Âu Cơ, Tây Hồ, Hà Nội.<br><strong>Căn của bạn:</strong> Ladi Valley — villa 2 tầng có sân vườn riêng gần Hồ Tây.</p><blockquote><p>Villa nằm trong khu Hồ Tây yên tĩnh, phù hợp cho gia đình, nhóm bạn, staycation cuối tuần hoặc làm việc từ xa.</p></blockquote><h5>Vị trí</h5><ul><li><strong>5 phút</strong> tới khu Xuân Diệu - Hồ Tây với nhiều quán cà phê, nhà hàng và bar đẹp.</li><li><strong>15 phút</strong> di chuyển vào Phố Cổ.</li><li>Gần West Lake Flower Valley, Matcha Vibe, Highland Coffee, Lion Mall, Winmart, Circle K và Annam Gourmet.</li></ul><div class="photo block-photo location-photo"><img src="assets/images/ladi-valley-hero.webp" alt="Ladi Valley" loading="lazy" decoding="async"><span class="ph-lab">Vị trí</span></div></div></details>
-        <details class="info-block" id="thongtinthem"><summary>1.2 Thông tin thêm</summary><div class="block-body content"><p>Ngay khi nhận phòng, toàn bộ villa và các tiện nghi như trong ảnh sẽ có sẵn để bạn sử dụng.</p><h5>Thông tin villa</h5><ul><li><strong>Không gian:</strong> 2 tầng, 3 phòng ngủ, 4 giường, phòng khách rộng, bếp lớn, ban công và sân vườn riêng.</li><li><strong>Phòng vệ sinh:</strong> 4 phòng vệ sinh riêng, thuận tiện cho nhóm đông.</li><li><strong>Tầng 1:</strong> phòng khách, 1 phòng ngủ, bếp + bàn ăn, 2 WC và sân vườn.</li><li><strong>Tầng 2:</strong> 2 phòng ngủ khép kín, mỗi phòng có WC riêng và cửa sổ lớn.</li><li><strong>Phù hợp:</strong> gia đình, nhóm bạn, nghỉ dưỡng ngắn ngày, lưu trú dài ngày hoặc làm việc từ xa.</li></ul><h5>Sân vườn</h5><ul><li>Có ghế ngồi chill và khu vực ăn uống ngoài trời.</li><li>Phù hợp uống cà phê sáng, trà chiều, đọc sách hoặc ăn tối ngoài trời.</li></ul><div class="photo block-photo"><img src="assets/images/ladi-valley-terrace.webp" alt="Ladi Valley" loading="lazy" decoding="async"><span class="ph-lab">Thông tin thêm</span></div></div></details>
+        <details class="info-block" id="diachi" open=""><summary>1.1 Vị trí</summary><div class="block-body content location-layout"><a class="map-button" href="https://maps.app.goo.gl/AJGwJwu6iq7QDAKL8" target="_blank" rel="noopener" data-copy="openMap">Mở Google Maps</a><p><strong>Địa chỉ:</strong> số 10, ngõ 343 Âu Cơ (10/343), Nhật Tân, Hà Nội.<br><strong>Căn của bạn:</strong> Ladi Valley — villa 2 tầng có sân vườn riêng gần Hồ Tây.</p><figure class="location-photo location-video"><div class="location-video-stage"><button class="location-video-play" type="button" aria-label="Phát video chỉ đường" title="Phát video chỉ đường"><img src="assets/images/valley-arrival-poster.webp" alt="" loading="lazy" decoding="async"><span aria-hidden="true">▶</span></button><video hidden controls playsinline preload="none" poster="assets/images/valley-arrival-poster.webp" aria-label="Video chỉ đường đến cổng số 10"><source src="assets/images/valley-arrival-guide.mp4" type="video/mp4"><a href="assets/images/valley-arrival-guide.mp4">Trình duyệt không hỗ trợ video. Mở video</a></video></div><figcaption>Đường vào số 10, ngõ 343 Âu Cơ</figcaption></figure><blockquote><p>Villa nằm trong khu Hồ Tây yên tĩnh, phù hợp cho gia đình, nhóm bạn, staycation cuối tuần hoặc làm việc từ xa.</p></blockquote><h5>Vị trí</h5><ul><li><strong>5 phút</strong> tới khu Xuân Diệu - Hồ Tây với nhiều quán cà phê, nhà hàng và bar đẹp.</li><li><strong>15 phút</strong> di chuyển vào Phố Cổ.</li></ul></div></details>
+        <details class="info-block" id="thongtinthem"><summary>1.2 Thông tin thêm</summary><div class="block-body content"><h5>Thông tin villa</h5><ul><li><strong>Không gian:</strong> 2 tầng, 3 phòng ngủ, 4 giường, phòng khách rộng, bếp lớn, ban công và sân vườn riêng.</li><li><strong>Phòng vệ sinh:</strong> 4 phòng vệ sinh riêng, thuận tiện cho nhóm đông.</li><li><strong>Tầng 1:</strong> phòng khách, 1 phòng ngủ, bếp + bàn ăn, 2 WC và sân vườn.</li><li><strong>Tầng 2:</strong> 2 phòng ngủ khép kín, mỗi phòng có WC riêng và cửa sổ lớn.</li><li><strong>Phù hợp:</strong> gia đình, nhóm bạn, nghỉ dưỡng ngắn ngày, lưu trú dài ngày hoặc làm việc từ xa.</li></ul><h5>Sân vườn</h5><ul><li>Có ghế ngồi chill và khu vực ăn uống ngoài trời.</li><li>Phù hợp uống cà phê sáng, trà chiều, đọc sách hoặc ăn tối ngoài trời.</li></ul><div class="photo block-photo"><img src="assets/images/ladi-valley-terrace.webp" alt="Ladi Valley" loading="lazy" decoding="async"><span class="ph-lab">Thông tin thêm</span></div></div></details>
         <details class="info-block" id="noiquy"><summary>1.3 Nội Quy</summary><div class="block-body content"><ul><li><strong>Check-in:</strong> 14:00 | <strong>Check-out:</strong> 11:00.</li><li><strong>Không hút thuốc trong nhà</strong>; có thể hút ở sân vườn.</li><li><strong>Không tổ chức party</strong>, không gây ồn sau <strong>22:00</strong> và không làm ảnh hưởng hàng xóm.</li><li><strong>Duy trì an ninh:</strong> không chia sẻ mã truy cập với người ngoài ngoài số lượng người đã đặt phòng.</li><li><strong>Giữ gìn cơ sở vật chất:</strong> không bỏ đồ vệ sinh cá nhân hoặc khăn ướt vào bồn cầu để tránh tắc nghẽn.</li><li>Vui lòng tắt điện, điều hòa và các thiết bị điện khi ra ngoài.</li></ul><div class="photo block-photo"><img src="assets/images/valley-05-p4.webp" alt="Ladi Valley" loading="lazy" decoding="async"><span class="ph-lab">Nội Quy</span></div></div></details>
         <details class="info-block" id="khan-cap"><summary>1.4 Liên Hệ Khẩn cấp</summary><div class="block-body content"><div class="emergency-actions"><a href="tel:+84935141368">Host Ladi · +84 93 514 1368</a><a href="mailto:Ladihomestay@gmail.com">Gửi email cho Host</a><a href="tel:115">115</a><a href="tel:113">113</a><a href="tel:114">114</a></div><ul><li>Host Ladi — <span class="ph">+84 93 514 1368</span></li><li>Email — <span class="ph">Ladihomestay@gmail.com</span></li><li>Cấp cứu 115 · Cảnh sát 113 · Cứu hoả 114</li></ul></div></details>
-        <details class="info-block" id="hotro"><summary>1.5 Dịch vụ hỗ trợ thêm</summary><div class="block-body content"><ul><li>Hỗ trợ đặt xe sân bay theo yêu cầu; liên hệ trước ít nhất một ngày.</li><li>Host có thể gửi gợi ý tham quan, ăn uống và thông tin tour Hạ Long, Ninh Bình, City Tour.</li><li>Khách ở dài ngày có thể liên hệ về dọn phòng và giặt giũ.</li></ul></div></details>
-        <details class="info-block" id="luuy"><summary>1.6 Lưu ý khác</summary><div class="block-body content"><ul><li>Sân vườn có thể có muỗi, đặc biệt vào buổi tối. Có đèn bắt muỗi và xịt chống muỗi cá nhân trong mỗi phòng.</li><li>Đóng cửa khi bật đèn buổi tối để hạn chế côn trùng.</li><li>Công trình gần villa có thể gây tiếng ồn từ 7:00–17:30, chủ yếu khi ở ngoài sân.</li></ul></div></details>
+        <details class="info-block" id="hotro"><summary>1.5 Dịch vụ hỗ trợ thêm</summary><div class="block-body content"><div class="photo block-photo"><img loading="lazy" decoding="async" src="assets/images/ladi-valley-laundry.webp" alt="Laundry area at Ladi Valley" data-alt-copy="supportPhotoAlt"><span class="ph-lab" data-copy="supportPhotoCaption">Laundry support</span></div><ul><li>Hỗ trợ đặt xe sân bay theo yêu cầu; liên hệ trước ít nhất một ngày.</li><li>Host có thể gửi gợi ý tham quan, ăn uống và thông tin tour Hạ Long, Ninh Bình, City Tour.</li><li>Khách ở dài ngày có thể liên hệ về dọn phòng và giặt giũ.</li></ul></div></details>
+        <details class="info-block" id="luuy"><summary>1.6 Lưu ý khác</summary><div class="block-body content"><div class="photo block-photo"><img loading="lazy" decoding="async" src="assets/images/ladi-valley-garden.webp" alt="Private garden at Ladi Valley" data-alt-copy="gardenPhotoAlt"><span class="ph-lab" data-copy="gardenPhotoCaption">Garden notes</span></div><ul><li>Sân vườn có thể có muỗi, đặc biệt vào buổi tối. Có đèn bắt muỗi và xịt chống muỗi cá nhân trong mỗi phòng.</li><li>Đóng cửa khi bật đèn buổi tối để hạn chế côn trùng.</li><li>Công trình gần villa có thể gây tiếng ồn từ 7:00–17:30, chủ yếu khi ở ngoài sân.</li></ul></div></details>
       </section>
       <section class="info-section" id="checkin-checkout"><h3 class="info-title">2. Checkin &amp; Check Out<span class="sub">Arrival and departure</span></h3>
-        <details class="info-block" id="checkin"><summary>2.1 Check-In</summary><div class="block-body content"><h5>Các bước nhận phòng</h5><div class="checkin-steps"><article class="checkin-step"><div class="photo block-photo"><img loading="lazy" decoding="async" src="assets/images/ladi-valley-entrance.webp" alt="Lối vào Ladi Valley"><span class="ph-lab">Lối vào Ladi Valley</span></div><div class="checkin-step-copy"><strong>1. Đến villa</strong><p>Tới số 10 ngõ 343 Đường Âu Cơ, Tây Hồ theo Google Maps.</p></div></article><article class="checkin-step"><div class="checkin-step-copy"><strong>2. Đọc hướng dẫn của Host</strong><p>Xem hướng dẫn chi tiết và mã truy cập Host gửi trước ngày đến hoặc trong ngày nhận phòng.</p></div></article><article class="checkin-step"><div class="checkin-step-copy"><strong>3. Mở khóa bằng keypad</strong><p>Chạm bàn phím để sáng, nhập mã được cung cấp rồi nhấn # hoặc ✓.</p></div></article></div><p>Nhận phòng từ 14:00. Không chia sẻ mã với người ngoài đặt phòng. Nếu mã lỗi, nhập chậm từng phím; vẫn lỗi thì liên hệ Host Ladi.</p></div></details>
-        <details class="info-block" id="checkout"><summary>2.2 Check-Out</summary><div class="block-body content"><ul><li>Check-out trước <span class="ph">11:00</span>.</li><li>Trước khi rời đi, vui lòng tắt điều hoà, đèn và các thiết bị điện.</li><li>Kiểm tra tư trang cá nhân, đóng cửa cẩn thận.</li><li>Nếu cần hỗ trợ trả phòng muộn, vui lòng nhắn host để kiểm tra tình trạng villa.</li></ul><div class="photo block-photo"><img src="assets/images/ladi-valley-garden-terrace.webp" alt="Ladi Valley" loading="lazy" decoding="async"><span class="ph-lab">Check-Out</span></div></div></details>
+        <details class="info-block" id="checkin"><summary>2.1 Check-In</summary><div class="block-body content"><h5>Các bước nhận phòng</h5><div class="checkin-steps"><article class="checkin-step"><div class="photo block-photo"><img loading="lazy" decoding="async" src="assets/images/valley-owner-alley343.png" alt="Ngõ 343 Âu Cơ"><span class="ph-lab">Ngõ 343 Âu Cơ</span></div><div class="checkin-step-copy"><strong>1. Tìm ngõ 343</strong><p>Đi vào ngõ 343 đường Âu Cơ để tới số 10 (10/343), Nhật Tân, Hà Nội.</p></div></article><article class="checkin-step"><div class="photo block-photo"><img loading="lazy" decoding="async" src="assets/images/valley-owner-gate.png" alt="Cổng số 10"><span class="ph-lab">Cổng số 10</span></div><div class="checkin-step-copy"><strong>2. Nhận diện cổng số 10</strong><p>Tìm cổng có biển Ladi Homestay và số nhà 10 như ảnh.</p></div></article><article class="checkin-step"><div class="photo block-photo"><img loading="lazy" decoding="async" src="assets/images/valley-owner-keypad.png" alt="Keypad cổng chính"><span class="ph-lab">Keypad cổng chính</span></div><div class="checkin-step-copy"><strong>3. Mở cổng và các phòng</strong><p>Chạm bàn phím để bật sáng. Cổng chính và tất cả các phòng dùng cùng một mã, nhập đầy đủ cả ký tự # ở cuối: <strong>123123#</strong></p></div></article></div><p>Nhận phòng từ 14:00. Không chia sẻ mã với người ngoài đặt phòng. Nếu không mở được, vui lòng liên hệ Host Ladi.</p></div></details>
+        <details class="info-block" id="checkout"><summary>2.2 Check-Out</summary><div class="block-body content"><ul><li>Check-out trước <span class="ph">11:00</span>.</li><li>Trước khi rời đi, vui lòng tắt điều hoà, đèn và các thiết bị điện.</li><li>Kiểm tra tư trang cá nhân, đóng cửa cẩn thận.</li><li>Nếu cần hỗ trợ trả phòng muộn, vui lòng nhắn host để kiểm tra tình trạng villa.</li></ul></div></details>
       </section>
       <section class="info-section" id="huongdan-thietbi"><h3 class="info-title">3. Hướng dẫn sử dụng các thiết bị trong nhà<span class="sub">In-home appliance guide</span></h3>
-        <details class="info-block" id="wifi"><summary>3.1 WiFi</summary><div class="block-body content"><h5>Kết nối WiFi</h5><dl class="wifi-credentials"><div><dt>Tên WiFi</dt><dd>Ladi Valley</dd></div><div><dt>Mật khẩu</dt><dd>Host gửi trước khi nhận phòng</dd></div></dl><p>Tắt/bật WiFi trên điện thoại rồi kết nối lại. Nếu vẫn chậm hoặc mất kết nối, nhắn Host để kiểm tra router.</p></div></details>
+        <details class="info-block" id="wifi"><summary>3.1 WiFi</summary><div class="block-body content"><h5>Kết nối WiFi</h5><dl class="wifi-credentials"><div><dt>Tên WiFi</dt><dd>LadiHomestay</dd></div><div><dt>Mật khẩu</dt><dd>12345689</dd></div></dl><div class="wifi-copy-row"><button class="copy-password" type="button" data-copy-password data-copy-value="12345689" data-copy-label="Sao chép mật khẩu" data-copied-label="Đã sao chép">Sao chép mật khẩu</button><span class="copy-feedback" role="status" aria-live="polite"></span></div><p>Tắt/bật WiFi trên điện thoại rồi kết nối lại. Nếu vẫn chậm hoặc mất kết nối, nhắn Host để kiểm tra router.</p></div></details>
         <details class="info-block" id="dieuhoa"><summary>3.2 Điều Hoà &amp; Bình Nóng Lạnh</summary><div class="block-body content"><article class="device-instruction-group"><div class="photo block-photo"><img src="assets/images/ladi-valley-bedroom-ac.webp" alt="Ladi Valley" loading="lazy" decoding="async"><span class="ph-lab">Điều Hoà &amp; Bình Nóng Lạnh</span></div><div class="device-copy"><h5>Điều hoà</h5><ol><li>Dùng điều khiển bật/tắt.</li><li>Chọn chế độ <strong>Cool</strong>.</li><li>Đặt <strong>25-26°C</strong> là dễ chịu và tiết kiệm.</li><li>Tắt điều hòa khi ra khỏi nhà.</li></ol><h5>Nước nóng</h5><ul><li>Villa có nước nóng 24/7.</li><li>Nếu cần hỗ trợ về bình nóng lạnh hoặc vòi sen, vui lòng nhắn host.</li></ul></div></article></div></details>
-        <details class="info-block" id="bep"><summary>3.3 Khu bếp</summary><div class="block-body content"><article class="device-instruction-group"><div class="photo block-photo"><img src="assets/images/ladi-valley-kitchen-full.webp" alt="Ladi Valley" loading="lazy" decoding="async"><span class="ph-lab">Khu bếp</span></div><div class="device-copy"><blockquote><p>Khu bếp có bếp nấu, tủ lạnh, nồi, chảo, bát đĩa, ấm đun nước và dụng cụ nấu ăn cơ bản.</p></blockquote><ol><li>Dùng đúng loại nồi/chảo phù hợp với bếp.</li><li>Nhấn nguồn, đặt nồi lên vùng nấu và chỉnh nhiệt bằng nút điều khiển.</li><li>Nấu xong tắt bếp và lau khi mặt bếp đã nguội.</li></ol></div></article></div></details>
-        <details class="info-block" id="lo"><summary>3.4 Dụng cụ bếp &amp; bếp lẩu</summary><div class="block-body content"><article class="device-instruction-group"><div class="photo block-photo"><img src="assets/images/ladi-valley-kitchen.webp" alt="Ladi Valley" loading="lazy" decoding="async"><span class="ph-lab">Dụng cụ bếp</span></div><div class="device-copy"><ul><li>Có bếp lẩu rời, phù hợp cho bữa ăn gia đình hoặc nhóm bạn.</li><li>Có ấm đun nước, dụng cụ nấu ăn cơ bản, bát đĩa, nồi và chảo.</li><li>Vui lòng rửa và sắp xếp lại đồ dùng sau khi sử dụng.</li></ul></div></article></div></details>
+        <details class="info-block" id="bep"><summary>3.3 Khu bếp</summary><div class="block-body content"><article class="device-instruction-group"><div class="photo block-photo"><img src="assets/images/ladi-valley-kitchen-full.webp" alt="Ladi Valley" loading="lazy" decoding="async"><span class="ph-lab">Khu bếp</span></div><div class="device-copy"><blockquote><p>Khu bếp có bếp nấu, tủ lạnh, nồi, chảo, bát đĩa, ấm đun nước và dụng cụ nấu ăn cơ bản.</p></blockquote><ol><li>Đặt nồi hoặc chảo vững trên bếp và theo dõi khi đang nấu.</li><li>Tắt bếp sau khi dùng; để bếp nguội rồi mới lau sạch.</li></ol></div></article></div></details>
+        <details class="info-block" id="lo"><summary>3.4 Dụng cụ bếp &amp; bếp lẩu</summary><div class="block-body content"><article class="device-instruction-group"><div class="photo block-photo"><img src="assets/images/valley-10-p6.webp" alt="Ladi Valley" loading="lazy" decoding="async"><span class="ph-lab">Dụng cụ bếp</span></div><div class="device-copy"><ul><li>Có bếp lẩu rời, phù hợp cho bữa ăn gia đình hoặc nhóm bạn.</li><li>Có ấm đun nước, dụng cụ nấu ăn cơ bản, bát đĩa, nồi và chảo.</li><li>Vui lòng rửa và sắp xếp lại đồ dùng sau khi sử dụng.</li></ul></div></article></div></details>
         <details class="info-block" id="tv"><summary>3.5 Smart TV</summary><div class="block-body content"><article class="device-instruction-group"><div class="photo block-photo"><img src="assets/images/valley-06-p4.webp" alt="Ladi Valley" loading="lazy" decoding="async"><span class="ph-lab">Smart TV</span></div><div class="device-copy"><p>Phòng khách có <strong>Smart TV</strong> kết nối Internet, có thể xem <strong>Netflix</strong> và <strong>YouTube</strong>. Nếu đăng nhập tài khoản cá nhân, vui lòng đăng xuất trước khi trả phòng.</p></div></article></div></details>
         <details class="info-block" id="maygiat"><summary>3.6 Máy Giặt sấy</summary><div class="block-body content"><article class="device-instruction-group"><div class="photo block-photo"><img src="assets/images/valley-14-p8.webp" alt="Ladi Valley" loading="lazy" decoding="async"><span class="ph-lab">Máy Giặt sấy</span></div><div class="device-copy"><ul><li>Villa có máy giặt và máy sấy riêng.</li><li>Tiện lợi cho khách ở dài ngày hoặc gia đình có trẻ nhỏ.</li><li>Không giặt quá tải và kiểm tra túi quần áo trước khi giặt.</li><li>Sau khi dùng, để hé cửa máy một lúc cho khô thoáng.</li></ul></div></article></div></details>
         <details class="info-block" id="maysuoi"><summary>3.7 Sân vườn &amp; không gian ngoài trời</summary><div class="block-body content"><article class="device-instruction-group"><div class="photo block-photo"><img src="assets/images/ladi-valley-garden.webp" alt="Ladi Valley" loading="lazy" decoding="async"><span class="ph-lab">Sân vườn</span></div><div class="device-copy"><ul><li>Sân vườn riêng có ghế ngồi chill và khu vực ăn uống ngoài trời.</li><li>Phù hợp uống cà phê sáng, trà chiều, đọc sách hoặc ăn tối ngoài trời.</li><li>Sau 22:00 vui lòng giữ yên tĩnh để không ảnh hưởng hàng xóm.</li></ul></div></article></div></details>
-        <details class="info-block" id="thietbikhac"><summary>3.8 Các thiết bị khác</summary><div class="block-body content"><article class="device-instruction-group"><div class="photo block-photo"><img src="assets/images/ladi-valley-kitchen-full.webp" alt="Ladi Valley" loading="lazy" decoding="async"><span class="ph-lab">Các thiết bị khác</span></div><div class="device-copy"><ul><li>Máy sấy tóc tại các phòng.</li><li>Đồ dùng cơ bản: khăn tắm, giấy vệ sinh, dầu gội, sữa tắm.</li><li>Có cờ vua và cá ngựa cho thời gian thư giãn.</li><li>Vui lòng tắt tất cả thiết bị điện trước khi ra ngoài.</li></ul></div></article></div></details>
+        <details class="info-block" id="thietbikhac"><summary>3.8 Các thiết bị khác</summary><div class="block-body content"><article class="device-instruction-group"><div class="photo block-photo"><img src="assets/images/valley-15-p8.webp" alt="Ladi Valley" loading="lazy" decoding="async"><span class="ph-lab">Các thiết bị khác</span></div><div class="device-copy"><ul><li>Máy sấy tóc tại các phòng.</li><li>Đồ dùng cơ bản: khăn tắm và giấy vệ sinh.</li><li>Có cờ vua và cá ngựa cho thời gian thư giãn.</li><li>Vui lòng tắt tất cả thiết bị điện trước khi ra ngoài.</li></ul></div></article></div></details>
       </section>
     </div></div>
   </details><details class="lang-panel english" data-lang-panel="en" lang="en">
@@ -1319,25 +1330,25 @@
     <div class="inside"><div class="section-stack">
       
 <section class="info-section" id="en-general"><h3 class="info-title">1. General Information<span class="sub">Thông tin chung</span></h3>
-<details class="info-block" id="en-address" open=""><summary>1.1 Location</summary><div class="block-body content location-layout"><a class="map-button" href="https://maps.app.goo.gl/AJGwJwu6iq7QDAKL8" target="_blank" rel="noopener">google map Ladi Valley</a><p><strong>Address:</strong> No. 10, Alley 343 Au Co Street, Tay Ho, Hanoi.<br><strong>Your stay:</strong> Ladi Valley — a 2-floor private garden villa near West Lake.</p><ul><li><strong>5 minutes</strong> to Xuân Diệu - West Lake cafés, restaurants and bars.</li><li><strong>15 minutes</strong> to the Old Quarter.</li><li>A quiet stay for families, friend groups, weekend staycations or remote work.</li></ul><div class="photo block-photo location-photo"><img src="assets/images/ladi-valley-hero.webp" alt="Ladi Valley" loading="lazy" decoding="async"><span class="ph-lab">Location</span></div></div></details>
+<details class="info-block" id="en-address" open=""><summary>1.1 Location</summary><div class="block-body content location-layout"><a class="map-button" href="https://maps.app.goo.gl/AJGwJwu6iq7QDAKL8" target="_blank" rel="noopener" data-copy="openMap">Mở Google Maps</a><p><strong>Address:</strong> No. 10, Alley 343 Au Co Street (10/343), Nhat Tan, Hanoi.<br><strong>Your stay:</strong> Ladi Valley — a 2-floor private garden villa near West Lake.</p><figure class="location-photo location-video"><div class="location-video-stage"><button class="location-video-play" type="button" aria-label="Play directions video" title="Play directions video"><img src="assets/images/valley-arrival-poster.webp" alt="" loading="lazy" decoding="async"><span aria-hidden="true">▶</span></button><video hidden controls playsinline preload="none" poster="assets/images/valley-arrival-poster.webp" aria-label="Video directions to gate No. 10"><source src="assets/images/valley-arrival-guide.mp4" type="video/mp4"><a href="assets/images/valley-arrival-guide.mp4">Your browser cannot play this video. Open video</a></video></div><figcaption>Directions to No. 10, Alley 343 Au Co</figcaption></figure><ul><li><strong>5 minutes</strong> to Xuân Diệu - West Lake cafés, restaurants and bars.</li><li><strong>15 minutes</strong> to the Old Quarter.</li><li>A quiet stay for families, friend groups, weekend staycations or remote work.</li></ul></div></details>
 <details class="info-block" id="en-extra"><summary>1.2 Extra Information</summary><div class="block-body content"><ul><li>2 floors, 3 bedrooms, 4 beds, spacious living room, large kitchen, balcony and private garden.</li><li>4 private bathrooms.</li><li>Ground floor: living room, 1 bedroom, kitchen + dining table, 2 bathrooms and garden.</li><li>Second floor: 2 ensuite bedrooms with private bathrooms and large windows.</li></ul><div class="photo block-photo"><img src="assets/images/ladi-valley-terrace.webp" alt="Ladi Valley" loading="lazy" decoding="async"><span class="ph-lab">Extra Information</span></div></div></details>
 <details class="info-block" id="en-rules"><summary>1.3 House Rules</summary><div class="block-body content"><ul><li>Check-in 14:00 · check-out 11:00.</li><li>No smoking indoors; smoking is allowed in the garden.</li><li>No parties and no loud noise after 22:00.</li><li>Do not share access codes with anyone outside your reservation.</li><li>Turn off electricity and air conditioners when going out.</li></ul><p>Do not flush toiletries or wet wipes down the toilet.</p><div class="photo block-photo"><img src="assets/images/valley-05-p4.webp" alt="Ladi Valley" loading="lazy" decoding="async"><span class="ph-lab">House Rules</span></div></div></details>
 <details class="info-block" id="en-emergency"><summary>1.4 Emergency Contact</summary><div class="block-body content"><div class="emergency-actions"><a href="tel:+84935141368">Host Ladi · +84 93 514 1368</a><a href="mailto:Ladihomestay@gmail.com">Email Host</a><a href="tel:115">115</a><a href="tel:113">113</a><a href="tel:114">114</a></div><ul><li>Host Ladi — <span class="ph">+84 93 514 1368</span></li><li>Email — <span class="ph">Ladihomestay@gmail.com</span></li><li>Ambulance 115 · Police 113 · Fire 114</li></ul></div></details>
-<details class="info-block" id="en-support"><summary>1.5 Extra Support Services</summary><div class="block-body content"><ul><li>Airport transfers can be arranged on request; contact Host at least one day ahead.</li><li>Host can share local sightseeing and food recommendations, plus Ha Long, Ninh Binh and city tour information.</li><li>For longer stays, contact Host about cleaning or laundry support.</li></ul></div></details><details class="info-block" id="en-note"><summary>Stay notes</summary><div class="block-body content"><ul><li>Mosquitoes may appear in the garden, especially in the evening. A mosquito lamp and personal repellent are provided in each room.</li><li>Close doors when lights are on in the evening to help keep insects out.</li><li>Nearby construction may cause noise from 7:00–17:30, mainly outdoors in the garden.</li></ul></div></details>
+<details class="info-block" id="en-support"><summary>1.5 Extra Support Services</summary><div class="block-body content"><div class="photo block-photo"><img loading="lazy" decoding="async" src="assets/images/ladi-valley-laundry.webp" alt="Laundry area at Ladi Valley" data-alt-copy="supportPhotoAlt"><span class="ph-lab" data-copy="supportPhotoCaption">Laundry support</span></div><ul><li>Airport transfers can be arranged on request; contact Host at least one day ahead.</li><li>Host can share local sightseeing and food recommendations, plus Ha Long, Ninh Binh and city tour information.</li><li>For longer stays, contact Host about cleaning or laundry support.</li></ul></div></details><details class="info-block" id="en-note"><summary>Stay notes</summary><div class="block-body content"><div class="photo block-photo"><img loading="lazy" decoding="async" src="assets/images/ladi-valley-garden.webp" alt="Private garden at Ladi Valley" data-alt-copy="gardenPhotoAlt"><span class="ph-lab" data-copy="gardenPhotoCaption">Garden notes</span></div><ul><li>Mosquitoes may appear in the garden, especially in the evening. A mosquito lamp and personal repellent are provided in each room.</li><li>Close doors when lights are on in the evening to help keep insects out.</li><li>Nearby construction may cause noise from 7:00–17:30, mainly outdoors in the garden.</li></ul></div></details>
 </section>
 <section class="info-section" id="en-checkin-checkout"><h3 class="info-title">2. Check-in &amp; Check-out<span class="sub">Arrival and departure</span></h3>
-<details class="info-block" id="en-checkin"><summary>2.1 Check-In</summary><div class="block-body content"><h5>Arrival steps</h5><div class="checkin-steps"><article class="checkin-step"><div class="photo block-photo"><img loading="lazy" decoding="async" src="assets/images/ladi-valley-entrance.webp" alt="Ladi Valley entrance"><span class="ph-lab">Ladi Valley entrance</span></div><div class="checkin-step-copy"><strong>1. Find the villa</strong><p>Follow Google Maps to No. 10, Alley 343 Au Co Street, Tay Ho.</p></div></article><article class="checkin-step"><div class="checkin-step-copy"><strong>2. Read the Host’s guide</strong><p>Read the detailed guide and access code sent before arrival or on check-in day.</p></div></article><article class="checkin-step"><div class="checkin-step-copy"><strong>3. Unlock the keypad</strong><p>Touch the keypad to wake it, enter the supplied code, then press # or ✓.</p></div></article></div><p>Check-in from 14:00. Do not share the code outside your reservation. If it fails, enter it slowly; contact Host Ladi if the problem continues.</p></div></details>
-<details class="info-block" id="en-checkout"><summary>2.2 Check-Out</summary><div class="block-body content"><ul><li>Check-out before 11:00.</li><li>Turn off air conditioners, lights and electrical devices before leaving.</li><li>Check your belongings and close the door carefully.</li></ul><p>For late check-out, contact Host to check villa availability.</p><div class="photo block-photo"><img src="assets/images/ladi-valley-garden-terrace.webp" alt="Ladi Valley" loading="lazy" decoding="async"><span class="ph-lab">Check-Out</span></div></div></details>
+<details class="info-block" id="en-checkin"><summary>2.1 Check-In</summary><div class="block-body content"><h5>Arrival steps</h5><div class="checkin-steps"><article class="checkin-step"><div class="photo block-photo"><img loading="lazy" decoding="async" src="assets/images/valley-owner-alley343.png" alt="Alley 343 Au Co"><span class="ph-lab">Alley 343 Au Co</span></div><div class="checkin-step-copy"><strong>1. Find Alley 343</strong><p>Enter Alley 343 on Au Co Street and continue to No. 10 (10/343), Nhat Tan, Hanoi.</p></div></article><article class="checkin-step"><div class="photo block-photo"><img loading="lazy" decoding="async" src="assets/images/valley-owner-gate.png" alt="Gate No. 10"><span class="ph-lab">Gate No. 10</span></div><div class="checkin-step-copy"><strong>2. Identify gate No. 10</strong><p>Look for the Ladi Homestay sign and house number 10 shown in the photo.</p></div></article><article class="checkin-step"><div class="photo block-photo"><img loading="lazy" decoding="async" src="assets/images/valley-owner-keypad.png" alt="Main gate keypad"><span class="ph-lab">Main gate keypad</span></div><div class="checkin-step-copy"><strong>3. Open the gate and room doors</strong><p>Touch the keypad to wake it. The main gate and all room doors use the same code; enter it in full, including the final #: <strong>123123#</strong></p></div></article></div><p>Check-in starts at 14:00. Do not share the code outside your reservation. If the door does not open, contact Host Ladi.</p></div></details>
+<details class="info-block" id="en-checkout"><summary>2.2 Check-Out</summary><div class="block-body content"><ul><li>Check-out before 11:00.</li><li>Turn off air conditioners, lights and electrical devices before leaving.</li><li>Check your belongings and close the door carefully.</li></ul><p>For late check-out, contact Host to check villa availability.</p></div></details>
 </section>
 <section class="info-section" id="en-appliances"><h3 class="info-title">3. In-home Appliance Guide<span class="sub">Hướng dẫn thiết bị</span></h3>
-<details class="info-block" id="en-wifi"><summary>3.1 WiFi</summary><div class="block-body content"><h5>Connect to WiFi</h5><dl class="wifi-credentials"><div><dt>Network</dt><dd>Ladi Valley</dd></div><div><dt>Password</dt><dd>Sent by Host before check-in</dd></div></dl><p>Turn WiFi off and on on your phone, then reconnect. If the connection is still slow or unavailable, message Host to check the router.</p></div></details>
+<details class="info-block" id="en-wifi"><summary>3.1 WiFi</summary><div class="block-body content"><h5>Connect to WiFi</h5><dl class="wifi-credentials"><div><dt>Network</dt><dd>LadiHomestay</dd></div><div><dt>Password</dt><dd>12345689</dd></div></dl><div class="wifi-copy-row"><button class="copy-password" type="button" data-copy-password data-copy-value="12345689" data-copy-label="Copy password" data-copied-label="Copied">Copy password</button><span class="copy-feedback" role="status" aria-live="polite"></span></div><p>Turn WiFi off and on on your phone, then reconnect. If the connection is still slow or unavailable, message Host to check the router.</p></div></details>
 <details class="info-block" id="en-ac"><summary>3.2 AC &amp; Hot Water</summary><div class="block-body content"><article class="device-instruction-group"><div class="photo block-photo"><img src="assets/images/ladi-valley-bedroom-ac.webp" alt="Ladi Valley" loading="lazy" decoding="async"><span class="ph-lab">AC &amp; Hot Water</span></div><div class="device-copy"><ul><li>Air conditioning is available in all rooms. Cool mode at 25-26°C is recommended.</li><li>Hot water is available 24/7.</li><li>Turn AC off when going out.</li></ul></div></article></div></details>
-<details class="info-block" id="en-cooktop"><summary>3.3 Kitchen</summary><div class="block-body content"><article class="device-instruction-group"><div class="photo block-photo"><img src="assets/images/ladi-valley-kitchen-full.webp" alt="Ladi Valley" loading="lazy" decoding="async"><span class="ph-lab">Kitchen</span></div><div class="device-copy"><ul><li>Cooktop, refrigerator, kettle, pots, pans, dishes and basic cookware are prepared.</li></ul><ol><li>Use cookware suitable for the cooktop.</li><li>Turn it on, place the pot on a cooking zone and adjust the heat.</li><li>Turn it off after cooking; allow the surface to cool before wiping.</li></ol></div></article></div></details>
-<details class="info-block" id="en-microwave"><summary>3.4 Kitchen Tools &amp; Hotpot</summary><div class="block-body content"><article class="device-instruction-group"><div class="photo block-photo"><img src="assets/images/ladi-valley-kitchen.webp" alt="Ladi Valley" loading="lazy" decoding="async"><span class="ph-lab">Kitchen Tools</span></div><div class="device-copy"><ul><li>A portable hotpot stove is available. Please wash and return all dishes and cookware after use.</li></ul></div></article></div></details>
+<details class="info-block" id="en-cooktop"><summary>3.3 Kitchen</summary><div class="block-body content"><article class="device-instruction-group"><div class="photo block-photo"><img src="assets/images/ladi-valley-kitchen-full.webp" alt="Ladi Valley" loading="lazy" decoding="async"><span class="ph-lab">Kitchen</span></div><div class="device-copy"><ul><li>Cooktop, refrigerator, kettle, pots, pans, dishes and basic cookware are prepared.</li></ul><ol><li>Place the pot or pan securely on the cooktop and stay nearby while cooking.</li><li>Switch it off after use; let it cool before wiping it clean.</li></ol></div></article></div></details>
+<details class="info-block" id="en-microwave"><summary>3.4 Kitchen Tools &amp; Hotpot</summary><div class="block-body content"><article class="device-instruction-group"><div class="photo block-photo"><img src="assets/images/valley-10-p6.webp" alt="Ladi Valley" loading="lazy" decoding="async"><span class="ph-lab">Kitchen Tools</span></div><div class="device-copy"><ul><li>A portable hotpot stove is available. Please wash and return all dishes and cookware after use.</li></ul></div></article></div></details>
 <details class="info-block" id="en-tv"><summary>3.5 Smart TV</summary><div class="block-body content"><article class="device-instruction-group"><div class="photo block-photo"><img src="assets/images/valley-06-p4.webp" alt="Ladi Valley" loading="lazy" decoding="async"><span class="ph-lab">Smart TV</span></div><div class="device-copy"><p>The Smart TV has Internet access, Netflix and YouTube. Please log out of personal accounts before check-out.</p></div></article></div></details>
 <details class="info-block" id="en-laundry"><summary>3.6 Washer &amp; Dryer</summary><div class="block-body content"><article class="device-instruction-group"><div class="photo block-photo"><img src="assets/images/valley-14-p8.webp" alt="Ladi Valley" loading="lazy" decoding="async"><span class="ph-lab">Washer &amp; Dryer</span></div><div class="device-copy"><ul><li>Private washer and dryer are available. Do not overload the machine.</li></ul><p>Check clothing pockets, avoid overloading and leave the machine door ajar after use to dry.</p></div></article></div></details>
 <details class="info-block" id="en-heater"><summary>3.7 Private Garden</summary><div class="block-body content"><article class="device-instruction-group"><div class="photo block-photo"><img src="assets/images/ladi-valley-garden.webp" alt="Ladi Valley" loading="lazy" decoding="async"><span class="ph-lab">Garden</span></div><div class="device-copy"><ul><li>Private garden with chill seating and outdoor dining area. Please keep quiet after 22:00.</li></ul></div></article></div></details>
-<details class="info-block" id="en-other"><summary>3.8 Other Amenities</summary><div class="block-body content"><article class="device-instruction-group"><div class="photo block-photo"><img src="assets/images/ladi-valley-kitchen-full.webp" alt="Ladi Valley" loading="lazy" decoding="async"><span class="ph-lab">Other Amenities</span></div><div class="device-copy"><ul><li>Hair dryers, towels, basic bathroom amenities, chess and a board game are prepared.</li></ul></div></article></div></details>
+<details class="info-block" id="en-other"><summary>3.8 Other Amenities</summary><div class="block-body content"><article class="device-instruction-group"><div class="photo block-photo"><img src="assets/images/valley-15-p8.webp" alt="Ladi Valley" loading="lazy" decoding="async"><span class="ph-lab">Other Amenities</span></div><div class="device-copy"><ul><li>Hair dryers, towels, basic bathroom amenities, chess and a board game are prepared.</li></ul></div></article></div></details>
 </section>
     </div></div>
   </details><details class="lang-panel korean" data-lang-panel="ko" lang="ko">
@@ -1345,77 +1356,77 @@
     <div class="inside"><div class="section-stack">
       
 <section class="info-section" id="kr-general"><h3 class="info-title">1. 일반 정보<span class="sub">General information</span></h3>
-<details class="info-block" id="kr-address" open=""><summary>1.1 위치</summary><div class="block-body content location-layout"><a class="map-button" href="https://maps.app.goo.gl/AJGwJwu6iq7QDAKL8" target="_blank" rel="noopener">google map Ladi Valley</a><p><strong>주소:</strong> No. 10, Alley 343 Au Co Street, Tay Ho, Hanoi.<br><strong>숙소:</strong> Ladi Valley — 서호 근처의 2층 프라이빗 가든 빌라입니다.</p><ul><li>Xuân Diệu - West Lake 지역까지 약 <strong>5분</strong>.</li><li>하노이 올드쿼터까지 약 <strong>15분</strong>.</li><li>가족, 친구 그룹, 주말 스테이케이션 또는 원격 근무에 적합합니다.</li></ul><div class="photo block-photo location-photo"><img src="assets/images/ladi-valley-hero.webp" alt="Ladi Valley" loading="lazy" decoding="async"><span class="ph-lab">위치</span></div></div></details>
+<details class="info-block" id="kr-address" open=""><summary>1.1 위치</summary><div class="block-body content location-layout"><a class="map-button" href="https://maps.app.goo.gl/AJGwJwu6iq7QDAKL8" target="_blank" rel="noopener" data-copy="openMap">Mở Google Maps</a><p><strong>주소:</strong> No. 10, Alley 343 Au Co Street (10/343), Nhat Tan, Hanoi.<br><strong>숙소:</strong> Ladi Valley — 서호 근처의 2층 프라이빗 가든 빌라입니다.</p><figure class="location-photo location-video"><div class="location-video-stage"><button class="location-video-play" type="button" aria-label="길 안내 영상 재생" title="길 안내 영상 재생"><img src="assets/images/valley-arrival-poster.webp" alt="" loading="lazy" decoding="async"><span aria-hidden="true">▶</span></button><video hidden controls playsinline preload="none" poster="assets/images/valley-arrival-poster.webp" aria-label="10번 대문까지 가는 길 안내 영상"><source src="assets/images/valley-arrival-guide.mp4" type="video/mp4"><a href="assets/images/valley-arrival-guide.mp4">브라우저에서 영상을 재생할 수 없습니다. 영상 열기</a></video></div><figcaption>Âu Cơ 343번 골목 10번 집으로 가는 길</figcaption></figure><ul><li>Xuân Diệu - West Lake 지역까지 약 <strong>5분</strong>.</li><li>하노이 올드쿼터까지 약 <strong>15분</strong>.</li><li>가족, 친구 그룹, 주말 스테이케이션 또는 원격 근무에 적합합니다.</li></ul></div></details>
 <details class="info-block" id="kr-extra"><summary>1.2 추가 정보</summary><div class="block-body content"><ul><li>2층 빌라, 침실 3개, 침대 4개, 넓은 거실, 큰 주방, 발코니와 전용 정원.</li><li>전용 욕실 4개가 있어 단체도 편하게 사용할 수 있습니다.</li><li>1층: 거실, 침실 1개, 주방/식탁, 욕실 2개, 정원.</li><li>2층: 욕실이 딸린 침실 2개와 발코니.</li></ul><div class="photo block-photo"><img src="assets/images/ladi-valley-terrace.webp" alt="Ladi Valley" loading="lazy" decoding="async"><span class="ph-lab">추가 정보</span></div></div></details>
 <details class="info-block" id="kr-rules"><summary>1.3 숙소 규칙</summary><div class="block-body content"><ul><li>체크인 14:00 · 체크아웃 11:00.</li><li>실내 금연, 흡연은 정원에서만 가능합니다.</li><li>파티 금지, 22:00 이후 소음 금지.</li><li>출입 코드를 외부인에게 공유하지 마세요.</li><li>외출 전 전기와 에어컨을 꺼 주세요.</li></ul><p>위생용품이나 물티슈를 변기에 버리지 마세요.</p><div class="photo block-photo"><img src="assets/images/valley-05-p4.webp" alt="Ladi Valley" loading="lazy" decoding="async"><span class="ph-lab">숙소 규칙</span></div></div></details>
 <details class="info-block" id="kr-emergency"><summary>1.4 긴급 연락처</summary><div class="block-body content"><div class="emergency-actions"><a href="tel:+84935141368">Host Ladi · +84 93 514 1368</a><a href="mailto:Ladihomestay@gmail.com">Host에게 이메일</a><a href="tel:115">115</a><a href="tel:113">113</a><a href="tel:114">114</a></div><ul><li>Host Ladi — <span class="ph">+84 93 514 1368</span></li><li>Email — <span class="ph">Ladihomestay@gmail.com</span></li><li>응급 115 · 경찰 113 · 소방 114</li></ul></div></details>
-<details class="info-block" id="kr-support"><summary>1.5 추가 지원</summary><div class="block-body content"><ul><li>공항 이동은 요청 시 도와드립니다. 최소 하루 전에 연락해 주세요.</li><li>주변 관광 및 음식 추천과 하롱, 닌빈, 시티 투어 정보를 안내해 드릴 수 있습니다.</li><li>장기 숙박 시 청소 또는 세탁 지원은 Host에게 문의해 주세요.</li></ul></div></details><details class="info-block" id="kr-note"><summary>숙박 시 참고 사항</summary><div class="block-body content"><ul><li>정원에는 특히 저녁에 모기가 있을 수 있습니다. 각 방에 모기 퇴치등과 개인용 모기 기피제가 준비되어 있습니다.</li><li>저녁에 조명을 켤 때는 문을 닫아 벌레가 들어오지 않도록 해 주세요.</li><li>인근 공사로 7:00–17:30에 소음이 발생할 수 있으며 주로 야외 정원에서 들립니다.</li></ul></div></details>
+<details class="info-block" id="kr-support"><summary>1.5 추가 지원</summary><div class="block-body content"><div class="photo block-photo"><img loading="lazy" decoding="async" src="assets/images/ladi-valley-laundry.webp" alt="Laundry area at Ladi Valley" data-alt-copy="supportPhotoAlt"><span class="ph-lab" data-copy="supportPhotoCaption">Laundry support</span></div><ul><li>공항 이동은 요청 시 도와드립니다. 최소 하루 전에 연락해 주세요.</li><li>주변 관광 및 음식 추천과 하롱, 닌빈, 시티 투어 정보를 안내해 드릴 수 있습니다.</li><li>장기 숙박 시 청소 또는 세탁 지원은 Host에게 문의해 주세요.</li></ul></div></details><details class="info-block" id="kr-note"><summary>숙박 시 참고 사항</summary><div class="block-body content"><div class="photo block-photo"><img loading="lazy" decoding="async" src="assets/images/ladi-valley-garden.webp" alt="Private garden at Ladi Valley" data-alt-copy="gardenPhotoAlt"><span class="ph-lab" data-copy="gardenPhotoCaption">Garden notes</span></div><ul><li>정원에는 특히 저녁에 모기가 있을 수 있습니다. 각 방에 모기 퇴치등과 개인용 모기 기피제가 준비되어 있습니다.</li><li>저녁에 조명을 켤 때는 문을 닫아 벌레가 들어오지 않도록 해 주세요.</li><li>인근 공사로 7:00–17:30에 소음이 발생할 수 있으며 주로 야외 정원에서 들립니다.</li></ul></div></details>
 </section>
 <section class="info-section" id="kr-checkin-checkout"><h3 class="info-title">2. 체크인 &amp; 체크아웃<span class="sub">Arrival and departure</span></h3>
-<details class="info-block" id="kr-checkin"><summary>2.1 체크인</summary><div class="block-body content"><h5>체크인 순서</h5><div class="checkin-steps"><article class="checkin-step"><div class="photo block-photo"><img loading="lazy" decoding="async" src="assets/images/ladi-valley-entrance.webp" alt="Ladi Valley 입구"><span class="ph-lab">Ladi Valley 입구</span></div><div class="checkin-step-copy"><strong>1. 빌라 찾아가기</strong><p>Google Maps를 따라 No. 10, Alley 343 Au Co Street, Tay Ho로 오세요.</p></div></article><article class="checkin-step"><div class="checkin-step-copy"><strong>2. Host 안내 확인</strong><p>도착 전 또는 체크인 당일에 전송되는 상세 안내와 출입 코드를 확인하세요.</p></div></article><article class="checkin-step"><div class="checkin-step-copy"><strong>3. 키패드로 문 열기</strong><p>키패드를 터치해 켠 후 전달받은 코드를 입력하고 # 또는 ✓를 누르세요.</p></div></article></div><p>체크인은 14:00부터입니다. 예약 인원 외에는 코드를 공유하지 마세요. 오류가 나면 천천히 입력하고, 계속 안 되면 Host Ladi에게 연락하세요.</p></div></details>
-<details class="info-block" id="kr-checkout"><summary>2.2 체크아웃</summary><div class="block-body content"><ul><li>11:00 전 체크아웃.</li><li>퇴실 전 에어컨, 조명, 전기기기를 꺼 주세요.</li><li>개인 물품을 확인하고 문을 잘 닫아 주세요.</li></ul><p>늦은 체크아웃은 Host에게 빌라 이용 가능 여부를 확인해 주세요.</p><div class="photo block-photo"><img src="assets/images/ladi-valley-garden-terrace.webp" alt="Ladi Valley" loading="lazy" decoding="async"><span class="ph-lab">체크아웃</span></div></div></details>
+<details class="info-block" id="kr-checkin"><summary>2.1 체크인</summary><div class="block-body content"><h5>체크인 순서</h5><div class="checkin-steps"><article class="checkin-step"><div class="photo block-photo"><img loading="lazy" decoding="async" src="assets/images/valley-owner-alley343.png" alt="Âu Cơ 343번 골목"><span class="ph-lab">Âu Cơ 343번 골목</span></div><div class="checkin-step-copy"><strong>1. 343번 골목 찾기</strong><p>Âu Cơ 거리의 343번 골목으로 들어가 10번 집(10/343), Nhật Tân, Hanoi로 오세요.</p></div></article><article class="checkin-step"><div class="photo block-photo"><img loading="lazy" decoding="async" src="assets/images/valley-owner-gate.png" alt="10번 대문"><span class="ph-lab">10번 대문</span></div><div class="checkin-step-copy"><strong>2. 10번 대문 확인</strong><p>사진처럼 Ladi Homestay 간판과 집 번호 10이 있는 대문을 찾으세요.</p></div></article><article class="checkin-step"><div class="photo block-photo"><img loading="lazy" decoding="async" src="assets/images/valley-owner-keypad.png" alt="정문 키패드"><span class="ph-lab">정문 키패드</span></div><div class="checkin-step-copy"><strong>3. 정문과 객실 문 열기</strong><p>키패드를 터치해 켜세요. 정문과 모든 객실 문에 같은 코드를 사용합니다. 마지막 #까지 입력하세요: <strong>123123#</strong></p></div></article></div><p>체크인은 14:00부터입니다. 예약 인원 외에는 코드를 공유하지 마세요. 문이 열리지 않으면 Host Ladi에게 연락하세요.</p></div></details>
+<details class="info-block" id="kr-checkout"><summary>2.2 체크아웃</summary><div class="block-body content"><ul><li>11:00 전 체크아웃.</li><li>퇴실 전 에어컨, 조명, 전기기기를 꺼 주세요.</li><li>개인 물품을 확인하고 문을 잘 닫아 주세요.</li></ul><p>늦은 체크아웃은 Host에게 빌라 이용 가능 여부를 확인해 주세요.</p></div></details>
 </section>
 <section class="info-section" id="kr-appliances"><h3 class="info-title">3. 실내 기기 사용 안내<span class="sub">In-home appliance guide</span></h3>
-<details class="info-block" id="kr-wifi"><summary>3.1 WiFi</summary><div class="block-body content"><h5>WiFi 연결</h5><dl class="wifi-credentials"><div><dt>네트워크</dt><dd>Ladi Valley</dd></div><div><dt>비밀번호</dt><dd>체크인 전에 Host가 전송합니다</dd></div></dl><p>휴대전화 WiFi를 껐다 켜고 다시 연결하세요. 계속 느리거나 연결되지 않으면 Host에게 공유기 점검을 요청하세요.</p></div></details>
+<details class="info-block" id="kr-wifi"><summary>3.1 WiFi</summary><div class="block-body content"><h5>WiFi 연결</h5><dl class="wifi-credentials"><div><dt>네트워크</dt><dd>LadiHomestay</dd></div><div><dt>비밀번호</dt><dd>12345689</dd></div></dl><div class="wifi-copy-row"><button class="copy-password" type="button" data-copy-password data-copy-value="12345689" data-copy-label="비밀번호 복사" data-copied-label="복사됨">비밀번호 복사</button><span class="copy-feedback" role="status" aria-live="polite"></span></div><p>휴대전화 WiFi를 껐다 켜고 다시 연결하세요. 계속 느리거나 연결되지 않으면 Host에게 공유기 점검을 요청하세요.</p></div></details>
 <details class="info-block" id="kr-ac"><summary>3.2 에어컨 &amp; 온수</summary><div class="block-body content"><article class="device-instruction-group"><div class="photo block-photo"><img src="assets/images/ladi-valley-bedroom-ac.webp" alt="Ladi Valley" loading="lazy" decoding="async"><span class="ph-lab">에어컨 &amp; 온수</span></div><div class="device-copy"><ul><li>각 방에 에어컨이 있습니다. Cool 모드와 25-26°C를 권장합니다.</li><li>온수는 24시간 사용 가능합니다.</li><li>외출 시 에어컨을 꺼 주세요.</li></ul></div></article></div></details>
-<details class="info-block" id="kr-cooktop"><summary>3.3 주방</summary><div class="block-body content"><article class="device-instruction-group"><div class="photo block-photo"><img src="assets/images/ladi-valley-kitchen-full.webp" alt="Ladi Valley" loading="lazy" decoding="async"><span class="ph-lab">주방</span></div><div class="device-copy"><ul><li>조리대, 냉장고, 전기포트, 냄비, 팬, 식기와 기본 조리도구가 준비되어 있습니다.</li></ul><ol><li>조리기기에 맞는 냄비나 팬을 사용하세요.</li><li>전원을 켜고 조리 구역에 냄비를 놓은 뒤 온도를 조절하세요.</li><li>조리 후 전원을 끄고 표면이 식은 뒤 닦아 주세요.</li></ol></div></article></div></details>
-<details class="info-block" id="kr-microwave"><summary>3.4 주방 도구 &amp; 핫팟</summary><div class="block-body content"><article class="device-instruction-group"><div class="photo block-photo"><img src="assets/images/ladi-valley-kitchen.webp" alt="Ladi Valley" loading="lazy" decoding="async"><span class="ph-lab">주방 도구</span></div><div class="device-copy"><ul><li>이동식 핫팟 스토브가 있습니다. 사용 후 식기와 조리도구를 세척해 주세요.</li></ul></div></article></div></details>
+<details class="info-block" id="kr-cooktop"><summary>3.3 주방</summary><div class="block-body content"><article class="device-instruction-group"><div class="photo block-photo"><img src="assets/images/ladi-valley-kitchen-full.webp" alt="Ladi Valley" loading="lazy" decoding="async"><span class="ph-lab">주방</span></div><div class="device-copy"><ul><li>조리대, 냉장고, 전기포트, 냄비, 팬, 식기와 기본 조리도구가 준비되어 있습니다.</li></ul><ol><li>냄비나 팬을 조리대에 안정적으로 놓고 조리 중에는 자리를 비우지 마세요.</li><li>사용 후 전원을 끄고, 식은 다음 닦아 주세요.</li></ol></div></article></div></details>
+<details class="info-block" id="kr-microwave"><summary>3.4 주방 도구 &amp; 핫팟</summary><div class="block-body content"><article class="device-instruction-group"><div class="photo block-photo"><img src="assets/images/valley-10-p6.webp" alt="Ladi Valley" loading="lazy" decoding="async"><span class="ph-lab">주방 도구</span></div><div class="device-copy"><ul><li>이동식 핫팟 스토브가 있습니다. 사용 후 식기와 조리도구를 세척해 주세요.</li></ul></div></article></div></details>
 <details class="info-block" id="kr-tv"><summary>3.5 Smart TV</summary><div class="block-body content"><article class="device-instruction-group"><div class="photo block-photo"><img src="assets/images/valley-06-p4.webp" alt="Ladi Valley" loading="lazy" decoding="async"><span class="ph-lab">Smart TV</span></div><div class="device-copy"><p>Netflix와 YouTube를 이용할 수 있습니다. 개인 계정은 체크아웃 전에 로그아웃해 주세요.</p></div></article></div></details>
 <details class="info-block" id="kr-laundry"><summary>3.6 세탁/건조</summary><div class="block-body content"><article class="device-instruction-group"><div class="photo block-photo"><img src="assets/images/valley-14-p8.webp" alt="Ladi Valley" loading="lazy" decoding="async"><span class="ph-lab">세탁/건조</span></div><div class="device-copy"><ul><li>전용 세탁기와 건조기가 있습니다. 세탁물을 과하게 넣지 마세요.</li></ul><p>옷 주머니를 확인하고 과적하지 마세요. 사용 후에는 문을 조금 열어 건조해 주세요.</p></div></article></div></details>
 <details class="info-block" id="kr-heater"><summary>3.7 정원</summary><div class="block-body content"><article class="device-instruction-group"><div class="photo block-photo"><img src="assets/images/ladi-valley-garden.webp" alt="Ladi Valley" loading="lazy" decoding="async"><span class="ph-lab">정원</span></div><div class="device-copy"><ul><li>전용 정원과 야외 식사 공간이 있습니다. 22:00 이후에는 조용히 이용해 주세요.</li></ul></div></article></div></details>
-<details class="info-block" id="kr-other"><summary>3.8 기타 시설</summary><div class="block-body content"><article class="device-instruction-group"><div class="photo block-photo"><img src="assets/images/ladi-valley-kitchen-full.webp" alt="Ladi Valley" loading="lazy" decoding="async"><span class="ph-lab">기타 시설</span></div><div class="device-copy"><ul><li>헤어드라이어, 수건, 기본 욕실용품, 체스와 보드게임이 준비되어 있습니다.</li></ul></div></article></div></details>
+<details class="info-block" id="kr-other"><summary>3.8 기타 시설</summary><div class="block-body content"><article class="device-instruction-group"><div class="photo block-photo"><img src="assets/images/valley-15-p8.webp" alt="Ladi Valley" loading="lazy" decoding="async"><span class="ph-lab">기타 시설</span></div><div class="device-copy"><ul><li>헤어드라이어, 수건, 기본 욕실용품, 체스와 보드게임이 준비되어 있습니다.</li></ul></div></article></div></details>
 </section>
     </div></div>
   </details><details class="lang-panel chinese" data-lang-panel="zh" lang="zh-Hans">
     <summary><span class="flag">CN</span><span class="lang-name cjk">中文</span></summary>
     <div class="inside"><div class="section-stack">
       <section class="info-section" id="cn-general"><h3 class="info-title">1. 基本信息<span class="sub">General information</span></h3>
-        <details class="info-block" id="cn-address" open=""><summary>1.1 位置</summary><div class="block-body content location-layout"><a class="map-button" href="https://maps.app.goo.gl/AJGwJwu6iq7QDAKL8" target="_blank" rel="noopener">google map Ladi Valley</a><p><strong>地址：</strong>No. 10, Alley 343 Au Co Street, Tay Ho, Hanoi.<br><strong>您的房源：</strong>Ladi Valley — 靠近西湖的两层私人花园别墅。</p><ul><li>约<strong>5分钟</strong>到 Xuân Diệu - West Lake 咖啡馆、餐厅和酒吧区。</li><li>约<strong>15分钟</strong>到河内老城区。</li><li>适合家庭、朋友小组、周末度假或远程办公。</li></ul><div class="photo block-photo location-photo"><img src="assets/images/ladi-valley-hero.webp" alt="Ladi Valley" loading="lazy" decoding="async"><span class="ph-lab">位置</span></div></div></details>
+        <details class="info-block" id="cn-address" open=""><summary>1.1 位置</summary><div class="block-body content location-layout"><a class="map-button" href="https://maps.app.goo.gl/AJGwJwu6iq7QDAKL8" target="_blank" rel="noopener" data-copy="openMap">Mở Google Maps</a><p><strong>地址：</strong>No. 10, Alley 343 Au Co Street (10/343), Nhat Tan, Hanoi.<br><strong>您的房源：</strong>Ladi Valley — 靠近西湖的两层私人花园别墅。</p><figure class="location-photo location-video"><div class="location-video-stage"><button class="location-video-play" type="button" aria-label="播放路线视频" title="播放路线视频"><img src="assets/images/valley-arrival-poster.webp" alt="" loading="lazy" decoding="async"><span aria-hidden="true">▶</span></button><video hidden controls playsinline preload="none" poster="assets/images/valley-arrival-poster.webp" aria-label="前往10号大门的视频指引"><source src="assets/images/valley-arrival-guide.mp4" type="video/mp4"><a href="assets/images/valley-arrival-guide.mp4">浏览器无法播放此视频。打开视频</a></video></div><figcaption>前往 Âu Cơ 街343巷10号</figcaption></figure><ul><li>约<strong>5分钟</strong>到 Xuân Diệu - West Lake 咖啡馆、餐厅和酒吧区。</li><li>约<strong>15分钟</strong>到河内老城区。</li><li>适合家庭、朋友小组、周末度假或远程办公。</li></ul></div></details>
         <details class="info-block" id="cn-extra"><summary>1.2 更多信息</summary><div class="block-body content"><ul><li><strong>空间：</strong>两层别墅，3间卧室，4张床，宽敞客厅，大厨房，阳台和私人花园。</li><li><strong>卫生间：</strong>4个独立卫生间，适合多人入住。</li><li><strong>一楼：</strong>客厅、1间卧室、厨房和餐桌、2个卫生间、花园。</li><li><strong>二楼：</strong>2间套房卧室，每间都有独立卫生间和大窗户。</li></ul><div class="photo block-photo"><img src="assets/images/ladi-valley-terrace.webp" alt="Ladi Valley" loading="lazy" decoding="async"><span class="ph-lab">更多信息</span></div></div></details>
         <details class="info-block" id="cn-rules"><summary>1.3 房屋规则</summary><div class="block-body content"><ul><li><strong>入住：</strong>14:00 | <strong>退房：</strong>11:00。</li><li>室内禁止吸烟，可在花园吸烟。</li><li>禁止派对，<strong>22:00后</strong>请保持安静。</li><li>请勿向预订外人员分享门锁密码。</li><li>请勿将卫生用品或湿毛巾放入马桶。</li><li>外出前请关闭电器和空调。</li></ul><p>请勿将卫生用品或湿巾丢入马桶。</p><div class="photo block-photo"><img src="assets/images/valley-05-p4.webp" alt="Ladi Valley" loading="lazy" decoding="async"><span class="ph-lab">房屋规则</span></div></div></details>
         <details class="info-block" id="cn-emergency"><summary>1.4 紧急联系</summary><div class="block-body content"><div class="emergency-actions"><a href="tel:+84935141368">Host Ladi · +84 93 514 1368</a><a href="mailto:Ladihomestay@gmail.com">发送邮件给 Host</a><a href="tel:115">115</a><a href="tel:113">113</a><a href="tel:114">114</a></div><ul><li>Host Ladi — <span class="ph">+84 93 514 1368</span></li><li>Email — <span class="ph">Ladihomestay@gmail.com</span></li><li>急救115 · 警察113 · 消防114</li></ul></div></details>
-        <details class="info-block" id="cn-support"><summary>1.5 额外服务</summary><div class="block-body content"><ul><li>可按需协助安排机场接送，请至少提前一天联系。</li><li>Host 可提供本地景点、美食推荐，以及下龙、宁平和城市游览信息。</li><li>长住客人可联系 Host 咨询清洁或洗衣协助。</li></ul></div></details>
+        <details class="info-block" id="cn-support"><summary>1.5 额外服务</summary><div class="block-body content"><div class="photo block-photo"><img loading="lazy" decoding="async" src="assets/images/ladi-valley-laundry.webp" alt="Laundry area at Ladi Valley" data-alt-copy="supportPhotoAlt"><span class="ph-lab" data-copy="supportPhotoCaption">Laundry support</span></div><ul><li>可按需协助安排机场接送，请至少提前一天联系。</li><li>Host 可提供本地景点、美食推荐，以及下龙、宁平和城市游览信息。</li><li>长住客人可联系 Host 咨询清洁或洗衣协助。</li></ul></div></details>
         <details class="info-block" id="cn-note"><summary>1.6 其他注意事项</summary><div class="block-body content"><ul><li>花园可能有蚊子，尤其在傍晚。每间房均备有灭蚊灯和个人驱蚊喷雾。</li><li>晚间开灯时请关门，减少昆虫进入。</li><li>附近施工可能在 7:00–17:30 产生噪音，主要在户外花园可以听到。</li></ul></div></details>
       </section>
       <section class="info-section" id="cn-checkin-checkout"><h3 class="info-title">2. 入住 &amp; 退房<span class="sub">Arrival and departure</span></h3>
-        <details class="info-block" id="cn-checkin"><summary>2.1 入住</summary><div class="block-body content"><h5>入住步骤</h5><div class="checkin-steps"><article class="checkin-step"><div class="photo block-photo"><img loading="lazy" decoding="async" src="assets/images/ladi-valley-entrance.webp" alt="Ladi Valley 入口"><span class="ph-lab">Ladi Valley 入口</span></div><div class="checkin-step-copy"><strong>1. 找到别墅</strong><p>按照 Google Maps 前往 No. 10, Alley 343 Au Co Street, Tay Ho。</p></div></article><article class="checkin-step"><div class="checkin-step-copy"><strong>2. 阅读 Host 指引</strong><p>查看抵达前或入住当天发送的详细指引和门禁密码。</p></div></article><article class="checkin-step"><div class="checkin-step-copy"><strong>3. 使用密码键盘开门</strong><p>轻触键盘唤醒，输入收到的密码，再按 # 或 ✓。</p></div></article></div><p>14:00 起入住。请勿向预订以外的人分享密码。如输入失败，请缓慢重试；仍有问题请联系 Host Ladi。</p></div></details>
-        <details class="info-block" id="cn-checkout"><summary>2.2 退房</summary><div class="block-body content"><ul><li><strong>退房：</strong>11:00前。</li><li>离开前请关闭空调、灯和电器。</li><li>检查个人物品并关好门。</li></ul><p>如需延迟退房，请联系 Host 确认别墅是否可安排。</p><div class="photo block-photo"><img src="assets/images/ladi-valley-garden-terrace.webp" alt="Ladi Valley" loading="lazy" decoding="async"><span class="ph-lab">退房</span></div></div></details>
+        <details class="info-block" id="cn-checkin"><summary>2.1 入住</summary><div class="block-body content"><h5>入住步骤</h5><div class="checkin-steps"><article class="checkin-step"><div class="photo block-photo"><img loading="lazy" decoding="async" src="assets/images/valley-owner-alley343.png" alt="Âu Cơ 343巷"><span class="ph-lab">Âu Cơ 343巷</span></div><div class="checkin-step-copy"><strong>1. 找到343巷</strong><p>进入 Âu Cơ 街343巷，前往10号（10/343），Nhật Tân，河内。</p></div></article><article class="checkin-step"><div class="photo block-photo"><img loading="lazy" decoding="async" src="assets/images/valley-owner-gate.png" alt="10号大门"><span class="ph-lab">10号大门</span></div><div class="checkin-step-copy"><strong>2. 确认10号大门</strong><p>找到照片中带有 Ladi Homestay 招牌和门牌10的大门。</p></div></article><article class="checkin-step"><div class="photo block-photo"><img loading="lazy" decoding="async" src="assets/images/valley-owner-keypad.png" alt="正门密码键盘"><span class="ph-lab">正门密码键盘</span></div><div class="checkin-step-copy"><strong>3. 打开大门和客房门</strong><p>轻触键盘唤醒。正门和所有客房门使用同一密码，请完整输入，包括末尾的 #： <strong>123123#</strong></p></div></article></div><p>14:00 起可入住。请勿向预订以外的人分享密码。如无法开门，请联系 Host Ladi。</p></div></details>
+        <details class="info-block" id="cn-checkout"><summary>2.2 退房</summary><div class="block-body content"><ul><li><strong>退房：</strong>11:00前。</li><li>离开前请关闭空调、灯和电器。</li><li>检查个人物品并关好门。</li></ul><p>如需延迟退房，请联系 Host 确认别墅是否可安排。</p></div></details>
       </section>
       <section class="info-section" id="cn-appliances"><h3 class="info-title">3. 室内设备使用指南<span class="sub">In-home appliance guide</span></h3>
-        <details class="info-block" id="cn-wifi"><summary>3.1 WiFi</summary><div class="block-body content"><h5>连接 WiFi</h5><dl class="wifi-credentials"><div><dt>网络名称</dt><dd>Ladi Valley</dd></div><div><dt>密码</dt><dd>Host 将在入住前发送</dd></div></dl><p>关闭并重新打开手机 WiFi 后重新连接。如仍缓慢或无法连接，请联系 Host 检查路由器。</p></div></details>
+        <details class="info-block" id="cn-wifi"><summary>3.1 WiFi</summary><div class="block-body content"><h5>连接 WiFi</h5><dl class="wifi-credentials"><div><dt>网络名称</dt><dd>LadiHomestay</dd></div><div><dt>密码</dt><dd>12345689</dd></div></dl><div class="wifi-copy-row"><button class="copy-password" type="button" data-copy-password data-copy-value="12345689" data-copy-label="复制密码" data-copied-label="已复制">复制密码</button><span class="copy-feedback" role="status" aria-live="polite"></span></div><p>关闭并重新打开手机 WiFi 后重新连接。如仍缓慢或无法连接，请联系 Host 检查路由器。</p></div></details>
         <details class="info-block" id="cn-ac"><summary>3.2 空调 &amp; 热水</summary><div class="block-body content"><article class="device-instruction-group"><div class="photo block-photo"><img src="assets/images/ladi-valley-bedroom-ac.webp" alt="Ladi Valley" loading="lazy" decoding="async"><span class="ph-lab">空调 &amp; 热水</span></div><div class="device-copy"><ul><li>所有房间都有空调，建议使用 Cool 模式，25-26°C较舒适。</li><li>热水24小时可用。</li><li>外出前请关闭空调。</li></ul></div></article></div></details>
-        <details class="info-block" id="cn-cooktop"><summary>3.3 厨房</summary><div class="block-body content"><article class="device-instruction-group"><div class="photo block-photo"><img src="assets/images/ladi-valley-kitchen-full.webp" alt="Ladi Valley" loading="lazy" decoding="async"><span class="ph-lab">厨房</span></div><div class="device-copy"><ul><li>配有炉灶、冰箱、电热水壶、锅、平底锅、餐具和基本厨具。</li><li>使用后请清洁并放回原位。</li></ul><ol><li>使用适合炉具的锅具。</li><li>打开电源，将锅放在烹饪区并调整温度。</li><li>烹饪后关闭电源，待表面冷却后再擦拭。</li></ol></div></article></div></details>
-        <details class="info-block" id="cn-microwave"><summary>3.4 厨具 &amp; 火锅炉</summary><div class="block-body content"><article class="device-instruction-group"><div class="photo block-photo"><img src="assets/images/ladi-valley-kitchen.webp" alt="Ladi Valley" loading="lazy" decoding="async"><span class="ph-lab">厨具</span></div><div class="device-copy"><ul><li>有便携式火锅炉，适合家庭或小型聚餐。</li><li>使用后请清洗餐具和厨具。</li></ul></div></article></div></details>
+        <details class="info-block" id="cn-cooktop"><summary>3.3 厨房</summary><div class="block-body content"><article class="device-instruction-group"><div class="photo block-photo"><img src="assets/images/ladi-valley-kitchen-full.webp" alt="Ladi Valley" loading="lazy" decoding="async"><span class="ph-lab">厨房</span></div><div class="device-copy"><ul><li>配有炉灶、冰箱、电热水壶、锅、平底锅、餐具和基本厨具。</li><li>使用后请清洁并放回原位。</li></ul><ol><li>将锅具平稳放在炉灶上，烹饪时请勿离开。</li><li>使用后关闭炉灶，待冷却后再擦拭。</li></ol></div></article></div></details>
+        <details class="info-block" id="cn-microwave"><summary>3.4 厨具 &amp; 火锅炉</summary><div class="block-body content"><article class="device-instruction-group"><div class="photo block-photo"><img src="assets/images/valley-10-p6.webp" alt="Ladi Valley" loading="lazy" decoding="async"><span class="ph-lab">厨具</span></div><div class="device-copy"><ul><li>有便携式火锅炉，适合家庭或小型聚餐。</li><li>使用后请清洗餐具和厨具。</li></ul></div></article></div></details>
         <details class="info-block" id="cn-tv"><summary>3.5 Smart TV</summary><div class="block-body content"><article class="device-instruction-group"><div class="photo block-photo"><img src="assets/images/valley-06-p4.webp" alt="Ladi Valley" loading="lazy" decoding="async"><span class="ph-lab">Smart TV</span></div><div class="device-copy"><p>Smart TV 可连接网络，使用 Netflix 和 YouTube。如登录个人账号，请退房前退出。</p></div></article></div></details>
         <details class="info-block" id="cn-laundry"><summary>3.6 洗衣烘干</summary><div class="block-body content"><article class="device-instruction-group"><div class="photo block-photo"><img src="assets/images/valley-14-p8.webp" alt="Ladi Valley" loading="lazy" decoding="async"><span class="ph-lab">洗衣烘干</span></div><div class="device-copy"><ul><li>别墅配有私人洗衣机和烘干机。</li><li>适合长住客人或带儿童的家庭。</li><li>请勿一次放入过多衣物。</li></ul><p>洗衣前检查口袋，请勿超量放入衣物；使用后将机门微开通风。</p></div></article></div></details>
         <details class="info-block" id="cn-heater"><summary>3.7 私人花园</summary><div class="block-body content"><article class="device-instruction-group"><div class="photo block-photo"><img src="assets/images/ladi-valley-garden.webp" alt="Ladi Valley" loading="lazy" decoding="async"><span class="ph-lab">私人花园</span></div><div class="device-copy"><ul><li>私人花园有休闲座位和户外用餐区。</li><li>22:00后请保持安静。</li></ul></div></article></div></details>
-        <details class="info-block" id="cn-other"><summary>3.8 其他设备</summary><div class="block-body content"><article class="device-instruction-group"><div class="photo block-photo"><img src="assets/images/ladi-valley-kitchen-full.webp" alt="Ladi Valley" loading="lazy" decoding="async"><span class="ph-lab">其他设备</span></div><div class="device-copy"><ul><li>房间内准备了吹风机、毛巾和基本浴室用品。</li><li>有国际象棋和越南桌游。</li><li>外出前请关闭所有电器。</li></ul></div></article></div></details>
+        <details class="info-block" id="cn-other"><summary>3.8 其他设备</summary><div class="block-body content"><article class="device-instruction-group"><div class="photo block-photo"><img src="assets/images/valley-15-p8.webp" alt="Ladi Valley" loading="lazy" decoding="async"><span class="ph-lab">其他设备</span></div><div class="device-copy"><ul><li>房间内准备了吹风机、毛巾和基本浴室用品。</li><li>有国际象棋和越南桌游。</li><li>外出前请关闭所有电器。</li></ul></div></article></div></details>
       </section>
     </div></div>
   </details><details class="lang-panel japanese" data-lang-panel="ja" lang="ja">
     <summary><span class="flag">JP</span><span class="lang-name cjk">日本語</span></summary>
     <div class="inside"><div class="section-stack">
       <section class="info-section" id="jp-general"><h3 class="info-title">1. 基本情報<span class="sub">General information</span></h3>
-        <details class="info-block" id="jp-address" open=""><summary>1.1 場所</summary><div class="block-body content location-layout"><a class="map-button" href="https://maps.app.goo.gl/AJGwJwu6iq7QDAKL8" target="_blank" rel="noopener">google map Ladi Valley</a><p><strong>住所:</strong> No. 10, Alley 343 Au Co Street, Tay Ho, Hanoi.<br><strong>お部屋:</strong> Ladi Valley — 西湖近くの2階建てプライベートガーデン付きヴィラです。</p><ul><li>Xuân Diệu - West Lake エリアまで約<strong>5分</strong>。</li><li>旧市街まで約<strong>15分</strong>。</li><li>家族、友人グループ、週末滞在、リモートワークに適しています。</li></ul><div class="photo block-photo location-photo"><img src="assets/images/ladi-valley-hero.webp" alt="Ladi Valley" loading="lazy" decoding="async"><span class="ph-lab">場所</span></div></div></details>
+        <details class="info-block" id="jp-address" open=""><summary>1.1 場所</summary><div class="block-body content location-layout"><a class="map-button" href="https://maps.app.goo.gl/AJGwJwu6iq7QDAKL8" target="_blank" rel="noopener" data-copy="openMap">Mở Google Maps</a><p><strong>住所:</strong> No. 10, Alley 343 Au Co Street (10/343), Nhat Tan, Hanoi.<br><strong>お部屋:</strong> Ladi Valley — 西湖近くの2階建てプライベートガーデン付きヴィラです。</p><figure class="location-photo location-video"><div class="location-video-stage"><button class="location-video-play" type="button" aria-label="道案内動画を再生" title="道案内動画を再生"><img src="assets/images/valley-arrival-poster.webp" alt="" loading="lazy" decoding="async"><span aria-hidden="true">▶</span></button><video hidden controls playsinline preload="none" poster="assets/images/valley-arrival-poster.webp" aria-label="10番の門までの道案内動画"><source src="assets/images/valley-arrival-guide.mp4" type="video/mp4"><a href="assets/images/valley-arrival-guide.mp4">このブラウザーでは再生できません。動画を開く</a></video></div><figcaption>Âu Cơ通り343番路地10番への道順</figcaption></figure><ul><li>Xuân Diệu - West Lake エリアまで約<strong>5分</strong>。</li><li>旧市街まで約<strong>15分</strong>。</li><li>家族、友人グループ、週末滞在、リモートワークに適しています。</li></ul></div></details>
         <details class="info-block" id="jp-extra"><summary>1.2 追加情報</summary><div class="block-body content"><ul><li><strong>空間:</strong> 2階建て、寝室3室、ベッド4台、広いリビング、大きなキッチン、バルコニー、専用庭。</li><li><strong>バスルーム:</strong> 専用バスルーム4室。</li><li><strong>1階:</strong> リビング、寝室1室、キッチンとダイニング、バスルーム2室、庭。</li><li><strong>2階:</strong> 専用バスルーム付き寝室2室とバルコニー。</li></ul><div class="photo block-photo"><img src="assets/images/ladi-valley-terrace.webp" alt="Ladi Valley" loading="lazy" decoding="async"><span class="ph-lab">追加情報</span></div></div></details>
         <details class="info-block" id="jp-rules"><summary>1.3 ハウスルール</summary><div class="block-body content"><ul><li><strong>チェックイン:</strong> 14:00 | <strong>チェックアウト:</strong> 11:00。</li><li>室内は禁煙です。喫煙は庭でお願いします。</li><li>パーティーは禁止、<strong>22:00以降</strong>は静かにお過ごしください。</li><li>予約者以外にアクセスコードを共有しないでください。</li><li>衛生用品や濡れたタオルをトイレに流さないでください。</li><li>外出前に電気とエアコンを消してください。</li></ul><p>衛生用品やウェットティッシュをトイレに流さないでください。</p><div class="photo block-photo"><img src="assets/images/valley-05-p4.webp" alt="Ladi Valley" loading="lazy" decoding="async"><span class="ph-lab">ハウスルール</span></div></div></details>
         <details class="info-block" id="jp-emergency"><summary>1.4 緊急連絡先</summary><div class="block-body content"><div class="emergency-actions"><a href="tel:+84935141368">Host Ladi · +84 93 514 1368</a><a href="mailto:Ladihomestay@gmail.com">Hostへメール</a><a href="tel:115">115</a><a href="tel:113">113</a><a href="tel:114">114</a></div><ul><li>Host Ladi — <span class="ph">+84 93 514 1368</span></li><li>Email — <span class="ph">Ladihomestay@gmail.com</span></li><li>救急 115 · 警察 113 · 消防 114</li></ul></div></details>
-        <details class="info-block" id="jp-support"><summary>1.5 追加サポート</summary><div class="block-body content"><ul><li>空港送迎はご希望に応じて手配をお手伝いします。少なくとも1日前にご連絡ください。</li><li>周辺の観光・食事のおすすめや、ハロン、ニンビン、シティツアーの情報をご案内できます。</li><li>長期滞在中の清掃や洗濯のご相談はHostへご連絡ください。</li></ul></div></details>
+        <details class="info-block" id="jp-support"><summary>1.5 追加サポート</summary><div class="block-body content"><div class="photo block-photo"><img loading="lazy" decoding="async" src="assets/images/ladi-valley-laundry.webp" alt="Laundry area at Ladi Valley" data-alt-copy="supportPhotoAlt"><span class="ph-lab" data-copy="supportPhotoCaption">Laundry support</span></div><ul><li>空港送迎はご希望に応じて手配をお手伝いします。少なくとも1日前にご連絡ください。</li><li>周辺の観光・食事のおすすめや、ハロン、ニンビン、シティツアーの情報をご案内できます。</li><li>長期滞在中の清掃や洗濯のご相談はHostへご連絡ください。</li></ul></div></details>
         <details class="info-block" id="jp-note"><summary>1.6 その他の注意</summary><div class="block-body content"><ul><li>庭には、特に夕方に蚊が出ることがあります。各部屋に捕虫灯と個人用の虫よけスプレーをご用意しています。</li><li>夜に照明をつける際はドアを閉め、虫の侵入を防いでください。</li><li>近隣工事により7:00–17:30に騒音が生じる場合があり、主に屋外の庭で聞こえます。</li></ul></div></details>
       </section>
       <section class="info-section" id="jp-checkin-checkout"><h3 class="info-title">2. チェックイン &amp; チェックアウト<span class="sub">Arrival and departure</span></h3>
-        <details class="info-block" id="jp-checkin"><summary>2.1 チェックイン</summary><div class="block-body content"><h5>チェックインの手順</h5><div class="checkin-steps"><article class="checkin-step"><div class="photo block-photo"><img loading="lazy" decoding="async" src="assets/images/ladi-valley-entrance.webp" alt="Ladi Valleyの入口"><span class="ph-lab">Ladi Valleyの入口</span></div><div class="checkin-step-copy"><strong>1. ヴィラへ向かう</strong><p>Google Mapsに従い、No. 10, Alley 343 Au Co Street, Tay Hoへお越しください。</p></div></article><article class="checkin-step"><div class="checkin-step-copy"><strong>2. Hostの案内を確認</strong><p>到着前またはチェックイン当日に届く詳細案内とアクセスコードをご確認ください。</p></div></article><article class="checkin-step"><div class="checkin-step-copy"><strong>3. キーパッドで解錠</strong><p>キーパッドに触れて点灯させ、届いたコードを入力して # または ✓ を押してください。</p></div></article></div><p>チェックインは14:00からです。予約者以外にコードを共有しないでください。エラーの場合はゆっくり入力し直し、解決しない場合はHost Ladiへご連絡ください。</p></div></details>
-        <details class="info-block" id="jp-checkout"><summary>2.2 チェックアウト</summary><div class="block-body content"><ul><li><strong>チェックアウト:</strong> 11:00まで。</li><li>出発前にエアコン、照明、電気機器を消してください。</li><li>忘れ物を確認し、ドアをしっかり閉めてください。</li></ul><p>レイトチェックアウトをご希望の場合は、Hostへヴィラの空き状況をご確認ください。</p><div class="photo block-photo"><img src="assets/images/ladi-valley-garden-terrace.webp" alt="Ladi Valley" loading="lazy" decoding="async"><span class="ph-lab">チェックアウト</span></div></div></details>
+        <details class="info-block" id="jp-checkin"><summary>2.1 チェックイン</summary><div class="block-body content"><h5>チェックインの手順</h5><div class="checkin-steps"><article class="checkin-step"><div class="photo block-photo"><img loading="lazy" decoding="async" src="assets/images/valley-owner-alley343.png" alt="Âu Cơ通り343番路地"><span class="ph-lab">Âu Cơ通り343番路地</span></div><div class="checkin-step-copy"><strong>1. 343番路地を探す</strong><p>Âu Cơ通りの343番路地に入り、10番（10/343）、Nhật Tân、ハノイへお越しください。</p></div></article><article class="checkin-step"><div class="photo block-photo"><img loading="lazy" decoding="async" src="assets/images/valley-owner-gate.png" alt="10番の門"><span class="ph-lab">10番の門</span></div><div class="checkin-step-copy"><strong>2. 10番の門を確認</strong><p>写真のようにLadi Homestayの看板と家番号10がある門を探してください。</p></div></article><article class="checkin-step"><div class="photo block-photo"><img loading="lazy" decoding="async" src="assets/images/valley-owner-keypad.png" alt="正門のキーパッド"><span class="ph-lab">正門のキーパッド</span></div><div class="checkin-step-copy"><strong>3. 正門と客室を開ける</strong><p>キーパッドに触れて点灯させてください。正門とすべての客室は同じコードです。末尾の # まで入力してください: <strong>123123#</strong></p></div></article></div><p>チェックインは14:00からです。予約者以外にコードを共有しないでください。ドアが開かない場合はHost Ladiへご連絡ください。</p></div></details>
+        <details class="info-block" id="jp-checkout"><summary>2.2 チェックアウト</summary><div class="block-body content"><ul><li><strong>チェックアウト:</strong> 11:00まで。</li><li>出発前にエアコン、照明、電気機器を消してください。</li><li>忘れ物を確認し、ドアをしっかり閉めてください。</li></ul><p>レイトチェックアウトをご希望の場合は、Hostへヴィラの空き状況をご確認ください。</p></div></details>
       </section>
       <section class="info-section" id="jp-appliances"><h3 class="info-title">3. 室内設備の使い方<span class="sub">In-home appliance guide</span></h3>
-        <details class="info-block" id="jp-wifi"><summary>3.1 WiFi</summary><div class="block-body content"><h5>WiFiに接続</h5><dl class="wifi-credentials"><div><dt>ネットワーク名</dt><dd>Ladi Valley</dd></div><div><dt>パスワード</dt><dd>チェックイン前にHostからお送りします</dd></div></dl><p>スマートフォンのWiFiを一度オフにしてから再接続してください。遅い、または接続できない場合はHostへルーターの確認をご依頼ください。</p></div></details>
+        <details class="info-block" id="jp-wifi"><summary>3.1 WiFi</summary><div class="block-body content"><h5>WiFiに接続</h5><dl class="wifi-credentials"><div><dt>ネットワーク名</dt><dd>LadiHomestay</dd></div><div><dt>パスワード</dt><dd>12345689</dd></div></dl><div class="wifi-copy-row"><button class="copy-password" type="button" data-copy-password data-copy-value="12345689" data-copy-label="パスワードをコピー" data-copied-label="コピーしました">パスワードをコピー</button><span class="copy-feedback" role="status" aria-live="polite"></span></div><p>スマートフォンのWiFiを一度オフにしてから再接続してください。遅い、または接続できない場合はHostへルーターの確認をご依頼ください。</p></div></details>
         <details class="info-block" id="jp-ac"><summary>3.2 エアコン &amp; お湯</summary><div class="block-body content"><article class="device-instruction-group"><div class="photo block-photo"><img src="assets/images/ladi-valley-bedroom-ac.webp" alt="Ladi Valley" loading="lazy" decoding="async"><span class="ph-lab">エアコン &amp; お湯</span></div><div class="device-copy"><ul><li>全室にエアコンがあります。Cool モード、25-26°Cがおすすめです。</li><li>お湯は24時間利用できます。</li><li>外出時はエアコンを消してください。</li></ul></div></article></div></details>
-        <details class="info-block" id="jp-cooktop"><summary>3.3 キッチン</summary><div class="block-body content"><article class="device-instruction-group"><div class="photo block-photo"><img src="assets/images/ladi-valley-kitchen-full.webp" alt="Ladi Valley" loading="lazy" decoding="async"><span class="ph-lab">キッチン</span></div><div class="device-copy"><ul><li>コンロ、冷蔵庫、ケトル、鍋、フライパン、食器、基本的な調理器具があります。</li><li>使用後は清掃して元の場所へ戻してください。</li></ul><ol><li>コンロに適した鍋やフライパンを使用してください。</li><li>電源を入れ、加熱部に鍋を置いて温度を調整してください。</li><li>調理後は電源を切り、表面が冷めてから拭いてください。</li></ol></div></article></div></details>
-        <details class="info-block" id="jp-microwave"><summary>3.4 調理器具 &amp; 鍋用コンロ</summary><div class="block-body content"><article class="device-instruction-group"><div class="photo block-photo"><img src="assets/images/ladi-valley-kitchen.webp" alt="Ladi Valley" loading="lazy" decoding="async"><span class="ph-lab">調理器具</span></div><div class="device-copy"><ul><li>家族や小さな集まりに使えるポータブル鍋用コンロがあります。</li><li>使用後は食器と調理器具を洗ってください。</li></ul></div></article></div></details>
+        <details class="info-block" id="jp-cooktop"><summary>3.3 キッチン</summary><div class="block-body content"><article class="device-instruction-group"><div class="photo block-photo"><img src="assets/images/ladi-valley-kitchen-full.webp" alt="Ladi Valley" loading="lazy" decoding="async"><span class="ph-lab">キッチン</span></div><div class="device-copy"><ul><li>コンロ、冷蔵庫、ケトル、鍋、フライパン、食器、基本的な調理器具があります。</li><li>使用後は清掃して元の場所へ戻してください。</li></ul><ol><li>鍋やフライパンをコンロに安定して置き、調理中はそばを離れないでください。</li><li>使用後はコンロを切り、冷めてから拭いてください。</li></ol></div></article></div></details>
+        <details class="info-block" id="jp-microwave"><summary>3.4 調理器具 &amp; 鍋用コンロ</summary><div class="block-body content"><article class="device-instruction-group"><div class="photo block-photo"><img src="assets/images/valley-10-p6.webp" alt="Ladi Valley" loading="lazy" decoding="async"><span class="ph-lab">調理器具</span></div><div class="device-copy"><ul><li>家族や小さな集まりに使えるポータブル鍋用コンロがあります。</li><li>使用後は食器と調理器具を洗ってください。</li></ul></div></article></div></details>
         <details class="info-block" id="jp-tv"><summary>3.5 Smart TV</summary><div class="block-body content"><article class="device-instruction-group"><div class="photo block-photo"><img src="assets/images/valley-06-p4.webp" alt="Ladi Valley" loading="lazy" decoding="async"><span class="ph-lab">Smart TV</span></div><div class="device-copy"><p>Smart TV で Netflix と YouTube を利用できます。個人アカウントでログインした場合は、退出前にログアウトしてください。</p></div></article></div></details>
         <details class="info-block" id="jp-laundry"><summary>3.6 洗濯乾燥</summary><div class="block-body content"><article class="device-instruction-group"><div class="photo block-photo"><img src="assets/images/valley-14-p8.webp" alt="Ladi Valley" loading="lazy" decoding="async"><span class="ph-lab">洗濯乾燥</span></div><div class="device-copy"><ul><li>専用の洗濯機と乾燥機があります。</li><li>長期滞在やお子様連れのご家族に便利です。</li><li>洗濯物を入れすぎないでください。</li></ul><p>衣類のポケットを確認し、詰め込みすぎないでください。使用後はドアを少し開けて乾燥させてください。</p></div></article></div></details>
         <details class="info-block" id="jp-heater"><summary>3.7 プライベートガーデン</summary><div class="block-body content"><article class="device-instruction-group"><div class="photo block-photo"><img src="assets/images/ladi-valley-garden.webp" alt="Ladi Valley" loading="lazy" decoding="async"><span class="ph-lab">ガーデン</span></div><div class="device-copy"><ul><li>専用庭にはリラックスできる椅子と屋外ダイニングスペースがあります。</li><li>22:00以降は静かにご利用ください。</li></ul></div></article></div></details>
-        <details class="info-block" id="jp-other"><summary>3.8 その他の設備</summary><div class="block-body content"><article class="device-instruction-group"><div class="photo block-photo"><img src="assets/images/ladi-valley-kitchen-full.webp" alt="Ladi Valley" loading="lazy" decoding="async"><span class="ph-lab">その他の設備</span></div><div class="device-copy"><ul><li>ヘアドライヤー、タオル、基本的なバス用品があります。</li><li>チェスとボードゲームがあります。</li><li>外出前にすべての電気機器を消してください。</li></ul></div></article></div></details>
+        <details class="info-block" id="jp-other"><summary>3.8 その他の設備</summary><div class="block-body content"><article class="device-instruction-group"><div class="photo block-photo"><img src="assets/images/valley-15-p8.webp" alt="Ladi Valley" loading="lazy" decoding="async"><span class="ph-lab">その他の設備</span></div><div class="device-copy"><ul><li>ヘアドライヤー、タオル、基本的なバス用品があります。</li><li>チェスとボードゲームがあります。</li><li>外出前にすべての電気機器を消してください。</li></ul></div></article></div></details>
       </section>
     </div></div>
   </details></div>
@@ -1452,7 +1463,8 @@
 
 <!-- ============ PHOTO GRID ============ -->
 <section class="section" id="thuvien" style="padding-top:0">
-  <div class="grid rv"><div class="photo"><img loading="lazy" decoding="async" src="assets/images/ladi-valley-living-room.webp" alt="Phòng khách · Ladi Valley" data-alt-copy="valleyAlt0"><span class="ph-lab" data-copy="valleyGallery0">Phòng khách</span></div><div class="photo"><img loading="lazy" decoding="async" src="assets/images/ladi-valley-bedroom.webp" alt="Phòng ngủ · Ladi Valley" data-alt-copy="valleyAlt1"><span class="ph-lab" data-copy="valleyGallery1">Phòng ngủ</span></div><div class="photo"><img loading="lazy" decoding="async" src="assets/images/ladi-valley-kitchen.webp" alt="Khu bếp · Ladi Valley" data-alt-copy="valleyAlt2"><span class="ph-lab" data-copy="valleyGallery2">Khu bếp</span></div><div class="photo"><img loading="lazy" decoding="async" src="assets/images/ladi-valley-garden.webp" alt="Sân vườn · Ladi Valley" data-alt-copy="valleyAlt3"><span class="ph-lab" data-copy="valleyGallery3">Sân vườn</span></div></div>
+  <h2 class="big gallery-heading" data-copy="galleryHeading">Bên trong Ladi Valley</h2>
+  <div class="grid rv"><div class="photo"><img loading="lazy" decoding="async" src="assets/images/ladi-valley-living-room.webp" alt="Phòng khách · Ladi Valley" data-alt-copy="valleyAlt0"><span class="ph-lab" data-copy="valleyGallery0">Phòng khách</span></div><div class="photo"><img loading="lazy" decoding="async" src="assets/images/ladi-valley-bedroom.webp" alt="Phòng ngủ · Ladi Valley" data-alt-copy="valleyAlt1"><span class="ph-lab" data-copy="valleyGallery1">Phòng ngủ</span></div><div class="photo"><img loading="lazy" decoding="async" src="assets/images/ladi-valley-kitchen.webp" alt="Khu bếp · Ladi Valley" data-alt-copy="valleyAlt2"><span class="ph-lab" data-copy="valleyGallery2">Khu bếp</span></div><div class="photo"><img loading="lazy" decoding="async" src="assets/images/ladi-valley-garden.webp" alt="Sân vườn · Ladi Valley" data-alt-copy="valleyAlt3"><span class="ph-lab" data-copy="valleyGallery3">Sân vườn</span></div><div class="photo"><img loading="lazy" decoding="async" src="assets/images/valley-gallery-bathroom.jpg" alt="Bathroom at Ladi Valley" data-alt-copy="galleryAlt4"><span class="ph-lab" data-copy="galleryCaption4">Bathroom</span></div><div class="photo"><img loading="lazy" decoding="async" src="assets/images/valley-gallery-workspace.webp" alt="Bedroom with desk at Ladi Valley" data-alt-copy="galleryAlt5"><span class="ph-lab" data-copy="galleryCaption5">Bedroom with desk</span></div><div class="photo"><img loading="lazy" decoding="async" src="assets/images/valley-gallery-bedroom-tv.webp" alt="Bedroom with TV at Ladi Valley" data-alt-copy="galleryAlt6"><span class="ph-lab" data-copy="galleryCaption6">Bedroom with TV</span></div><div class="photo"><img loading="lazy" decoding="async" src="assets/images/valley-gallery-laundry.webp" alt="Laundry room at Ladi Valley" data-alt-copy="galleryAlt7"><span class="ph-lab" data-copy="galleryCaption7">Laundry</span></div><div class="photo"><img loading="lazy" decoding="async" src="assets/images/valley-gallery-terrace.webp" alt="Garden terrace at Ladi Valley" data-alt-copy="galleryAlt8"><span class="ph-lab" data-copy="galleryCaption8">Outdoor terrace</span></div><div class="photo"><img loading="lazy" decoding="async" src="assets/images/valley-gallery-kitchen-wide.webp" alt="Kitchen and dining area at Ladi Valley" data-alt-copy="galleryAlt9"><span class="ph-lab" data-copy="galleryCaption9">Kitchen and dining</span></div></div>
 </section>
 
 <!-- ============ FRIEND / HOST ============ -->
@@ -1476,8 +1488,8 @@
 <!-- ============ FOOTER ============ -->
 <footer>
   <div class="fmk">Ladi</div>
-  <div class="ftag">Hanoi in your stay</div>
-  <div class="fline">Số 10 ngõ 343 Đường Âu Cơ, Tây Hồ, Hà Nội · Ladi Valley</div>
+  <div class="ftag">Hanoi In Your Stay</div>
+  <div class="fline">Số 10, ngõ 343 Âu Cơ (10/343), Nhật Tân, Hà Nội · Ladi Valley</div>
   <a href="#top" class="fcta" data-copy="footerBackTop">Về đầu trang</a>
 </footer>
 
@@ -1555,7 +1567,7 @@
     "hostEmergency": "Khẩn cấp",
     "hostEmergencyNumbers": "Cấp cứu 115 · Cảnh sát 113 · Cứu hỏa 114",
     "footerBackTop": "Về đầu trang",
-    "heroLine": "Villa 3 phòng ngủ · Sân vườn riêng · Hồ Tây",
+    "heroLine": "A warm apartment in the heart of Hanoi",
     "cooktop": "Khu bếp",
     "microwave": "Dụng cụ bếp & bếp lẩu",
     "laundry": "Máy giặt & máy sấy",
@@ -1569,7 +1581,26 @@
     "valleyGallery2": "Khu bếp",
     "valleyAlt2": "Khu bếp · Ladi Valley",
     "valleyGallery3": "Sân vườn",
-    "valleyAlt3": "Sân vườn · Ladi Valley"
+    "valleyAlt3": "Sân vườn · Ladi Valley",
+    "galleryHeading": "Bên trong Ladi Valley",
+    "galleryCaption4": "Phòng tắm",
+    "galleryAlt4": "Phòng tắm tại Ladi Valley",
+    "galleryCaption5": "Phòng ngủ có bàn làm việc",
+    "galleryAlt5": "Phòng ngủ có bàn làm việc tại Ladi Valley",
+    "galleryCaption6": "Phòng ngủ có TV",
+    "galleryAlt6": "Phòng ngủ có TV tại Ladi Valley",
+    "galleryCaption7": "Khu giặt sấy",
+    "galleryAlt7": "Khu giặt sấy tại Ladi Valley",
+    "galleryCaption8": "Sân hiên ngoài trời",
+    "galleryAlt8": "Sân hiên và bàn ăn ngoài trời tại Ladi Valley",
+    "galleryCaption9": "Bếp và bàn ăn",
+    "galleryAlt9": "Khu bếp và bàn ăn tại Ladi Valley",
+    "wifiPhotoAlt": "Góc bàn làm việc trong phòng ngủ tại Ladi Valley",
+    "wifiPhotoCaption": "WiFi & làm việc",
+    "supportPhotoAlt": "Khu giặt sấy tại Ladi Valley",
+    "supportPhotoCaption": "Giặt sấy",
+    "gardenPhotoAlt": "Sân vườn riêng tại Ladi Valley",
+    "gardenPhotoCaption": "Lưu ý ngoài trời"
   },
   "en": {
     "aboutEyebrow": "About the stay",
@@ -1586,7 +1617,7 @@
     "hostEmergency": "Emergency",
     "hostEmergencyNumbers": "Ambulance 115 · Police 113 · Fire 114",
     "footerBackTop": "Back to top",
-    "heroLine": "3-bedroom villa · Private garden · West Lake",
+    "heroLine": "A warm apartment in the heart of Hanoi",
     "cooktop": "Kitchen",
     "microwave": "Kitchen tools & hotpot stove",
     "laundry": "Washer & dryer",
@@ -1600,7 +1631,26 @@
     "valleyGallery2": "Kitchen",
     "valleyAlt2": "Kitchen · Ladi Valley",
     "valleyGallery3": "Garden",
-    "valleyAlt3": "Garden · Ladi Valley"
+    "valleyAlt3": "Garden · Ladi Valley",
+    "galleryHeading": "Inside Ladi Valley",
+    "galleryCaption4": "Bathroom",
+    "galleryAlt4": "Bathroom at Ladi Valley",
+    "galleryCaption5": "Bedroom with desk",
+    "galleryAlt5": "Bedroom with a desk at Ladi Valley",
+    "galleryCaption6": "Bedroom with TV",
+    "galleryAlt6": "Bedroom with TV at Ladi Valley",
+    "galleryCaption7": "Laundry room",
+    "galleryAlt7": "Laundry room at Ladi Valley",
+    "galleryCaption8": "Outdoor terrace",
+    "galleryAlt8": "Garden terrace with outdoor dining at Ladi Valley",
+    "galleryCaption9": "Kitchen and dining",
+    "galleryAlt9": "Kitchen and dining area at Ladi Valley",
+    "wifiPhotoAlt": "Bedroom workspace at Ladi Valley",
+    "wifiPhotoCaption": "WiFi & remote work",
+    "supportPhotoAlt": "Laundry area at Ladi Valley",
+    "supportPhotoCaption": "Laundry support",
+    "gardenPhotoAlt": "Private garden at Ladi Valley",
+    "gardenPhotoCaption": "Outdoor notes"
   },
   "ko": {
     "aboutEyebrow": "숙소 소개",
@@ -1617,7 +1667,7 @@
     "hostEmergency": "긴급 연락",
     "hostEmergencyNumbers": "응급 115 · 경찰 113 · 소방 114",
     "footerBackTop": "맨 위로",
-    "heroLine": "침실 3개 빌라 · 전용 정원 · 서호",
+    "heroLine": "A warm apartment in the heart of Hanoi",
     "cooktop": "주방",
     "microwave": "주방 도구 & 핫팟 기기",
     "laundry": "세탁기 & 건조기",
@@ -1631,7 +1681,26 @@
     "valleyGallery2": "주방",
     "valleyAlt2": "주방 · Ladi Valley",
     "valleyGallery3": "정원",
-    "valleyAlt3": "정원 · Ladi Valley"
+    "valleyAlt3": "정원 · Ladi Valley",
+    "galleryHeading": "Ladi Valley 둘러보기",
+    "galleryCaption4": "욕실",
+    "galleryAlt4": "Ladi Valley 욕실",
+    "galleryCaption5": "책상이 있는 침실",
+    "galleryAlt5": "책상이 있는 Ladi Valley 침실",
+    "galleryCaption6": "TV가 있는 침실",
+    "galleryAlt6": "TV가 있는 Ladi Valley 침실",
+    "galleryCaption7": "세탁 공간",
+    "galleryAlt7": "Ladi Valley 세탁 공간",
+    "galleryCaption8": "야외 테라스",
+    "galleryAlt8": "야외 식사 공간이 있는 Ladi Valley 정원 테라스",
+    "galleryCaption9": "주방과 식사 공간",
+    "galleryAlt9": "Ladi Valley 주방과 식사 공간",
+    "wifiPhotoAlt": "Ladi Valley 침실의 작업 공간",
+    "wifiPhotoCaption": "WiFi & 원격 근무",
+    "supportPhotoAlt": "Ladi Valley 세탁 공간",
+    "supportPhotoCaption": "세탁 지원",
+    "gardenPhotoAlt": "Ladi Valley 전용 정원",
+    "gardenPhotoCaption": "야외 안내"
   },
   "zh": {
     "aboutEyebrow": "关于住宿",
@@ -1648,7 +1717,7 @@
     "hostEmergency": "紧急联系",
     "hostEmergencyNumbers": "急救 115 · 警察 113 · 消防 114",
     "footerBackTop": "返回顶部",
-    "heroLine": "三卧室别墅 · 私人花园 · 西湖",
+    "heroLine": "A warm apartment in the heart of Hanoi",
     "cooktop": "厨房",
     "microwave": "厨房用具与火锅炉",
     "laundry": "洗衣机与烘干机",
@@ -1662,7 +1731,26 @@
     "valleyGallery2": "厨房",
     "valleyAlt2": "厨房 · Ladi Valley",
     "valleyGallery3": "花园",
-    "valleyAlt3": "花园 · Ladi Valley"
+    "valleyAlt3": "花园 · Ladi Valley",
+    "galleryHeading": "走进 Ladi Valley",
+    "galleryCaption4": "浴室",
+    "galleryAlt4": "Ladi Valley 浴室",
+    "galleryCaption5": "带书桌的卧室",
+    "galleryAlt5": "Ladi Valley 带书桌的卧室",
+    "galleryCaption6": "带电视的卧室",
+    "galleryAlt6": "Ladi Valley 带电视的卧室",
+    "galleryCaption7": "洗衣区",
+    "galleryAlt7": "Ladi Valley 洗衣区",
+    "galleryCaption8": "户外露台",
+    "galleryAlt8": "Ladi Valley 花园露台和户外用餐区",
+    "galleryCaption9": "厨房与用餐区",
+    "galleryAlt9": "Ladi Valley 厨房与用餐区",
+    "wifiPhotoAlt": "Ladi Valley 卧室内的工作区域",
+    "wifiPhotoCaption": "WiFi 与远程办公",
+    "supportPhotoAlt": "Ladi Valley 洗衣区",
+    "supportPhotoCaption": "洗衣服务",
+    "gardenPhotoAlt": "Ladi Valley 私人花园",
+    "gardenPhotoCaption": "户外提示"
   },
   "ja": {
     "aboutEyebrow": "滞在について",
@@ -1679,7 +1767,7 @@
     "hostEmergency": "緊急連絡",
     "hostEmergencyNumbers": "救急 115 · 警察 113 · 消防 114",
     "footerBackTop": "ページ上部へ",
-    "heroLine": "寝室3室のヴィラ · 専用庭 · 西湖",
+    "heroLine": "A warm apartment in the heart of Hanoi",
     "cooktop": "キッチン",
     "microwave": "調理器具 & 卓上鍋用コンロ",
     "laundry": "洗濯機 & 乾燥機",
@@ -1693,7 +1781,26 @@
     "valleyGallery2": "キッチン",
     "valleyAlt2": "キッチン · Ladi Valley",
     "valleyGallery3": "庭",
-    "valleyAlt3": "庭 · Ladi Valley"
+    "valleyAlt3": "庭 · Ladi Valley",
+    "galleryHeading": "Ladi Valleyの館内をご紹介",
+    "galleryCaption4": "バスルーム",
+    "galleryAlt4": "Ladi Valleyのバスルーム",
+    "galleryCaption5": "デスクのある寝室",
+    "galleryAlt5": "デスクのあるLadi Valleyの寝室",
+    "galleryCaption6": "テレビのある寝室",
+    "galleryAlt6": "テレビのあるLadi Valleyの寝室",
+    "galleryCaption7": "ランドリー",
+    "galleryAlt7": "Ladi Valleyの洗濯スペース",
+    "galleryCaption8": "屋外テラス",
+    "galleryAlt8": "屋外ダイニングのあるLadi Valleyの庭テラス",
+    "galleryCaption9": "キッチンとダイニング",
+    "galleryAlt9": "Ladi Valleyのキッチンとダイニング",
+    "wifiPhotoAlt": "Ladi Valleyの寝室にあるワークスペース",
+    "wifiPhotoCaption": "WiFi・リモートワーク",
+    "supportPhotoAlt": "Ladi Valleyの洗濯スペース",
+    "supportPhotoCaption": "ランドリーサポート",
+    "gardenPhotoAlt": "Ladi Valleyの専用庭",
+    "gardenPhotoCaption": "屋外でのご注意"
   }
 };
  const themeCopy = {
@@ -1800,6 +1907,7 @@
     if(!copy[lang]) lang = 'vi';
     languagePanels.forEach(panel => {
       const active = panel.dataset.langPanel === lang;
+      if(!active) panel.querySelectorAll('.location-video video').forEach(video => video.pause());
       panel.classList.toggle('is-active', active);
       panel.hidden = !active;
       panel.open = active;
@@ -1873,7 +1981,7 @@
   const imageViewer = document.getElementById('imageViewer');
   const imageViewerImage = document.getElementById('imageViewerImage');
   const imageViewerClose = imageViewer.querySelector('.image-viewer-close');
-  document.querySelectorAll('.checkin-step .photo,.device-instruction-group .photo').forEach(photo => {
+  document.querySelectorAll('.checkin-step .photo:not(.missing-photo),.device-instruction-group .photo:not(.missing-photo)').forEach(photo => {
     photo.classList.add('zoomable-photo');
     photo.tabIndex = 0;
     photo.setAttribute('role','button');
@@ -1891,17 +1999,32 @@
   });
   imageViewerClose.addEventListener('click', () => imageViewer.close());
   imageViewer.addEventListener('click', event => { if(event.target === imageViewer) imageViewer.close(); });
+  document.querySelectorAll('.location-video-play').forEach(button => {
+    button.addEventListener('click', async () => {
+      const video = button.parentElement.querySelector('video');
+      button.hidden = true;
+      video.hidden = false;
+      try{ await video.play(); }
+      catch(error){ video.hidden = true; button.hidden = false; }
+    });
+  });
   document.querySelectorAll('[data-copy-password]').forEach(button => {
     button.addEventListener('click', async () => {
       const value = button.dataset.copyValue;
       const feedback = button.parentElement.querySelector('.copy-feedback');
       try{
-        if(navigator.clipboard && window.isSecureContext){
-          await navigator.clipboard.writeText(value);
-        }else{
+        const legacyCopy = () => {
           const field = document.createElement('textarea');
           field.value = value; field.setAttribute('readonly',''); field.style.position = 'fixed'; field.style.opacity = '0';
-          document.body.appendChild(field); field.select(); document.execCommand('copy'); field.remove();
+          document.body.appendChild(field); field.select(); const copied = document.execCommand('copy'); field.remove();
+          if(!copied) throw new Error('Clipboard unavailable');
+        };
+        if(window.location.protocol === 'file:'){
+          legacyCopy();
+        }else if(navigator.clipboard && window.isSecureContext){
+          await navigator.clipboard.writeText(value);
+        }else{
+          legacyCopy();
         }
         button.textContent = button.dataset.copiedLabel;
         feedback.textContent = button.dataset.copiedLabel;
